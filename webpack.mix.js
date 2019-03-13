@@ -12,4 +12,20 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+    .js('resources/js/register.js', 'public/js')
+    .js('resources/js/sw.js', 'public');
+
+mix.sass('resources/sass/app.scss', 'public/css');
+
+mix.version();
+
+mix.browserSync({
+    proxy: 'din.dev:7003',
+    https: {
+        key: "/home/sidraw/.localssl/din.dev-key.pem",
+        cert: "/home/sidraw/.localssl/din.dev.pem"
+    },
+    port: 443,
+    online: false,
+    browser: []
+});
