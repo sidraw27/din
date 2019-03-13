@@ -12,6 +12,7 @@
         "barryvdh/laravel-ide-helper": "^2.6",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
+        "laravel/socialite": "v3.3.0",
         "laravel/tinker": "^1.0",
         "sidraw/laravel-bootstrap": "^1.0"
     },
