@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('origin_user_id');
+            $table->string('provider_user_id');
 
             $table->string('origin_name');
             $table->string('display_name');
@@ -27,6 +27,12 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+
+            // index
+            $table->unique([
+                'provider_user_id',
+                'provider'
+            ]);
         });
     }
 
