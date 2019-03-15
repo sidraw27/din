@@ -40,8 +40,10 @@ class AuthController extends Controller
             return redirect()->back();
         }
 
-        $this->userService->login($provider);
+        if ($this->userService->login($provider)) {
+            redirect()->intended(route('index'));
+        }
 
-        return redirect()->intended(route('index'));
+        return redirect()->back();
     }
 }

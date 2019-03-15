@@ -16,6 +16,10 @@ class UserService
         $this->acl = $acl;
     }
 
+    /**
+     * @param string $provider
+     * @return bool
+     */
     public function login(string $provider)
     {
         $providerUser = \Socialite::driver($provider)->stateless()->user();
