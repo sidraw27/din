@@ -11,6 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        if ($this->command->confirm('Are you sure to refresh migration ?')) {
+            $this->command->call('migrate:fresh');
+            $this->command->line('fresh done');
+
+            factory(\App\Entities\Hotel::class, 10)->create();
+
+            $this->call(FacilitiesSeeder::class);
+        }
     }
 }
