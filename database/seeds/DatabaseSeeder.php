@@ -17,8 +17,7 @@ class DatabaseSeeder extends Seeder
 
             $this->call(\App\Jobs\Init\CityInit::class);
 
-            factory(\App\Entities\Hotel::class, 10)->create();
-
+            $this->call(HotelSeeder::class);
             $this->call(FacilitiesSeeder::class);
         }
     }
