@@ -2,10 +2,13 @@
 
 namespace App\Repositories;
 
+use App\Traits\CacheTrait;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 abstract class AbstractRepository
 {
+    use CacheTrait;
+
     /* @var $entity \Illuminate\Database\Eloquent\Builder */
     protected $entity;
 
