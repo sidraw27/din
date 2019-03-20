@@ -1,0 +1,149 @@
+{
+  "origin": "台灣",
+  "tw": "台灣",
+  "en": "Taiwan",
+  "code": "TW",
+  "type": "country",
+  "cities": [
+    {
+      "origin": "基隆",
+      "tw": "基隆",
+      "en": "Keelung",
+      "code": "TW-KEE",
+      "type": "city"
+    },
+    {
+      "origin": "台北",
+      "tw": "台北",
+      "en": "Taipei",
+      "code": "TW-TPE",
+      "type": "city"
+    },
+    {
+      "origin": "新北",
+      "tw": "新北",
+      "en": "New Taipei",
+      "code": "TW-NWT",
+      "type": "city"
+    },
+    {
+      "origin": "新竹",
+      "tw": "新竹",
+      "en": "Hsinchu",
+      "code": "TW-HSZ",
+      "type": "city"
+    },
+    {
+      "origin": "桃園",
+      "tw": "桃園",
+      "en": "Taoyuan",
+      "code": "TW-TAO",
+      "type": "city"
+    },
+    {
+      "origin": "台中",
+      "tw": "台中",
+      "en": "Taichung",
+      "code": "TW-TXG",
+      "type": "city"
+    },
+    {
+      "origin": "彰化",
+      "tw": "彰化",
+      "en": "Changhua",
+      "code": "TW-CHA",
+      "type": "city"
+    },
+    {
+      "origin": "雲林",
+      "tw": "雲林",
+      "en": "Yunlin",
+      "code": "TW-YUN",
+      "type": "city"
+    },
+    {
+      "origin": "苗栗",
+      "tw": "苗栗",
+      "en": "Miaoli",
+      "code": "TW-MIA",
+      "type": "city"
+    },
+    {
+      "origin": "南投",
+      "tw": "南投",
+      "en": "Nantou",
+      "code": "TW-NAN",
+      "type": "city"
+    },
+    {
+      "origin": "嘉義",
+      "tw": "嘉義",
+      "en": "Chiayi",
+      "code": "TW-CYI",
+      "type": "city"
+    },
+    {
+      "origin": "台南",
+      "tw": "台南",
+      "en": "Tainan",
+      "code": "TW-TNN",
+      "type": "city"
+    },
+    {
+      "origin": "高雄",
+      "tw": "高雄",
+      "en": "Kaohsiung",
+      "code": "TW-KHH",
+      "type": "city"
+    },
+    {
+      "origin": "屏東",
+      "tw": "屏東",
+      "en": "Pingtung",
+      "code": "TW-PIF",
+      "type": "city"
+    },
+    {
+      "origin": "宜蘭",
+      "tw": "宜蘭",
+      "en": "Yilan",
+      "code": "TW-ILA",
+      "type": "city"
+    },
+    {
+      "origin": "花蓮",
+      "tw": "花蓮",
+      "en": "Hualien",
+      "code": "TW-HUA",
+      "type": "city"
+    },
+    {
+      "origin": "台東",
+      "tw": "台東",
+      "en": "Taitung",
+      "code": "TW-TTT",
+      "type": "city"
+    },
+    {
+      "origin": "金門",
+      "tw": "金門",
+      "en": "Kinmen",
+      "code": "TW-KIN",
+      "type": "city"
+    },
+    {
+      "origin": "連江",
+      "tw": "連江",
+      "en": "Lienchiang",
+      "code": "TW-LIE",
+      "type": "city"
+    },
+    {
+      "origin": "澎湖",
+      "tw": "澎湖",
+      "en": "Penghu",
+      "code": "TW-PEN",
+      "type": "city"
+    }
+  ]
+}

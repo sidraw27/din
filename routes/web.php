@@ -11,6 +11,15 @@
 |
 */
 
+Route::get('/', function() {
+    var_dump(\Auth::check());
+})->name('index');
+
+Route::get('hotel/{id}', [
+    'uses' => 'HotelController@index',
+    'as'   => 'hotel'
+])->where('id', '[a-zA-Z0-9]{6}');
+
 Route::group(['prefix' => 'auth'], function() {
     Route::get('authentication/{provider}', [
         'uses' => 'AuthController@authentication',

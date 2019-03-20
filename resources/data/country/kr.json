@@ -1,0 +1,128 @@
+{
+  "origin": "대한민국",
+  "tw": "韓國",
+  "en": "Korea",
+  "code": "KR",
+  "type": "country",
+  "cities": [
+    {
+      "origin": "서울특별시 ",
+      "tw": "首爾特別市",
+      "en": "Seoul Special City",
+      "code": "KR-11",
+      "type": "city"
+    },
+    {
+      "origin": "부산광역시 ",
+      "tw": "釜山廣域市",
+      "en": "Busan Metropolitan City",
+      "code": "KR-26",
+      "type": "city"
+    },
+    {
+      "origin": "대구광역시 ",
+      "tw": "大邱廣域市",
+      "en": "Daegu Metropolitan City",
+      "code": "KR-27",
+      "type": "city"
+    },
+    {
+      "origin": "인천광역시 ",
+      "tw": "仁川廣域市",
+      "en": "Incheon Metropolitan City",
+      "code": "KR-28",
+      "type": "city"
+    },
+    {
+      "origin": "광주광역시 ",
+      "tw": "光州廣域市",
+      "en": "Gwangju Metropolitan City",
+      "code": "KR-29",
+      "type": "city"
+    },
+    {
+      "origin": "대전광역시 ",
+      "tw": "大田廣域市",
+      "en": "Daejeon Metropolitan City",
+      "code": "KR-30",
+      "type": "city"
+    },
+    {
+      "origin": "울산광역시 ",
+      "tw": "蔚山廣域市",
+      "en": "Ulsan Metropolitan City",
+      "code": "KR-31",
+      "type": "city"
+    },
+    {
+      "origin": "경기도 ",
+      "tw": "京畿道",
+      "en": "Gyeonggi-do",
+      "code": "KR-41",
+      "type": "city"
+    },
+    {
+      "origin": "강원도 ",
+      "tw": "江原道",
+      "en": "Gangwon-do",
+      "code": "KR-42",
+      "type": "city"
+    },
+    {
+      "origin": "충청북도 ",
+      "tw": "忠清北道",
+      "en": "Chungcheongbuk-do",
+      "code": "KR-43",
+      "type": "city"
+    },
+    {
+      "origin": "충청남도 ",
+      "tw": "忠清南道",
+      "en": "Chungcheongnam-do",
+      "code": "KR-44",
+      "type": "city"
+    },
+    {
+      "origin": "전라북도 ",
+      "tw": "全羅北道",
+      "en": "Jeollabuk-do",
+      "code": "KR-45",
+      "type": "city"
+    },
+    {
+      "origin": "전라남도 ",
+      "tw": "全羅南道",
+      "en": "Jeollanam-do",
+      "code": "KR-46",
+      "type": "city"
+    },
+    {
+      "origin": "경상북도 ",
+      "tw": "慶尚北道",
+      "en": "Gyeongsangbuk-do",
+      "code": "KR-47",
+      "type": "city"
+    },
+    {
+      "origin": "경상남도 ",
+      "tw": "慶尚南道",
+      "en": "Gyeongsangnam-do",
+      "code": "KR-48",
+      "type": "city"
+    },
+    {
+      "origin": "제주특별자치도 ",
+      "tw": "濟州特別自治道",
+      "en": "Jeju-teukbyeoljachido",
+      "code": "KR-49",
+      "type": "city"
+    },
+    {
+      "origin": "세종특별자치시 ",
+      "tw": "世宗特別自治市",
+      "en": "Sejong",
+      "code": "KR-50",
+      "type": "city"
+    }
+  ]
+}

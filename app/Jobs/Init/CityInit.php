@@ -14,7 +14,7 @@ class CityInit extends Seeder
             'kr'
         ];
 
-        $disk = \Storage::disk('local');
+        $disk = \Storage::disk('resource');
 
         foreach ($countries as $country) {
             try {
