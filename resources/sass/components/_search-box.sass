@@ -1,0 +1,96 @@
+.searchBox
+    background: $cl-black
+    @media screen and (max-width: 39.9375em)
+        display: none
+
+.searchBox_wrapper
+    @extend %outer-width1200
+    @extend %flex-wrap-align-center
+    padding: 10px 0
+    .IconBox
+        background: #ffffff
+        height: 50px
+    .search-input
+        @extend %flex-align-center
+        margin-right: 10px
+        padding: 5px 10px
+        width: calc(100% - 400px - 100px - 30px - 215px)
+        @media screen and (max-width: 1000px)
+            width: calc(100% - 30% - 10px)
+        img
+            width: 20px
+        input
+            width: calc(100% - 20px)
+            height: 50px
+            border: 0
+            padding: 0 10px 
+            color: #828282
+            font-size: 14px
+            font-weight: 400
+
+
+    //----- checkin checkout ------//
+    .check-in,.check-out
+        @extend %flex-align-center
+        width: 200px
+        cursor: pointer
+        padding: 0 10px
+        @media screen and (max-width: 1000px)
+            width: 30%
+            order: -1
+            margin-bottom: 10px
+
+    .check-out
+        border-left: 1px solid #ebebeb
+        margin-right: 10px
+    
+    .picker-icons
+        @extend %flex-center
+        img
+            width: 30px
+
+    .picker-text
+        width: 100%
+        @extend %flex-direction-column
+        .picker_label
+            font-size: 12px
+            font-weight: 300
+            color: #888888
+        .picker_date
+            font-size: 14px
+
+
+    //------ 房間 -----//
+    .occupancy
+        @extend %flex-align-center
+        padding: 10px
+        width: 215px
+        cursor: pointer
+        margin-right: 10px
+        @media screen and (max-width: 1000px)
+            width: calc(100% - 60% - 10px)
+            order: -1
+            margin-bottom: 10px
+            margin-right: 0
+
+    .picker-icons_down
+        img
+            width: 20px
+
+
+    //------ 搜尋btn -----//
+    .search-btn
+        cursor: pointer
+        background: $cl-green
+        color: #ffffff
+        width: 100px
+        height: 50px
+        border: 0
+        border-radius: 5px
+        padding: 10px 20px
+        font-size: 14px
+        font-weight: 500
+        @media screen and (max-width: 1000px)
+            width: 30%
+        &:hover
+            background: $cl-green-dark

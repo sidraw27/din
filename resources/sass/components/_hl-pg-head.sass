@@ -1,0 +1,142 @@
+// 標題
+.hotel_head
+    @media screen and (max-width: 39.9375em)
+        padding: 0 20px
+        background: #ffffff
+
+
+.hotel_title
+    @extend %flex-justify-between
+    @media screen and (max-width: 39.9375em)
+        align-items: flex-start
+        padding: 30px 0 15px
+
+
+.hotel_tit-info
+    @extend %flex-wrap-align-center
+    width: calc(100% - 180px)
+    @media screen and (max-width: 39.9375em)
+        width: calc(100% - 90px)
+    .title
+        font-size: 24px
+        font-weight: 500
+        line-height: 28px
+        @media screen and (max-width: 39.9375em)
+            font-size: 20px
+    .rating-wrap
+        margin-left: 10px
+        @media screen and (max-width: 850px)
+            width: 100%
+            margin-left: 0
+            margin-top: 5px
+    .star
+        img
+            width: 13px
+
+
+.hotel_follow-btn
+    .follow-btn
+        padding: 15px 25px
+        background: $cl-red
+        border: 0
+        border-radius: 5px
+        @extend %flex-align-center
+        cursor: pointer
+        transition: all .4s
+        position: relative
+        overflow: hidden
+        @media screen and (max-width: 39.9375em)
+            border-radius: 50%
+            padding: 0
+            width: 60px
+            height: 60px
+            display: flex
+            align-items: center
+            justify-content: center
+            box-shadow: 0 0 8px rgba(0,0,0,.05)
+        img
+            width: 20px
+            margin-right: 10px
+            @media screen and (max-width: 39.9375em)
+                margin-right: 0
+                width: 25px
+        span
+            color: #ffffff
+            font-size: 16px
+            font-weight: 500
+            @media screen and (max-width: 39.9375em)
+                display: none
+
+    .follow-btn:before
+        content: ''
+        position: absolute
+        bottom: 0
+        left: 0
+        width: 100%
+        height: 100%
+        transition: all 0.3s
+        opacity: 1
+        transform: translate(0,105%)
+        background-color: rgba(0,0,0,0.25)
+
+    .follow-btn:hover:before
+        opacity: 0
+        transform: translate(0,0)  
+
+
+.address-info
+    padding: 10px 0
+    
+    @media screen and (max-width: 850px)
+        padding: 5px 0
+    @media screen and (max-width: 39.9375em)
+        border-top: 1px solid #eeeeee
+        padding: 10px 0
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+    .address_big
+        @extend %flex-align-center
+        @media screen and (max-width: 39.9375em)
+            width: calc(100% - 50px)
+
+    .add-icon
+        @extend %flex-align-center
+        img
+            width: 20px
+
+    .address
+        font-size: 14px
+        font-weight: 300
+        color: #4f4f4f
+        padding: 0 10px 0 5px
+        @media screen and (max-width: 39.9375em)
+            width: calc(100% - 20px)
+            overflow:  hidden
+            white-space:  nowrap
+            text-overflow:  ellipsis
+            font-size: 12px
+
+
+    .add-map
+        font-size: 14px
+        color: $cl-biue
+        text-decoration: underline
+        @media screen and (max-width: 39.9375em)
+            display: none
+
+    .icon-right
+        display: none
+        @media screen and (max-width: 39.9375em)
+            display: flex
+            align-items: center
+        
+        span
+            font-size: 12px
+            margin-right: 2px
+            color: $cl-biue
+
+        img
+            width: 10px
+

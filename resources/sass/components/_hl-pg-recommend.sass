@@ -1,0 +1,84 @@
+.hl_recommend-wrapper
+    margin-bottom: 80px
+    @media screen and (max-width: 39.9375em)
+        background: #ffffff
+        padding: 20px
+        margin-bottom: 10px
+
+.recommend_tit
+    .title
+        @extend %tit-fz18
+        margin-bottom: 20px
+
+
+.recommend_scroll
+    overflow: hidden
+    overflow-x: scroll
+    -webkit-overflow-scrolling: touch
+
+
+    .recommed-list
+        width: 1060px
+        padding: 10px 0
+        @extend %flex-align-center
+
+    .recommed-item
+        margin-right: 15px
+        border: 1px solid #eeeeee
+        border-radius: 5px
+        width: 250px
+        overflow: hidden
+        cursor: pointer
+        transition: all .3s
+        position: relative
+        &:hover
+            box-shadow: 0 0px 10px rgba(0,0,0,.08)
+
+        .image
+            height: 150px
+            background-position: center
+            background-size: cover
+
+        .item-info
+            padding: 20px 15px
+
+        .info-tit
+            font-size: 14px
+            width: 100%
+            overflow:  hidden
+            white-space:  nowrap
+            text-overflow:  ellipsis
+
+        .star
+            img
+                width: 13px
+
+        .info-price
+            @extend %flex-judtify-end
+            font-size: 12px
+            font-weight: 300
+            color: #828282
+            margin-top: 10px
+            @media screen and (max-width: 39.9375em)
+                font-size: 10px
+            .currency,.price 
+                font-size: 16px
+                font-weight: 500
+                color: $cl-red
+                @media screen and (max-width: 39.9375em)
+                    font-size: 14px
+            .currency
+                margin-left: 5px
+
+        .item-review
+            position: absolute
+            left: 15px
+            bottom: 105px
+            background: $cl-green
+            color: #ffffff
+            padding: 8px
+            border-radius: 5px
+            font-size: 14px
+
+.recommend_scroll::-webkit-scrollbar 
+    display: none

@@ -15,7 +15,8 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/register.js', 'public/js')
     .js('resources/js/sw.js', 'public');
 
-mix.sass('resources/sass/app.scss', 'public/css');
+mix.sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/hotel.sass', 'public/css');
 
 mix.version();
 

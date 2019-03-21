@@ -1,0 +1,65 @@
+
+.min-top-fixed
+    position: fixed
+    top: 0
+    left: 0
+    background: #ffffff
+    z-index: 100
+    width: 100%
+    transition: all .25s ease-in
+    transform: translateY(-100%)
+
+    .top_header
+        height: 50px
+        padding: 0 20px 
+        @extend %flex-align-center
+        border-bottom: 1px solid #eeeeee
+
+        .icons
+            @extend %flex-center
+            img
+                width: 15px
+
+        .hotel-name
+            padding-left: 15px
+            font-size: 16px
+            overflow:  hidden
+            white-space:  nowrap
+            text-overflow:  ellipsis
+
+
+    .top_tags
+        box-shadow: 0 2px 5px rgba(0,0,0,.05)
+        padding: 0 15px 0 10px
+
+        .tags_wrapper
+            @extend %flex-align-center
+            white-space: nowrap
+            overflow-x: scroll
+            -webkit-overflow-scrolling: touch
+            .tabs-item
+                height: 40px
+                @extend %flex-center
+                margin: 0 20px
+                cursor: pointer
+                span 
+                    font-size: 12px
+                    font-weight: 400
+                    color: #999999
+                    transition: all .2s ease-in
+                    &:hover
+                        color: $cl-green
+                    
+
+            .current
+                border-bottom: 3px solid $cl-green
+                span
+                    font-weight: 500
+                    color: $cl-green
+
+        .tags_wrapper::-webkit-scrollbar 
+            display: none
+
+
+.is-open
+    transform: translateY(0%)

@@ -1,0 +1,54 @@
+.topbar-outer
+    @extend %flex-justify-between
+    height: 60px
+    background: #ffffff
+    padding: 0 20px
+
+
+.topbar_nav
+    @extend %flex-align-center
+    @media screen and (max-width: 39.9375em)
+        display: none
+
+    .nav-link
+        margin-left: 30px
+        font-size: 14px
+        font-weight: 400
+
+    .signin-btn
+        border: 1px solid $cl-green
+        border-radius: 4px
+        padding: 6px 20px
+        color: $cl-green
+        &:hover
+            border: 1px solid $cl-green-dark
+            color: $cl-green-dark
+
+    .sign-in
+        @extend %flex-align-center
+        img
+            width: 30px
+            height: 30px
+            border-radius: 50%
+        .signin-name
+            font-size: 12px
+            margin: 0 10px
+            max-width: 80px
+            overflow:  hidden
+            white-space:  nowrap
+            text-overflow:  ellipsis
+
+
+.topbar_min-nav
+    display: none
+    @media screen and (max-width: 39.9375em)
+        display: flex
+
+    .search-btn
+        padding: 0 30px
+        img
+            width: 20px
+
+    .nav-hamburger
+        img
+            width: 20px

@@ -15,4 +15,11 @@ class HotelRepository extends AbstractRepository
         $this->entity = $entity;
         $this->setPrefix('Hotel:');
     }
+
+    public function getByUrlId(string $urlId, array $columns = ['*'])
+    {
+        return $this->entity
+            ->where('url_id', $urlId)
+            ->first($columns);
+    }
 }

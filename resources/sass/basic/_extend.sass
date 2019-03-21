@@ -1,0 +1,93 @@
+//-------- outer width ------//
+%outer-width1200
+    max-width: 1200px
+    margin: 0 auto
+    @media screen and (max-width: 1200px)
+        margin-left: 20px
+        margin-right: 20px
+
+%outer-width1200-min
+    max-width: 1200px
+    margin: 0 auto
+    @media screen and (max-width: 1200px)
+        margin-left: 20px
+        margin-right: 20px
+    @media screen and (max-width: 39.9375em)
+        margin-left: 0
+        margin-right: 0
+
+
+//-------- flex --------//
+%flex-center
+    display: flex
+    align-items: center
+    justify-content: center
+
+%flex-align-center
+    display: flex
+    align-items: center
+
+%flex-justify-between
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+%flex-wrap
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-wrap: wrap
+
+%flex-direction-column
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+
+%flex-wrap-align-center
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+
+
+%flex-justify-between-wrap
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+
+%flex-alignn-end
+    display: flex
+    align-items: flex-end
+
+%flex-align-between-wrap
+    display: flex
+    align-items: center
+    justify-content: space-between
+    flex-wrap: wrap
+
+%flex-align-column
+    display: flex
+    flex-direction: column
+    align-items: center
+
+%flex-align-start-column
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+
+%flex-align-start
+    display: flex
+    align-items: flex-start
+
+%flex-judtify-end
+    display: flex
+    align-items: center
+    justify-content: flex-end
+
+
+//----- title-----//
+%tit-fz18
+    font-size: 20px
+    font-weight: 500
+    @media screen and (max-width: 39.9375em)
+        font-size: 16px

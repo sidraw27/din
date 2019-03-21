@@ -1,0 +1,47 @@
+.bottom-nav-outer
+    display: none
+    position: fixed
+    bottom: 0
+    right: 0
+    left: 0
+    height: 70px
+    box-shadow: 0 -2px 8px rgba(0,0,0,.06)
+    padding: 10px
+    background: #ffffff
+    @media screen and (max-width: 39.9375em)
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+.bottom-nav_left
+    .top
+        @extend %flex-align-center
+
+    .title
+        font-size: 14px
+        margin-right: 5px
+
+    .text
+        font-size: 10px
+        font-weight: 300
+
+
+    .bottom
+        font-size: 12px
+
+
+.bottom-nav_middle
+    @extend %flex-align-center
+    color: $cl-red
+    .price_currency
+        font-size: 12px
+
+    .price_num 
+        font-size: 20px
+        font-weight: 500
+        @media screen and (max-width: 350px)
+            font-size: 16px
+
+.bottom-nav_right
+    .btn_gray
+        font-size: 12px

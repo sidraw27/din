@@ -15,4 +15,15 @@ class CityRepository extends AbstractRepository
         $this->entity = $entity;
         $this->setPrefix('City:');
     }
+
+    public function getWithCountry(int $id, array $columns = ['*'], $relationColumns = ['*'])
+    {
+        return $this->entity
+            ->with([
+                'country' => function ($query) use ($relationColumns) {
+                    $query->select($relationColumns);
+                }
+            ])
+            ->find($id, $columns);
+    }
 }

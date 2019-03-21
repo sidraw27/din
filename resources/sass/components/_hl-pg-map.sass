@@ -1,0 +1,70 @@
+.hl_map-wrapper
+    margin-bottom: 80px
+    @media screen and (max-width: 39.9375em)
+        background: #ffffff
+        padding: 20px
+        margin-bottom: 10px
+
+
+.map_tit
+    .title
+        @extend %tit-fz18
+        margin-bottom: 20px
+
+.map_box
+    @extend %flex-wrap-align-center
+    .map-localtion
+        width: calc(100% - 280px)
+        height: 350px
+        @media screen and (max-width: 800px)
+            width: 100%
+            height: 200px
+        iframe
+            width: 100%
+            height: 100%
+
+    .map-distance
+        width: 280px
+        border: 1px solid #eeeeee
+        
+        @media screen and (max-width: 800px)
+            width: 100%
+
+    .distance_scroll
+        padding: 0 20px
+        height: 350px
+        overflow: hidden
+        overflow-y: auto
+        -webkit-overflow-scrolling: touch
+        @media screen and (max-width: 800px)
+            height: 250px
+            padding: 0 15px
+        @media screen and (max-width: 39.9375em)
+            height: 200px
+        .item-con
+            padding: 15px 0
+            border-bottom: 1px solid #eeeeee
+            @media screen and (max-width: 39.9375em)
+                padding: 10px 0
+        .item-con:last-child
+            border-bottom: 0
+
+        .item
+            @extend %flex-justify-between
+
+        .name 
+            font-weight: 400
+            font-size: 14px
+            color: #4f4f4f
+            @media screen and (max-width: 39.9375em)
+                font-size: 12px
+        .distance
+            font-weight: 300
+            font-size: 13px
+            color: #4f4f4f
+            @media screen and (max-width: 39.9375em)
+                font-size: 11px
+
+    .distance_scroll::-webkit-scrollbar 
+        @media screen and (max-width: 39.9375em)
+            display: none

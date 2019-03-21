@@ -1,0 +1,352 @@
+.hl_rate-wrapper
+    margin-bottom: 80px
+    @media screen and (max-width: 39.9375em)
+        margin-bottom: 10px
+
+//- 大尺寸filter
+.hl_detail-filter
+    margin-bottom: 20px
+    @media screen and (max-width: 39.9375em)
+        display: none
+
+    .filter_box
+        background: $cl-green-bg
+        padding: 10px
+        @extend %flex-align-between-wrap
+
+        .filter-bg
+            background: #ffffff
+            padding: 10px
+            cursor: pointer
+            @extend %flex-justify-between
+
+        .filter_date
+            width: calc(40% - 5px)
+            @media screen and (max-width: 1150px)
+                width: calc(60% - 5px)
+                margin-bottom: 10px
+        .filter_room
+            width: calc(20% - 5px)
+            @media screen and (max-width: 1150px)
+                width: calc(40% - 5px)
+                margin-bottom: 10px
+        .filter_child
+            width: calc(25% - 5px)
+            @media screen and (max-width: 1150px)
+                width: calc(60% - 5px)
+
+        .filter-icon
+            @extend %flex-center
+            img
+                width: 25px
+
+        .arrow-icon
+            @extend %flex-center
+            img
+                width: 18px
+            
+        .picker-label
+            padding: 0 10px
+            font-size: 14px
+            font-weight: 300
+            color: #4f4f4f
+
+        span 
+            font-size: 14px
+            font-weight: 300
+            color: #4f4f4f
+
+        .filter_button
+            background: $cl-green
+            height: 45px
+            width: calc(15% - 5px)
+            border-radius: 5px
+            border: 0
+            color: #ffffff
+            font-size: 14px
+            font-weight: 500
+            &:hover
+                background: $cl-green-dark
+            @media screen and (max-width: 1150px)
+                width: calc(40% - 5px)
+
+    .filter_tags
+        @extend %flex-align-center
+        margin-top: 20px
+        .tags
+            cursor: pointer
+            border: 1px solid $cl-green
+            // background: $cl-green-bg
+            color: $cl-green-dark
+            padding: 4px 18px
+            font-size: 14px
+            font-weight: 400
+            border-radius: 50px
+            margin-right: 10px
+            transition: all .2s 
+            &:hover
+                background: $cl-green
+                border: 1px solid $cl-green
+                color: #ffffff
+
+        .tags.active
+            border: 1px solid $cl-green
+            background: $cl-green
+            color: #ffffff
+            font-weight: 500
+
+
+//- 小尺寸filter
+.hl_min-detail-filter
+    display: none
+    background: #ffffff
+    @media screen and (max-width: 39.9375em)
+        display: flex
+        flex-direction: column
+        width: 100%
+        margin-bottom: 10px
+
+    //- filter
+    .min_filter-box
+        padding: 15px 0
+        width: 100%
+        @extend %flex-justify-between
+
+    .filter-date
+        @extend %flex-justify-between
+        padding: 0 20px
+        width: calc(100% - 70px - 70px)
+        .right-icon
+            @extend %flex-center
+            padding: 0 25px
+            @media screen and (max-width: 390px)
+                padding: 0 15px
+            img
+                width: 15px
+
+    .min-text
+        @extend %flex-direction-column
+        cursor: pointer
+        .picker_label
+            font-size: 10px
+            font-weight: 300
+            color: #555555
+
+        .picker_date
+            font-size: 16px
+            color: $cl-green
+
+    .filter-child,.filter-room
+        @extend %flex-direction-column
+        width: 70px
+        border-left: 1px solid #ebebeb
+
+
+    //- tags
+    .min_filter-tags
+        padding: 15px 20px 
+        border-top: 1px solid #eeeeee
+        overflow: hidden
+
+        .filter-tags_wrapper
+            white-space: nowrap
+            @extend %flex-align-center
+            overflow-x: auto
+            -webkit-overflow-scrolling: touch
+            padding-bottom: 5px
+
+        .filter-tags_wrapper::-webkit-scrollbar 
+            display: none
+
+
+        .tags
+            border-radius: 50px
+            padding: 3px 12px
+            background: #EFEFEF
+            color: #555555
+            font-size: 12px
+            margin-right: 10px
+
+        .tags.active
+            border: 1px solid $cl-green
+            color: $cl-green
+            background: #ffffff
+
+
+
+//- list
+.hl_rate-list
+    padding: 20px
+    border: 1px solid #eeeeee
+    @media screen and (max-width: 39.9375em)
+        background: #ffffff
+        border: 0
+
+    .list_tit
+        @extend %flex-align-center
+        margin-bottom: 10px
+        @media screen and (max-width: 39.9375em)
+            flex-wrap: wrap
+
+        .title
+            @extend %tit-fz18
+            @media screen and (max-width: 39.9375em)
+                order: -1
+                margin-right: 10px
+
+
+        .price-wrap
+            @extend %flex-align-center
+            color: $cl-red
+            margin: 0 15px
+            @media screen and (max-width: 39.9375em)
+                width: 100%
+                margin: 0
+                font-size: 14px
+
+        .price
+            margin: 0 5px
+            font-weight: 500
+
+        .text
+            font-weight: 300
+            font-size: 14px
+            @media screen and (max-width: 39.9375em)
+                order: -1
+                font-size: 12px
+
+    .list_room-detail
+        @extend %flex-align-center
+        font-size: 13px
+        font-weight: 300
+        margin-bottom: 20px
+        @media screen and (max-width: 39.9375em)
+            font-size: 10px
+
+
+    .list_wrapper
+        @media screen and (max-width: 39.9375em)
+            padding: 0 15px
+            border: 1px solid #eeeeee
+
+        .list-item
+            @extend %flex-align-center
+            margin: 10px 0
+            cursor: pointer
+            @media screen and (max-width: 39.9375em)
+                padding: 10px 0
+                border-bottom: 1px solid #eeeeee
+                margin: 0
+
+        .list-item:last-child
+            @media screen and (max-width: 39.9375em)
+                border-bottom: 0
+
+
+        .item-wrap
+            border: 1px solid #eeeeee
+            @extend %flex-align-center
+            width: calc(100% - 120px)
+            @media screen and (max-width: 39.9375em)
+                border: 0
+                width: calc(100% - 20px)
+            
+
+        .provider_logo
+            padding: 10px 15px
+            border-right: 1px solid #eeeeee
+            @extend %flex-center
+            @media screen and (max-width: 39.9375em)
+                display: none
+            img
+                width: 60px
+
+        .provider_info
+            padding: 10px 15px
+            width: calc(100% - 140px - 91px)
+            @media screen and (max-width: 39.9375em)
+                padding: 0
+                width: calc(100% - 110px - 15px)
+
+
+
+        .room-con
+            overflow:  hidden
+            white-space:  nowrap
+            text-overflow:  ellipsis
+            @media screen and (max-width: 39.9375em)
+                font-size: 14px
+
+        .room-attributes 
+            @extend %flex-wrap-align-center
+            max-height: 25px
+            overflow: hidden
+            .text
+                font-size: 12px
+                font-weight: 300
+                color: #4f4f4f
+                margin-right: 10px
+                @media screen and (max-width: 39.9375em)
+                    font-size: 10px
+            .green
+                color: $cl-text-green
+            .blue
+                color: $cl-text-blue
+
+        .provider_price
+            font-weight: 500
+            font-size: 18px
+            width: 140px
+            @extend %flex-center
+            @media screen and (max-width: 39.9375em)
+                font-size: 16px
+                width: 110px
+                margin-right: 15px
+                flex-direction: column
+                align-items: flex-end
+            .price
+                @media screen and (max-width: 39.9375em)
+                    color: $cl-green
+            .hotel-name
+                display: none
+                font-size: 10px
+                font-weight: 300
+                color: #828282
+                @media screen and (max-width: 39.9375em)
+                    display: block
+
+
+        .check-btn
+            background: $cl-yellow
+            color: #ffffff
+            font-size: 14px
+            font-weight: 500
+            height: 66px
+            width: 120px
+            transition: all .3s
+            @extend %flex-center
+            @media screen and (max-width: 39.9375em)
+                display: none
+
+            &:hover
+                background: $cl-yellow-dark
+
+        .icons
+            display: none
+            @media screen and (max-width: 39.9375em)
+                display: flex
+                align-items: center
+                justify-content: center
+            img
+                width: 15px
+
+    .rate-ps
+        font-size: 14px
+        font-weight: 300
+        color: #9F9F9F
+        line-height: 20px
+        @media screen and (max-width: 39.9375em)
+            font-size: 10px
+            line-height: 16px
+            margin-top: 15px
+

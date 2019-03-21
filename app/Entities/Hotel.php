@@ -10,5 +10,7 @@ class Hotel extends Model
     // You should always use soft delete to protect your data
     use SoftDeletes;
 
+    public $guarded = [];
+
     public $timestamps = true;
 }

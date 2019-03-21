@@ -1,0 +1,125 @@
+.hl_review-wrapper
+    margin-bottom: 80px
+    @media screen and (max-width: 39.9375em)
+        background: #ffffff
+        padding: 20px
+        margin-bottom: 10px
+
+.review_tit
+    @extend %flex-align-center
+    margin-bottom: 25px
+    .title
+        @extend %tit-fz18
+        margin-right: 10px
+    
+
+
+.review_score-box 
+    @extend %flex-justify-between-wrap
+    margin-bottom: 35px
+
+
+    .score-box_total
+        width: 150px
+        @extend %flex-align-start-column
+        @media screen and (max-width: 39.9375em)
+            align-items: center
+            justify-content: center
+            width: 100px
+
+        .total-score
+            @extend %flex-alignn-end
+            border: 1px solid $cl-green
+            border-radius: 4px
+            padding: 20px 15px
+            margin-bottom: 15px
+        .score-number
+            font-size: 30px
+            color: $cl-green
+            @media screen and (max-width: 39.9375em)
+                font-size: 24px
+        .score-ten
+            font-size: 14px
+            font-weight: 300
+            color: #828282
+            @media screen and (max-width: 39.9375em)
+                font-size: 12px
+        .total-text
+            font-size: 22px
+            margin-bottom: 5px
+            @media screen and (max-width: 39.9375em)
+                font-size: 18px
+        .review-basedon
+            font-size: 12px
+            font-weight: 300
+            @media screen and (max-width: 39.9375em)
+                font-size: 10px
+
+    .score-box_intro
+        width: calc(100% - 180px)
+        @extend %flex-justify-between-wrap
+        @media screen and (max-width: 39.9375em)
+            width: calc(100% - 130px)
+
+        .review-standard_item
+            width: calc(50% - 20px)
+            margin-bottom: 10px
+            @media screen and (max-width: 39.9375em)
+                width: 100%
+                margin-bottom: 6px
+
+        .review-grade_wrap
+            @extend %flex-justify-between
+            font-size: 14px
+            margin-bottom: 5px
+            @media screen and (max-width: 39.9375em)
+                font-size: 12px
+                margin-bottom: 2px
+            .category 
+                color: #828282
+            .score 
+                color: $cl-green
+
+        .review-grade_progressBar
+            width: 100%
+            height: 5px
+            background: #f1f1f1
+            position: relative
+            .percent
+                position: absolute
+                top: 0
+                left: 0
+                background: $cl-green
+                height: 5px
+
+
+.review_resource 
+
+    .resource_text
+        font-size: 14px
+        font-weight: 300
+        margin-bottom: 15px
+
+    .resource_wrap
+        @extend %flex-wrap-align-center
+
+    .recource
+        border: 1px solid #eeeeee
+        border-radius: 4px
+        padding: 10px 15px
+        @extend %flex-align-column
+        margin-right: 15px
+        margin-bottom: 10px
+        @media screen and (max-width: 39.9375em)
+            margin-right: 10px
+            padding: 5px 15px
+        img
+            width: 60px
+            @media screen and (max-width: 39.9375em)
+                width: 50px
+
+        .detail
+            font-size: 12px
+            font-weight: 300
+            @media screen and (max-width: 39.9375em)
+                font-size: 10px

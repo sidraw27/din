@@ -1,0 +1,60 @@
+.breadcrumb-outer
+    height: 40px
+    margin-bottom: 20px
+    @media screen and (max-width: 39.9375em)
+        margin-bottom: 0
+
+.breadcrumb
+    @extend %outer-width1200
+    height: 40px
+    @extend %flex-align-center
+    @media screen and (max-width: 39.9375em)
+        display: none
+    .breadcrumb-item
+        margin-right: 10px
+        @extend %flex-align-center
+        &::after
+            content: '>'
+            color: #999999
+            margin-left: 10px
+
+    .breadcrumb-item:last-child
+        &::after
+            content: ''
+
+    .breadcrumb-link
+        font-size: 12px
+        font-weight: 300
+        &:hover
+            text-decoration: underline
+
+    span
+        font-size: 12px
+        font-weight: 300
+        color: #333333
+
+
+
+//-----小尺寸下-----//
+
+.breadcrumb_search-more
+    display: none
+    border-top: 1px solid #eeeeee
+    border-bottom: 1px solid #f7f7f7
+    padding: 0 18px
+    height: 40px
+    background: #ffffff
+    @media screen and (max-width: 39.9375em)
+        display: flex
+        align-items: center
+
+
+    .icons
+        @extend %flex-align-center
+        img
+            width: 15px
+
+    .search-more
+        font-size: 12px
+        font-weight: 300
+        padding: 0 10px

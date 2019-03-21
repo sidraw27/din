@@ -11,4 +11,9 @@ class City extends Model
     use SoftDeletes;
 
     public $timestamps = false;
+
+    public function country()
+    {
+        return $this->hasOne(Country::class,'id', 'country_id');
+    }
 }

@@ -1,0 +1,182 @@
+.hl_information-wrapper
+    margin-bottom: 80px
+    @media screen and (max-width: 39.9375em)
+        margin-bottom: 10px
+
+    .title
+        @extend %tit-fz18
+        padding: 0 20px 15px
+        @media screen and (max-width: 39.9375em)
+            padding: 0
+            margin-bottom: 20px
+
+    .wrap-con
+        background: #ffffff
+        padding: 20px
+        transition: all .25s
+        @media screen and (max-width: 39.9375em)
+            padding: 0
+
+    .btn-wrap
+        @extend %flex-center
+
+    .more-btn
+        display: none
+        border: 1px solid $cl-green
+        border-radius: 50px
+        color: $cl-green
+        font-size: 10px
+        padding: 5px 15px
+        margin-top: 20px
+        background: #ffffff
+        @media screen and (max-width: 39.9375em)
+            display: block
+            
+    
+
+
+.info-box
+    padding: 20px 15px
+    background: $cl-navbar
+    margin-bottom: 20px
+    @media screen and (max-width: 39.9375em)
+        margin-bottom: 10px
+        background: #ffffff
+        padding: 20px
+        display: flex
+        flex-direction: column
+
+
+//- 飯店介紹
+.info_description
+
+    .hotel-desc
+        font-size: 14px
+        font-weight: 300
+        @media screen and (max-width: 39.9375em)
+            font-size: 12px
+            overflow: hidden
+            max-height: 45px
+
+        
+//- 服務設施
+.info_facility
+
+    .facility-list
+        padding-bottom: 25px
+        border-bottom: 1px solid #eeeeee
+        margin-bottom: 25px
+        .list-text
+            font-size: 15px
+            margin-bottom: 15px
+            @media screen and (max-width: 39.9375em)
+                font-size: 13px
+
+        .list-con
+            @extend %flex-wrap-align-center
+
+        .facility-item
+            @extend %flex-align-center
+            padding: 5px 0
+            margin-right: 20px
+            img
+                width: 30px
+                @media screen and (max-width: 39.9375em)
+                    width: 25px
+            .name
+                font-size: 14px
+                font-weight: 300
+                color: #4f4f4f
+                margin-left: 5px
+                @media screen and (max-width: 39.9375em)
+                    font-size: 12px
+
+    .facility-list:last-child
+        padding-bottom: 0px
+        border-bottom: 0
+        margin-bottom: 0
+
+
+
+
+//- 飯店政策
+.info_policy
+
+    .policy_wrap
+        @extend %flex-align-start
+        margin-bottom: 20px
+        @media screen and (max-width: 39.9375em)
+            margin-bottom: 40px
+        .policy-type
+            width: 80px
+            @media screen and (max-width: 39.9375em)
+                display: none
+            img
+                width: 45px
+
+        .policy-item
+            padding-left: 30px
+            border-left: 1px solid #eeeeee
+            @media screen and (max-width: 39.9375em)
+                padding-left: 0
+                border-left: 0
+                width: 100%
+
+        .item-tit 
+            font-size: 18px
+            margin-bottom: 20px
+            @media screen and (max-width: 39.9375em)
+                font-size: 13px
+                margin-bottom: 15px
+
+        //- 入住時間＆退房時間
+        .item-check
+            @extend %flex-align-center
+            li
+                @extend %flex-align-center
+                margin-right: 50px
+                @media screen and (max-width: 39.9375em)
+                    border: 1px solid #eeeeee
+                    padding: 10px
+                    margin-right: 0
+                    width: 50%
+            .check-tit 
+                font-size: 12px
+                font-weight: 300
+                color: #828282
+                margin-right: 10px
+                @media screen and (max-width: 39.9375em)
+                    font-size: 10px
+            .check-time 
+                font-size: 18px
+                font-weight: 500
+                @media screen and (max-width: 39.9375em)
+                    font-size: 16px
+
+        //- 住宿概況
+        .useful-info
+            @media screen and (max-width: 39.9375em)
+                max-height: 55px
+                overflow: hidden
+
+            li
+                @extend %flex-align-center
+                padding: 5px 0
+                @media screen and (max-width: 39.9375em)
+                    padding: 3px 0
+            .info-tit
+                font-size: 14px
+                font-weight: 400
+                margin-right: 5px
+                @media screen and (max-width: 39.9375em)
+                    font-size: 12px
+            .info-text 
+                font-size: 14px
+                font-weight: 300
+                color: #4f4f4f
+                @media screen and (max-width: 39.9375em)
+                    font-size: 12px
+
+    .policy_wrap:last-child
+        @media screen and (max-width: 39.9375em)
+            margin-bottom: 0

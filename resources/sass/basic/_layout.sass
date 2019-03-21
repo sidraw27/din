@@ -1,0 +1,23 @@
+
+// 固定尺1200px
+
+.gl_outer1200
+    @extend %outer-width1200-min
+
+
+// 分左右兩欄
+.gl_flex-row
+    @extend %flex-justify-between-wrap
+    margin-bottom: 70px
+
+
+// 飯店頁版面
+.hl_main-content
+    width: calc(100% - 300px - 20px)
+    @media screen and (max-width: 1000px)
+        width: 100%
+
+.hl_sidebar
+    width: 300px
+    @media screen and (max-width: 1000px)
+        width: 100%
