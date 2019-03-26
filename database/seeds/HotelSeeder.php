@@ -16,13 +16,11 @@ class HotelSeeder extends \Illuminate\Database\Seeder
             'name'            => $faker->company . " hotel",
             'translated_name' => $faker->streetName . "大飯店",
             'address'         => $twFaker->address,
-            'geo'             => json_encode([
-                'longitude' => $faker->randomFloat(null, 120, 125),
-                'latitude'  => $faker->randomFloat(null, 21, 25)
-            ]),
+            'latitude'  => $faker->randomFloat(null, 21, 25),
+            'longitude' => $faker->randomFloat(null, 120, 125),
             'checkin'         => Arr::random(['14:00', '12:00']),
             'checkout'        => Arr::random(['11:00', '10:00']),
-            'introduction'    => $twFaker->realText(rand(100, 200)),
+            'introduction'    => $faker->realText(200),
         ];
     }
 

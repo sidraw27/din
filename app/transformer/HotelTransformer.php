@@ -4,11 +4,18 @@ namespace App\Transformer;
 
 class HotelTransformer
 {
-    public static function transToHotelView(array $hotel)
+    public static function transToHotelView(array $hotel): array
     {
-        return array_merge($hotel, [
-            'countryName' => $hotel['location']['country']['name']['tw'] ?? '未取得',
-            'cityName' => $hotel['location']['city']['name']['tw'] ?? '未取得',
-        ]);
+        return [
+            'urlId' => $hotel['url_id'],
+            'name'  => [
+                'origin'     => $hotel['name'],
+                'translated' => $hotel['translated_name']
+            ],
+            'address'      => $hotel['location']['address'],
+            'countryName'  => $hotel['location']['belong']['country']['name']['tw'] ?? '未取得',
+            'cityName'     => $hotel['location']['belong']['city']['name']['tw'] ?? '未取得',
+            'introduction' => $hotel['introduction']
+        ];
     }
 }

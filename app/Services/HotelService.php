@@ -33,20 +33,27 @@ class HotelService
             throw new HotelException(HotelException::NOT_FOUND);
         }
 
-        $location = $this->location->getLocation($hotel->city_id);
-        $location['address'] = '';
-        $location['geo'] = json_decode($hotel->geo, true);
-
-        $result = [
-            'urlId' => $hotel->url_id,
-            'name' => [
-                'origin'     => $hotel->name,
-                'translated' => $hotel->translated_name
-            ],
-            'location' => $location,
-            'introduction' => $hotel->introduction,
+        $checkIsNull = [
+            'name',
+            'url_id',
+            'country_id',
+            'city_id'
         ];
 
-        return $result;
+        foreach ($checkIsNull as $item) {
+            if (is_null($hotel->getAttribute($item))) {
+                throw new HotelException(HotelException::ITEM_NULL);
+            }
+        }
+
+        $location = [
+            'address' => $hotel->address,
+            'geo'     => $hotel->geo,
+            'belong'  => $this->location->getCityInfo($hotel->getAttribute('city_id'))
+        ];
+
+        $hotel->setAttribute('location', $location);
+
+        return $hotel->toArray();
     }
 }

@@ -13,4 +13,12 @@ class Hotel extends Model
     public $guarded = [];
 
     public $timestamps = true;
+
+    public function getGeoAttribute()
+    {
+        return [
+            'lat' => (float) $this->getAttribute('latitude'),
+            'lng' => (float) $this->getAttribute('longitude'),
+        ];
+    }
 }

@@ -21,8 +21,10 @@ class CreateHotelsTable extends Migration
 
             $table->string('name');
             $table->string('translated_name');
+
             $table->string('address');
-            $table->json('geo');
+            $table->decimal('latitude', 10, 8);
+            $table->decimal('longitude', 11, 8);
 
             $table->string('checkin')->nullable();
             $table->string('checkout')->nullable();

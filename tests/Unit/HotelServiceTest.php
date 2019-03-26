@@ -49,36 +49,12 @@ class HotelServiceTest extends TestCase
             ->andReturn(null);
 
         try {
-            $this->target->getHotel($this->faker->regexify('[A-Z0-9]{6}'));
+            $this->target->getHotel($this->faker->regexify('[A-Z0-9]{5}'));
         } catch (HotelException $e) {
             $this->assertSame(HotelException::NOT_FOUND, $e->getMessage());
         }
 
-        // Test Correct Result
-//        $expected = [
-//            'urlId'        => '',
-//            'name'         => [
-//                'origin'     => '',
-//                'translated' => ''
-//            ],
-//            'introduction' => '',
-//            'location'     => [
-//                'country' => [
-//                    'id'   => 0,
-//                    'name' => ''
-//                ],
-//                'city'    => [
-//                    'id'   => 0,
-//                    'name' => ''
-//                ],
-//                'address' => '',
-//                'geo'     => [
-//                    'longitude' => 0.0,
-//                    'latitude'  => 0.0
-//                ]
-//            ]
-//        ];
-
+        // Test Normal
         $seeder = \HotelSeeder::getSeeder([
             'id'         => 1,
             'country_id' => 1
@@ -88,7 +64,7 @@ class HotelServiceTest extends TestCase
             ->once()
             ->andReturn(new Hotel($seeder));
 
-        $this->locationMock->shouldReceive('getLocation')
+        $this->locationMock->shouldReceive('getCityInfo')
             ->once()
             ->andReturn([
                 'country' => [
@@ -109,24 +85,16 @@ class HotelServiceTest extends TestCase
                 ]
             ]);
 
+        /** @var Hotel $actual */
         $actual = $this->target->getHotel($this->faker->regexify('[A-Z0-9]{6}'));
-
         $this->assertIsArray($actual);
-//        $this->assertEmpty(array_diff($this->getArrayKeys($expected), $this->getArrayKeys($actual)));
-    }
 
-//    private function getArrayKeys(array $array)
-//    {
-//        $keys = [];
-//
-//        foreach ($array as $key => $value) {
-//            $keys[] = $key;
-//
-//            if (is_array($value)) {
-//                $keys = array_merge($keys, $this->getArrayKeys($value));
-//            }
-//        }
-//
-//        return $keys;
-//    }
+        $location = $actual['location'];
+        $this->assertIsString($location['address']);
+        $this->assertIsArray($location['geo']);
+        $this->assertIsArray($location['belong']);
+        $this->assertArrayHasKey('lat', $location['geo']);
+        $this->assertArrayHasKey('lng', $location['geo']);
+
+    }
 }

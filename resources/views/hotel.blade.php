@@ -10,16 +10,16 @@
             </li>
             <li class="breadcrumb-item">
                 <a class="breadcrumb-link" href="#">
-                    {{ $hotel['countryName'] }}
+                    {{ $hotelView['countryName'] }}
                 </a>
             </li>
             <li class="breadcrumb-item">
                 <a class="breadcrumb-link" href="#">
-                    {{ $hotel['cityName'] }}
+                    {{ $hotelView['cityName'] }}
                 </a>
             </li>
             <li class="breadcrumb-item">
-                <span>{{ $hotel['name']['origin'] }} ({{ $hotel['name']['translated'] }})</span>
+                <span>{{ $hotelView['name']['origin'] }} ({{ $hotelView['name']['translated'] }})</span>
             </li>
         </ul>
 
@@ -29,7 +29,7 @@
             </div>
             <div class="search-more">
                 查看更多
-                <span>{{ $hotel['countryName'] }}</span>
+                <span>{{ $hotelView['countryName'] }}</span>
                 的飯店
             </div>
         </div>
@@ -40,7 +40,7 @@
             <div class="hotel_title">
                 <div class="hotel_tit-info">
                     <h1 class="title">
-                        {{ $hotel['name']['origin'] }} ({{ $hotel['name']['translated'] }})
+                        {{ $hotelView['name']['origin'] }} ({{ $hotelView['name']['translated'] }})
                     </h1>
 
                     <div class="rating-wrap">
@@ -72,8 +72,8 @@
                         <img src="{{ asset('images/add.svg') }}" alt="">
                     </div>
                     <div class="address">
-                        {{ $hotel['countryName'] }} {{ $hotel['cityName'] }}
-                        {{ $hotel['location']['address'] }}
+                        {{ $hotelView['countryName'] }} {{ $hotelView['cityName'] }}
+                        {{ $hotelView['address'] ?? '地址未取得' }}
                     </div>
                     <a class="add-map" href="#">
                         查看地圖
@@ -123,7 +123,10 @@
                     <div class="reviewMore">(共有<span>52</span>則評論)</div>
                     <img src="{{ asset('images/arrow-right.svg') }}" alt=""></a>
             </div>
-            <div class="intro_gallery inrto_min">ex飯店照片</div>
+            <div class="intro_gallery inrto_min">
+                <img style="height: 100%;width: 100%"
+                     src="http://pix2.agoda.net/hotelimages/agoda-homes/6584501/fa5afcc98691249611041402b4c32665.jpg?s=700x">
+            </div>
         </div>
     </div>
     <div class="gl_outer1200 gl_flex-row">
@@ -473,10 +476,7 @@
                     <h3 class="title">飯店介紹</h3>
                     <div class="description_wrap wrap-con">
                         <p class="hotel-desc">
-                            位於高雄市的絕佳餐飲, 觀光地段，世奇商旅提供最好的環境，讓您遠離塵囂。 在這裡，旅客可輕鬆前往市區內各大旅遊、購物、餐飲地點。
-                            住宿位置優越讓旅客前往市區內的熱門景點變得方便快捷。世奇商旅的一流設施和優質服務能確保客人住宿愉快。 客人可享受住宿的一些服務：所有房型皆附免費WiFi, 便利商店,
-                            每日客房清潔服務,
-                            24小時前台服務, 快速入住/退房服務。
+                            {{ $hotelView['introduction'] }}
                         </p>
                     </div>
                     <div class="btn-wrap">

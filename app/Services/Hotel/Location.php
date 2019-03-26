@@ -17,7 +17,7 @@ class Location
         $this->cityRepo    = $cityRepo;
     }
 
-    public function getLocation(string $cityId)
+    public function getCityInfo(string $cityId)
     {
         $columns = ['id', 'origin_name', 'en_name', 'tw_name'];
 

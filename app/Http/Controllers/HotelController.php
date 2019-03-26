@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\HotelException;
 use App\Services\HotelService;
 use App\Transformer\HotelTransformer;
+use App\Exceptions\HotelException;
 
 class HotelController extends Controller
 {
@@ -18,12 +18,12 @@ class HotelController extends Controller
     public function index(string $urlId)
     {
         try {
-            $hotel = $this->hotelService->getHotel($urlId);
-            $hotel = HotelTransformer::transToHotelView($hotel);
+            $hotel     = $this->hotelService->getHotel($urlId);
+            $hotelView = HotelTransformer::transToHotelView($hotel);
         } catch (HotelException $e) {
             abort(404);
         }
 
-        return view('hotel', compact('hotel'));
+        return view('hotel', compact('hotelView'));
     }
 }
