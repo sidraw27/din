@@ -51,12 +51,18 @@ class HotelService
             'geo'     => $hotel->geo,
             'belong'  => $this->location->getCityInfo($hotel->getAttribute('city_id'))
         ];
-
         $hotel->setAttribute('location', $location);
 
         $supportFacility = $this->facility->getHotelSupportFacilities($hotel->id);
-
         $hotel->setAttribute('facility', $supportFacility);
+
+        $info = [
+            'roomTotal'     => $hotel->total_room,
+            'floorTotal'    => $hotel->total_floor,
+            'openYear'      => $hotel->year_of_open,
+            'renovatedYear' => $hotel->year_of_renovated,
+        ];
+        $hotel->setAttribute('info', $info);
 
         return $hotel->toArray();
     }

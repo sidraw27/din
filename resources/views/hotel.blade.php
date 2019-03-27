@@ -525,39 +525,31 @@
                     <div class="policy_wrap wrap-con">
                         <div class="policy-type"><img src="/images/facility/room-icons-19.svg" alt=""></div>
                         <div class="policy-item">
-                            <div class="item-tit">住宿概況</div>
+                            <div class="item-tit">資訊概況</div>
                             <ul class="useful-info">
                                 <li>
-                                    <div class="info-tit">禁菸房/禁菸樓層:</div>
-                                    <div class="info-text">Yes</div>
-                                </li>
-                                <li>
-                                    <div class="info-tit">酒吧/Lounge間數:</div>
-                                    <div class="info-text">0</div>
-                                </li>
-                                <li>
-                                    <div class="info-tit">樓層總數:</div>
-                                    <div class="info-text">8</div>
-                                </li>
-                                <li>
-                                    <div class="info-tit">餐廳總數:</div>
-                                    <div class="info-text">1</div>
+                                    <div class="info-tit">樓層高度:</div>
+                                    <div class="info-text">
+                                        {{ $hotelView['info']['floorTotal'] ?? '未知' }}
+                                    </div>
                                 </li>
                                 <li>
                                     <div class="info-tit">客房總數:</div>
-                                    <div class="info-text">210</div>
+                                    <div class="info-text">
+                                        {{ $hotelView['info']['roomTotal'] ?? '未知' }}
+                                    </div>
                                 </li>
                                 <li>
-                                    <div class="info-tit">客房室內電壓:</div>
-                                    <div class="info-text">110</div>
+                                    <div class="info-tit">開幕年份:</div>
+                                    <div class="info-text">
+                                        {{ $hotelView['info']['openYear'] ?? '未知' }}
+                                    </div>
                                 </li>
                                 <li>
-                                    <div class="info-tit">建築完工年份:</div>
-                                    <div class="info-text">2015</div>
-                                </li>
-                                <li>
-                                    <div class="info-tit">最近裝修年份:</div>
-                                    <div class="info-text">2015</div>
+                                    <div class="info-tit">近期裝修年份:</div>
+                                    <div class="info-text">
+                                        {{ $hotelView['info']['renovatedYear'] ?? '未知' }}
+                                    </div>
                                 </li>
                             </ul>
                             <div class="btn-wrap">
