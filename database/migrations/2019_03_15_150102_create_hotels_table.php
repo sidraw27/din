@@ -14,7 +14,7 @@ class CreateHotelsTable extends Migration
     {
         \Schema::create('hotels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('url_id');
+            $table->string('url_id')->unique();
 
             $table->unsignedSmallInteger('country_id');
             $table->unsignedSmallInteger('city_id')->nullable();
@@ -39,8 +39,6 @@ class CreateHotelsTable extends Migration
 
             $table->timestamps();
             $table->softDeletes();
-            // index
-            $table->unique('url_id');
         });
     }
 

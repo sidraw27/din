@@ -16,7 +16,7 @@ class CreateCitiesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('country_id');
 
-            $table->string('origin_name');
+            $table->string('origin_name')->unique();
             $table->string('en_name')->nullable();
             $table->string('tw_name')->nullable();
             $table->string('code');
