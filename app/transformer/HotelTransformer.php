@@ -7,6 +7,7 @@ class HotelTransformer
     public static function transToHotelView(array $hotel): array
     {
         return [
+            'id'    => $hotel['id'],
             'urlId' => $hotel['url_id'],
             'name'  => [
                 'origin'     => $hotel['name'],
@@ -15,7 +16,8 @@ class HotelTransformer
             'address'      => $hotel['location']['address'],
             'countryName'  => $hotel['location']['belong']['country']['name']['tw'] ?? '未取得',
             'cityName'     => $hotel['location']['belong']['city']['name']['tw'] ?? '未取得',
-            'introduction' => $hotel['introduction']
+            'introduction' => $hotel['introduction'],
+            'supportFacilities' => $hotel['facility']
         ];
     }
 }

@@ -17,6 +17,10 @@ class CreateHotelSupportFacilitiesTable extends Migration
             $table->unsignedBigInteger('facility_id');
             $table->boolean('is_active');
             // index
+            $table->index([
+                'hotel_id',
+                'is_active'
+            ]);
             $table->foreign('hotel_id')->references('id')->on('hotels');
             $table->foreign('facility_id')->references('id')->on('hotel_facilities');
         });

@@ -485,70 +485,23 @@
                 <div class="info_facility info-box">
                     <h3 class="title">服務設施</h3>
                     <div class="facility_wrap wrap-con">
-                        <div class="facility-list">
-                            <div class="list-text">服務設施</div>
-                            <ul class="list-con">
-                                <li class="facility-item"><img src="/images/facility/room-icons-08.svg" alt="">
-                                    <div class="name">免費WI-FI</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-14.svg" alt="">
-                                    <div class="name">24小時櫃檯服務</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-16.svg" alt="">
-                                    <div class="name">停車場</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-17.svg" alt="">
-                                    <div class="name">可帶寵物</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-15.svg" alt="">
-                                    <div class="name">餐廳</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-13.svg" alt="">
-                                    <div class="name">游泳池</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-12.svg" alt="">
-                                    <div class="name">健身房</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-11.svg" alt="">
-                                    <div class="name">酒吧</div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="facility-list">
-                            <div class="list-text">所有客房均提供</div>
-                            <ul class="list-con">
-                                <li class="facility-item"><img src="/images/facility/room-icons-01.svg" alt="">
-                                    <div class="name">吹風機</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-02.svg" alt="">
-                                    <div class="name">浴巾</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-03.svg" alt="">
-                                    <div class="name">浴缸</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-04.svg" alt="">
-                                    <div class="name">免費瓶裝水</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-05.svg" alt="">
-                                    <div class="name">盥洗用品</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-06.svg" alt="">
-                                    <div class="name">冰箱</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-07.svg" alt="">
-                                    <div class="name">電視</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-08.svg" alt="">
-                                    <div class="name">免費WI-FI</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-09.svg" alt="">
-                                    <div class="name">冷氣</div>
-                                </li>
-                                <li class="facility-item"><img src="/images/facility/room-icons-10.svg" alt="">
-                                    <div class="name">淋浴設備</div>
-                                </li>
-                            </ul>
-                        </div>
+                        @foreach($hotelView['supportFacilities'] as $group => $facilities)
+                            <div class="facility-list">
+                                <div class="list-text">
+                                    {{ $group }}
+                                </div>
+                                <ul class="list-con">
+                                    @foreach($facilities as $facility)
+                                        <li class="facility-item">
+                                            <img src="/images/facility/room-icons-08.svg" alt="">
+                                            <div class="name">
+                                                {{ $facility['name'] }}
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="info_policy info-box">

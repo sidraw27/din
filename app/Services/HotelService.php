@@ -54,6 +54,10 @@ class HotelService
 
         $hotel->setAttribute('location', $location);
 
+        $supportFacility = $this->facility->getHotelSupportFacilities($hotel->id);
+
+        $hotel->setAttribute('facility', $supportFacility);
+
         return $hotel->toArray();
     }
 }

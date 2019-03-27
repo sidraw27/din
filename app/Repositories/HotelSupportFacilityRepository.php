@@ -15,4 +15,17 @@ class HotelSupportFacilityRepository extends AbstractRepository
         $this->entity = $entity;
         $this->setPrefix('City:');
     }
+
+    public function getByHotelId(int $hotelId)
+    {
+        return $this->entity
+            ->where('hotel_id', $hotelId)
+            ->where('is_active', true)
+            ->with([
+                'facility' => function ($query) {
+                    $query->select();
+                }
+            ])
+            ->get(['facility_id']);
+    }
 }

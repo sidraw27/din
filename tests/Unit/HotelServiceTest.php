@@ -60,9 +60,12 @@ class HotelServiceTest extends TestCase
             'country_id' => 1
         ]);
 
+        $entity = new Hotel($seeder);
+        $entity->setAttribute('id', 1);
+
         $this->repoMock->shouldReceive('getByUrlId')
             ->once()
-            ->andReturn(new Hotel($seeder));
+            ->andReturn($entity);
 
         $this->locationMock->shouldReceive('getCityInfo')
             ->once()
@@ -81,6 +84,21 @@ class HotelServiceTest extends TestCase
                         'origin' => '',
                         'en' => '',
                         'tw' => '',
+                    ]
+                ]
+            ]);
+
+        $this->facilityMock->shouldReceive('getHotelSupportFacilities')
+            ->once()
+            ->andReturn([
+                '可使用語言' => [
+                    [
+                        'name' => '中文',
+                        'icon' => null
+                    ],
+                    [
+                        'name' => '英文',
+                        'icon' => null
                     ]
                 ]
             ]);
