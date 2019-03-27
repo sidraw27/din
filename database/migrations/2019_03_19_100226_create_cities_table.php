@@ -24,6 +24,7 @@ class CreateCitiesTable extends Migration
             $table->softDeletes();
             // index
             $table->index('country_id');
+            $table->foreign('country_id')->references('id')->on('countries');
         });
     }
 
