@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHotelHaveFacilitiesTable extends Migration
+class CreateHotelSupportFacilitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,13 @@ class CreateHotelHaveFacilitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('hotel_have_facilities', function (Blueprint $table) {
+        Schema::create('hotel_support_facilities', function (Blueprint $table) {
             $table->unsignedBigInteger('hotel_id');
             $table->unsignedBigInteger('facility_id');
             $table->boolean('is_active');
+            // index
+            $table->foreign('hotel_id')->references('id')->on('hotels');
+            $table->foreign('facility_id')->references('id')->on('hotel_facilities');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateHotelHaveFacilitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hotel_having_facilities');
+        Schema::dropIfExists('hotel_support_facilities');
     }
 }

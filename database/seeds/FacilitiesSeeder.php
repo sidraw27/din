@@ -51,12 +51,12 @@ class FacilitiesSeeder extends \Illuminate\Database\Seeder
 
         $count = $facilities->count();
 
-        $entity = App::make(\App\Entities\HotelHaveFacility::class);
+        $entity = App::make(\App\Entities\HotelSupportFacility::class);
 
         for ($i = 1; $i <= 10; $i++) {
-            $haveFacilities = $facilities->random(random_int(5, $count));
+            $supportFacilities = $facilities->random(random_int(5, $count));
 
-            foreach ($haveFacilities as $facility) {
+            foreach ($supportFacilities as $facility) {
                 $entity->create([
                     'hotel_id'    => $i,
                     'facility_id' => $facility->id,
