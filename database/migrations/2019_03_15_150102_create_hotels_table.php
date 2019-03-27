@@ -31,6 +31,12 @@ class CreateHotelsTable extends Migration
 
             $table->text('introduction');
 
+            $table->unsignedSmallInteger('total_room')->nullable();
+            $table->unsignedSmallInteger('total_floor')->nullable();
+
+            $table->string('year_of_open')->nullable();
+            $table->string('year_of_renovated')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
             // index
