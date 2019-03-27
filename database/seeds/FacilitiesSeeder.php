@@ -53,7 +53,7 @@ class FacilitiesSeeder extends \Illuminate\Database\Seeder
 
         $entity = App::make(\App\Entities\HotelSupportFacility::class);
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= HotelSeeder::$hotelNums; $i++) {
             $supportFacilities = $facilities->random(random_int(5, $count));
 
             foreach ($supportFacilities as $facility) {

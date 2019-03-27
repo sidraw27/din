@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Arr;
 
-class HotelSeeder extends \Illuminate\Database\Seeder
+class HotelSeeder extends AbstractSeeder
 {
+    public static $hotelNums = 10;
+
     public static function getSeeder(array $city)
     {
         $faker   = \Faker\Factory::create('en');
@@ -34,7 +36,7 @@ class HotelSeeder extends \Illuminate\Database\Seeder
         $cityEntity = App::make(\App\Entities\City::class);
         $cities     = $cityEntity::all()->toArray();
 
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= self::$hotelNums; $i++) {
             $city = Arr::random($cities, 1);
 
             $entity->create(self::getSeeder($city[0]));

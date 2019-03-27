@@ -7,13 +7,13 @@ use App\Entities\HotelSupportFacility;
 class HotelSupportFacilityRepository extends AbstractRepository
 {
     /**
-     * CityRepository constructor.
+     * HotelSupportFacilityRepository constructor.
      * @param HotelSupportFacility | \Illuminate\Database\Eloquent\Builder $entity
      */
     public function __construct(HotelSupportFacility $entity)
     {
         $this->entity = $entity;
-        $this->setPrefix('City:');
+        $this->setPrefix('HotelSupportFacility:');
     }
 
     public function getByHotelId(int $hotelId)
