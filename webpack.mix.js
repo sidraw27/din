@@ -11,6 +11,14 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            modules: path.resolve(__dirname, "node_modules")
+        }
+    }
+});
+
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/register.js', 'public/js')
     .js('resources/js/sw.js', 'public');

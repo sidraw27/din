@@ -325,9 +325,9 @@
                 </div>
                 <div class="map_box">
                     <div class="map-localtion">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14460.468282249692!2d121.5028641!3d25.0301008!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x978d80a93c0fb030!2z6LK06YO95aSn6aOv5bqX!5e0!3m2!1szh-TW!2stw!4v1552551355958"
-                                width="580" height="350" frameborder="0" style="border:0" allowfullscreen="">
-                        </iframe>
+                        {{--<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14460.468282249692!2d121.5028641!3d25.0301008!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x978d80a93c0fb030!2z6LK06YO95aSn6aOv5bqX!5e0!3m2!1szh-TW!2stw!4v1552551355958"--}}
+                                {{--width="580" height="350" frameborder="0" style="border:0" allowfullscreen="">--}}
+                        {{--</iframe>--}}
                     </div>
                     <div class="map-distance">
                         <div class="distance_scroll">
@@ -347,8 +347,7 @@
                                     <span class="distance">990 公尺</span>
                                 </div>
                             </div>
-                            <div class="item-con"
-                            >
+                            <div class="item-con">
                                 <div class="item">
                                     <span class="name">高雄市立聯合醫院</span>
                                     <span class="distance">1.8 公里</span>
