@@ -47,12 +47,13 @@
                         <span class="star">
                             <img src="{{ asset('images/star.svg') }}" alt="">
                         </span>
-                            <span class="star">
+                        <span class="star">
                             <img src="{{ asset('images/star.svg') }}" alt="">
                         </span>
-                            <span class="star">
+                        <span class="star">
                             <img src="{{ asset('images/star.svg') }}" alt="">
-                        </span><span class="star">
+                        </span>
+                        <span class="star">
                             <img src="{{ asset('images/star.svg') }}" alt="">
                         </span>
                     </div>
@@ -105,6 +106,7 @@
                 </li>
             </ul>
         </div>
+
         <div class="hotel_intro">
             <div class="intro_chart inrto_min">
                 <div class="chart_tit">
@@ -401,7 +403,7 @@
                         <div class="review-basedon">(共有<span>52</span>則評論)</div>
                     </div>
                     <div class="score-box_intro">
-                        @foreach($hotelView['rating']['detail'] as $rating)
+                        @foreach($hotelView['rating']['detail']['agoda'] as $rating)
                             <div class="review-standard_item">
                                 <div class="review-grade_wrap">
                                     <div class="category">
@@ -421,13 +423,16 @@
                 <div class="review_resource">
                     <div class="resource_text">資料來源</div>
                     <div class="resource_wrap">
-                        <div class="recource"><img src="{{ asset('images/booking-logo.svg') }}" alt="">
+                        <div class="recource">
+                            <img src="{{ asset('images/booking-logo.svg') }}" alt="">
                             <div class="detail"><span>73</span>則評論</div>
                         </div>
-                        <div class="recource"><img src="{{ asset('images/agoda-logo.svg') }}" alt="">
+                        <div class="recource">
+                            <img src="{{ asset('images/agoda-logo.svg') }}" alt="">
                             <div class="detail"><span>73</span>則評論</div>
                         </div>
-                        <div class="recource"><img src="{{ asset('images/hotels-logo.svg') }}" alt="">
+                        <div class="recource">
+                            <img src="{{ asset('images/hotels-logo.svg') }}" alt="">
                             <div class="detail"><span>73</span>則評論</div>
                         </div>
                     </div>
@@ -456,7 +461,7 @@
                                 <ul class="list-con">
                                     @foreach($facilities as $facility)
                                         <li class="facility-item">
-                                            <img src="/images/facility/room-icons-08.svg" alt="">
+                                            <img src="{{ asset('images/facility/room-icons-08.svg') }}" alt="">
                                             <div class="name">
                                                 {{ $facility['name'] }}
                                             </div>

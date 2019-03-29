@@ -28,32 +28,50 @@ class Rating
         $entity = $this->ratingRepo->getByHotelId($hotelId);
 
         $mapping = [
-            'overall'  => '整體狀況滿意度',
-            'facility' => '設施與設備',
-            'position' => '地理位置',
-            'service'  => '服務滿意度',
-            'cp'       => 'CP值',
+            'agoda' => [
+                'overall'  => '整體狀況滿意度',
+                'facility' => '設施與設備',
+                'position' => '地理位置',
+                'service'  => '服務滿意度',
+                'cp'       => 'CP值'
+            ],
+            'booking' => [
+                'quality'     => '服務品質',
+                'facility'    => '設施與設備',
+                'clear'       => '清潔滿意度',
+                'comfortable' => '舒適度',
+                'cp'          => '性價比',
+                'position'    => '地理位置',
+                'free_wifi'   => '免費網路',
+            ]
         ];
 
-        foreach ($mapping as $alias => $description) {
-            if (is_null($entity->getAttribute($alias))) continue;
+        $totalScore = 0;
+        $totalNums  = 0;
 
-            $result['detail'][] = [
-                'alias'       => $alias,
-                'description' => $description,
-                'score'       => $entity->getAttribute($alias)
-            ];
+        foreach ($mapping as $type => $item) {
+            if (is_null($entity->getAttribute($type))) {
+                continue;
+            }
+
+            $scores = $entity->getAttribute($type);
+
+            foreach ($item as $alias => $description) {
+                $score = $scores->getAttribute($alias);
+                $totalScore += $score;
+                $totalNums++;
+
+                $result['detail'][$type][] = [
+                    'alias'       => $alias,
+                    'description' => $description,
+                    'score'       => $score
+                ];
+            }
         }
 
-        $result['statistics']['sum'] = 0;
-
-        foreach ($result['detail'] as $rating) {
-            $result['statistics']['sum'] += $rating['score'];
-        }
-
-        $detailTotal = count($result['detail']);
-        if ($detailTotal > 0) {
-            $result['statistics']['avg'] = round(($result['statistics']['sum'] / $detailTotal) / 10, 1);
+        $result['statistics']['sum'] = $totalScore;
+        if ($totalNums > 0) {
+            $result['statistics']['avg'] = round(($totalScore / $totalNums) / 10, 1);
         }
 
         return $result;

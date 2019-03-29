@@ -13,18 +13,11 @@ class CreateHotelRatingsTable extends Migration
     public function up()
     {
         Schema::create('hotel_ratings', function (Blueprint $table) {
-            $table->bigIncrements('id');
-
             $table->unsignedBigInteger('hotel_id')->unique();
-
-            $table->unsignedTinyInteger('overall');
-            $table->unsignedTinyInteger('facility');
-            $table->unsignedTinyInteger('position');
-            $table->unsignedTinyInteger('service');
-            $table->unsignedTinyInteger('cp');
-
-            $table->timestamps();
+            $table->unsignedBigInteger('agoda_id')->nullable();
+            $table->unsignedBigInteger('booking_id')->nullable();
             // index
+            $table->primary('hotel_id');
             $table->foreign('hotel_id')->references('id')->on('hotels');
         });
     }

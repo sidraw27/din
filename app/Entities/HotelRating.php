@@ -6,5 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class HotelRating extends Model
 {
-    public $timestamps = true;
+    public $timestamps = false;
+
+    public function agoda()
+    {
+        return $this->hasOne(AgodaRating::class,'id', 'agoda_id');
+    }
+
+    public function booking()
+    {
+        return $this->hasOne(BookingRating::class,'id', 'booking_id');
+    }
 }

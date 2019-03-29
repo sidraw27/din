@@ -21,7 +21,7 @@ class CreateHotelSupportFacilitiesTable extends Migration
                 'hotel_id',
                 'is_active'
             ]);
-            $table->unique(['hotel_id', 'facility_id']);
+            $table->primary(['hotel_id', 'facility_id']);
             $table->foreign('hotel_id')->references('id')->on('hotels');
             $table->foreign('facility_id')->references('id')->on('hotel_facilities');
         });
