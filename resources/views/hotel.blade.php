@@ -392,67 +392,30 @@
                 <div class="review_score-box">
                     <div class="score-box_total">
                         <div class="total-score">
-                            <div class="score-number">7.9</div>
+                            <div class="score-number">
+                                {{ $hotelView['rating']['statistics']['avg'] }}
+                            </div>
                             <div class="score-ten">/10</div>
                         </div>
                         <div class="total-text">很讚</div>
                         <div class="review-basedon">(共有<span>52</span>則評論)</div>
                     </div>
                     <div class="score-box_intro">
-                        <div class="review-standard_item">
-                            <div class="review-grade_wrap">
-                                <div class="category">整體狀況及整潔度</div>
-                                <div class="score">7.2</div>
+                        @foreach($hotelView['rating']['detail'] as $rating)
+                            <div class="review-standard_item">
+                                <div class="review-grade_wrap">
+                                    <div class="category">
+                                        {{ $rating['description'] }}
+                                    </div>
+                                    <div class="score">
+                                        {{ round($rating['score'] / 10, 1) }}
+                                    </div>
+                                </div>
+                                <div class="review-grade_progressBar">
+                                    <div class="percent" style="width: {{ $rating['score'] }}%"></div>
+                                </div>
                             </div>
-                            <div class="review-grade_progressBar">
-                                <div class="percent" style="width: 72%"></div>
-                            </div>
-                        </div>
-                        <div class="review-standard_item">
-                            <div class="review-grade_wrap">
-                                <div class="category">設施與設備</div>
-                                <div class="score">8.1</div>
-                            </div>
-                            <div class="review-grade_progressBar">
-                                <div class="percent" style="width: 81%"></div>
-                            </div>
-                        </div>
-                        <div class="review-standard_item">
-                            <div class="review-grade_wrap">
-                                <div class="category">客房舒適度</div>
-                                <div class="score">8.5</div>
-                            </div>
-                            <div class="review-grade_progressBar">
-                                <div class="percent" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="review-standard_item">
-                            <div class="review-grade_wrap">
-                                <div class="category">服務</div>
-                                <div class="score">8.2</div>
-                            </div>
-                            <div class="review-grade_progressBar">
-                                <div class="percent" style="width: 82%"></div>
-                            </div>
-                        </div>
-                        <div class="review-standard_item">
-                            <div class="review-grade_wrap">
-                                <div class="category">CP值</div>
-                                <div class="score">8.0</div>
-                            </div>
-                            <div class="review-grade_progressBar">
-                                <div class="percent" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="review-standard_item">
-                            <div class="review-grade_wrap">
-                                <div class="category">位置</div>
-                                <div class="score">7.8</div>
-                            </div>
-                            <div class="review-grade_progressBar">
-                                <div class="percent" style="width: 78%"></div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="review_resource">
@@ -507,23 +470,31 @@
                 <div class="info_policy info-box">
                     <h3 class="title">飯店政策</h3>
                     <div class="policy_wrap wrap-con">
-                        <div class="policy-type"><img src="/images/facility/room-icons-18.svg" alt=""></div>
+                        <div class="policy-type">
+                            <img src="{{ asset('images/facility/room-icons-18.svg') }}" alt="">
+                        </div>
                         <div class="policy-item">
                             <div class="item-tit">入住時間＆退房時間</div>
                             <ul class="item-check">
                                 <li>
                                     <div class="check-tit">入住時間</div>
-                                    <div class="check-time">15:00</div>
+                                    <div class="check-time">
+                                        {{ $hotelView['info']['checkinTime'] ?? '未提供' }}
+                                    </div>
                                 </li>
                                 <li>
                                     <div class="check-tit">退房時間</div>
-                                    <div class="check-time">11:00</div>
+                                    <div class="check-time">
+                                        {{ $hotelView['info']['checkoutTime'] ?? '未提供' }}
+                                    </div>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="policy_wrap wrap-con">
-                        <div class="policy-type"><img src="/images/facility/room-icons-19.svg" alt=""></div>
+                        <div class="policy-type">
+                            <img src="{{ asset('images/facility/room-icons-19.svg') }}" alt="">
+                        </div>
                         <div class="policy-item">
                             <div class="item-tit">資訊概況</div>
                             <ul class="useful-info">

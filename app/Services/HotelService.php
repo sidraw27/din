@@ -6,18 +6,21 @@ use App\Exceptions\HotelException;
 use App\Repositories\HotelRepository;
 use App\Services\Hotel\Facility;
 use App\Services\Hotel\Location;
+use App\Services\Hotel\Rating;
 
 class HotelService
 {
     private $hotelRepo;
     private $location;
     private $facility;
+    private $rating;
 
-    public function __construct(HotelRepository $hotelRepo, Location $location, Facility $facility)
+    public function __construct(HotelRepository $hotelRepo, Location $location, Facility $facility, Rating $rating)
     {
         $this->hotelRepo = $hotelRepo;
         $this->location  = $location;
         $this->facility  = $facility;
+        $this->rating    = $rating;
     }
 
     /**
@@ -61,8 +64,14 @@ class HotelService
             'floorTotal'    => $hotel->total_floor,
             'openYear'      => $hotel->year_of_open,
             'renovatedYear' => $hotel->year_of_renovated,
+            'checkinTime'   => $hotel->checkin,
+            'checkoutTime'  => $hotel->checkout,
         ];
+
         $hotel->setAttribute('info', $info);
+
+        $rating = $this->rating->getHotelRating($hotel->id);
+        $hotel->setAttribute('rating', $rating);
 
         return $hotel->toArray();
     }

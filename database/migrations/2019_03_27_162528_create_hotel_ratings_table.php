@@ -15,7 +15,7 @@ class CreateHotelRatingsTable extends Migration
         Schema::create('hotel_ratings', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('hotel_id');
+            $table->unsignedBigInteger('hotel_id')->unique();
 
             $table->unsignedTinyInteger('overall');
             $table->unsignedTinyInteger('facility');

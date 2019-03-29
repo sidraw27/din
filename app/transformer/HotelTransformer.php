@@ -18,7 +18,8 @@ class HotelTransformer
             'cityName'     => $hotel['location']['belong']['city']['name']['tw'] ?? '未取得',
             'introduction' => $hotel['introduction'],
             'supportFacilities' => $hotel['facility'],
-            'info' => $hotel['info']
+            'info'   => $hotel['info'],
+            'rating' => $hotel['rating']
         ];
     }
 }

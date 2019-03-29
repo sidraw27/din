@@ -7,6 +7,7 @@ use App\Exceptions\HotelException;
 use App\Repositories\HotelRepository;
 use App\Services\Hotel\Facility;
 use App\Services\Hotel\Location;
+use App\Services\Hotel\Rating;
 use App\Services\HotelService;
 use Faker\Factory;
 use Tests\TestCase;
@@ -22,10 +23,12 @@ class HotelServiceTest extends TestCase
     private $target;
     /* @var $repoMock HotelRepository */
     private $repoMock;
-    /* @var $facility Facility */
+    /* @var $facilityMock Facility */
     private $facilityMock;
-    /* @var $location Location */
+    /* @var $locationMock Location */
     private $locationMock;
+    /* @var $ratingMock Rating */
+    private $ratingMock;
 
     protected function setUp(): void
     {
@@ -34,7 +37,8 @@ class HotelServiceTest extends TestCase
         $this->repoMock     = \Mockery::mock(HotelRepository::class);
         $this->facilityMock = \Mockery::mock(Facility::class);
         $this->locationMock = \Mockery::mock(Location::class);
-        $this->target       = new HotelService($this->repoMock, $this->locationMock, $this->facilityMock);
+        $this->ratingMock   = \Mockery::mock(Rating::class);
+        $this->target       = new HotelService($this->repoMock, $this->locationMock, $this->facilityMock, $this->ratingMock);
         $this->faker        = Factory::create('en_US');
     }
 
@@ -103,6 +107,16 @@ class HotelServiceTest extends TestCase
                 ]
             ]);
 
+        $this->ratingMock->shouldReceive('getHotelRating')
+            ->once()
+            ->andReturn([
+                'statistics' => [
+                    'sum' => 0,
+                    'avg' => 0.0
+                ],
+                'detail'     => []
+            ]);
+
         /** @var Hotel $actual */
         $actual = $this->target->getHotel($this->faker->regexify('[A-Z0-9]{6}'));
         $this->assertIsArray($actual);
@@ -113,6 +127,5 @@ class HotelServiceTest extends TestCase
         $this->assertIsArray($location['belong']);
         $this->assertArrayHasKey('lat', $location['geo']);
         $this->assertArrayHasKey('lng', $location['geo']);
-
     }
 }
