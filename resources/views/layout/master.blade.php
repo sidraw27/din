@@ -14,6 +14,7 @@
 
 <body>
     <div id="app">
+        <div class="__adjust_top"></div>
         <div class="topbar-outer">
             <div class="topbar_logo">
                 <a href="{{ route('index') }}">盯房網</a>
@@ -42,40 +43,11 @@
 
         @yield('content')
 
-        <div class="min-top-fixed">
-            <div class="top_header">
-                <div class="icons">
-                    <img src="{{ asset('images/arrow-left.svg') }}" alt="">
-                </div>
-                <div class="hotel-name">台北貴都大飯店 Taipei Crystal Hotel</div>
-            </div>
-            <div class="top_tags">
-                <ul class="tags_wrapper">
-                    <li class="tabs-item current"><span>概述</span></li>
-                    <li class="tabs-item"><span>價格</span></li>
-                    <li class="tabs-item"><span>位置</span></li>
-                    <li class="tabs-item"><span>評論</span></li>
-                    <li class="tabs-item"><span>設施與服務</span></li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="bottom-nav-outer">
-            <div class="bottom-nav_left">
-                <div class="top">
-                    <div class="title">最低價格</div>
-                    <div class="text">比價<span>4</span>個網站</div>
-                </div>
-                <div class="bottom"><span>agoda.com</span></div>
-            </div>
-            <div class="bottom-nav_middle">
-                <div class="price_currency">NT$</div>
-                <div class="price_num">3,410</div>
-            </div>
-            <div class="bottom-nav_right"><a class="btn_gray" href="#">前往訂房</a></div>
-        </div>
     </div>
 
     <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/action/master.js') }}"></script>
+    @stack('javascript')
 </body>
 </html>

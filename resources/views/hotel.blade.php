@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <div class="address-info">
+            <div class="address-info __anchor_overview">
                 <div class="address_big">
                     <div class="add-icon">
                         <img src="{{ asset('images/add.svg') }}" alt="">
@@ -89,20 +89,30 @@
 
         <div class="hotel_NavBar">
             <ul class="Navbar_wrapper">
-                <li class="tabs-item current">
-                    <span>概述</span>
+                <li class="tabs-item __item_overview" onclick="scrollToAnchor('overview', 200)">
+                    <span>
+                        概述
+                    </span>
                 </li>
-                <li class="tabs-item">
-                    <span>價格</span>
+                <li class="tabs-item __item_price" onclick="scrollToAnchor('price')">
+                    <span>
+                        價格
+                    </span>
                 </li>
-                <li class="tabs-item">
-                    <span>位置</span>
+                <li class="tabs-item __item_position" onclick="scrollToAnchor('position')">
+                    <span>
+                        位置
+                    </span>
                 </li>
-                <li class="tabs-item">
-                    <span>評論</span>
+                <li class="tabs-item __item_comment" onclick="scrollToAnchor('comment')">
+                    <span>
+                        評論
+                    </span>
                 </li>
-                <li class="tabs-item">
-                    <span>設施與服務</span>
+                <li class="tabs-item __item_info" onclick="scrollToAnchor('info')">
+                    <span>
+                        詳細資訊
+                    </span>
                 </li>
             </ul>
         </div>
@@ -131,9 +141,10 @@
             </div>
         </div>
     </div>
+
     <div class="gl_outer1200 gl_flex-row">
         <div class="hl_main-content">
-            <div class="hl_rate-wrapper">
+            <div class="hl_rate-wrapper __anchor_price">
                 <div class="hl_detail-filter">
                     <div class="filter_box">
                         <div class="filter_date filter-bg">
@@ -321,7 +332,8 @@
                     <div class="rate-ps">平均每晚的價格是由我們的合作夥伴提供，且可能不含任何稅金和服務費。 顯示的稅金及費用皆僅為約略金額。 如需更多詳細資料，請參閱我們合作夥伴的網站。</div>
                 </div>
             </div>
-            <div class="hl_map-wrapper">
+
+            <div class="hl_map-wrapper __anchor_position">
                 <div class="map_tit">
                     <h3 class="title">位置</h3>
                 </div>
@@ -387,7 +399,8 @@
                     </div>
                 </div>
             </div>
-            <div class="hl_review-wrapper">
+
+            <div class="hl_review-wrapper __anchor_comment">
                 <div class="review_tit">
                     <h3 class="title">評論</h3>
                 </div>
@@ -434,11 +447,12 @@
                         <div class="recource">
                             <img src="{{ asset('images/hotels-logo.svg') }}" alt="">
                             <div class="detail"><span>73</span>則評論</div>
-                        </div>
+                        </div>vi
                     </div>
                 </div>
             </div>
-            <div class="hl_information-wrapper">
+
+            <div class="hl_information-wrapper __anchor_info">
                 <div class="info_description info-box">
                     <h3 class="title">飯店介紹</h3>
                     <div class="description_wrap wrap-con">
@@ -645,4 +659,41 @@
         </div>
         <div class="hl_sidebar"></div>
     </div>
+
+    <div class="min-top-fixed">
+        <div class="top_header">
+            <div class="icons">
+                <img src="{{ asset('images/arrow-left.svg') }}" alt="">
+            </div>
+            <div class="hotel-name">台北貴都大飯店 Taipei Crystal Hotel</div>
+        </div>
+        <div class="top_tags">
+            <ul class="tags_wrapper">
+                <li class="tabs-item current"><span>概述</span></li>
+                <li class="tabs-item"><span>價格</span></li>
+                <li class="tabs-item"><span>位置</span></li>
+                <li class="tabs-item"><span>評論</span></li>
+                <li class="tabs-item"><span>設施與服務</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="bottom-nav-outer">
+        <div class="bottom-nav_left">
+            <div class="top">
+                <div class="title">最低價格</div>
+                <div class="text">比價<span>4</span>個網站</div>
+            </div>
+            <div class="bottom"><span>agoda.com</span></div>
+        </div>
+        <div class="bottom-nav_middle">
+            <div class="price_currency">NT$</div>
+            <div class="price_num">3,410</div>
+        </div>
+        <div class="bottom-nav_right"><a class="btn_gray" href="#">前往訂房</a></div>
+    </div>
 @endsection
+
+@push('javascript')
+    <script src="{{ mix('js/action/hotel.js') }}"></script>
+@endpush

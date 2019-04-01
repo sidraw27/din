@@ -20,6 +20,8 @@ mix.webpackConfig({
 });
 
 mix.js('resources/js/app.js', 'public/js')
+    .js('resources/js/action/master.js', 'public/js/action')
+    .js('resources/js/action/hotel.js', 'public/js/action')
     .js('resources/js/register.js', 'public/js')
     .js('resources/js/sw.js', 'public');
 
