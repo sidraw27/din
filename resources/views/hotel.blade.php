@@ -76,7 +76,7 @@
                         {{ $hotelView['countryName'] }} {{ $hotelView['cityName'] }}
                         {{ $hotelView['address'] ?? '地址未取得' }}
                     </div>
-                    <a class="add-map" href="#">
+                    <a class="add-map" onclick="scrollToAnchor('position')">
                         查看地圖
                     </a>
                 </div>
@@ -120,7 +120,8 @@
         <div class="hotel_intro">
             <div class="intro_chart inrto_min">
                 <div class="chart_tit">
-                    <h3 class="title">歷史價格</h3><span>(以每晚價格統計)</span>
+                    <h3 class="title">歷史價格</h3>
+                    <span>(以每晚價格統計)</span>
                 </div>
             </div>
             <div class="intro_reviews inrto_min">
@@ -132,7 +133,9 @@
                     <div class="reviews_text">很讚</div>
                 </div>
                 <a class="icon-right" href="#">
-                    <div class="reviewMore">(共有<span>52</span>則評論)</div>
+                    <div class="reviewMore">
+                        (共有<span>52</span>則評論)
+                    </div>
                     <img src="{{ asset('images/arrow-right.svg') }}" alt=""></a>
             </div>
             <div class="intro_gallery inrto_min">
