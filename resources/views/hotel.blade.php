@@ -126,8 +126,8 @@
                     <img src="{{ asset('images/arrow-right.svg') }}" alt=""></a>
             </div>
             <div class="intro_gallery inrto_min">
-                <img style="height: 100%;width: 100%"
-                     src="http://pix2.agoda.net/hotelimages/agoda-homes/6584501/fa5afcc98691249611041402b4c32665.jpg?s=700x">
+                {{--<img style="height: 100%;width: 100%"--}}
+                     {{--src="http://pix2.agoda.net/hotelimages/agoda-homes/6584501/fa5afcc98691249611041402b4c32665.jpg?s=700x">--}}
             </div>
         </div>
     </div>

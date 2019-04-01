@@ -21,7 +21,7 @@ class Rating
                 'sum' => 0,
                 'avg' => 0.0
             ],
-            'detail'     => []
+            'detail' => []
         ];
 
         /** @var HotelRating $entity */
