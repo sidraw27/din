@@ -1,0 +1,179 @@
+.hotel-list_wrapper
+    @media screen and (max-width: 39.9375em)
+        margin: 0 15px
+    
+    .hotel-item
+        margin: 20px 0
+        width: 100%
+        border: 1px solid #eeeeee
+        border-radius: 5px
+        background: #ffffff
+        transition: all .25s
+        &:hover
+            border: 1px solid $cl-green
+        @media screen and (max-width: 39.9375em)
+            border: 1px solid #ffffff
+            box-shadow: 0 0 8px rgba(0,0,0,.06)
+            margin: 10px 0
+
+    .hotel-item.hot-item
+        position: relative
+        &::before
+            content: '人氣飯店'
+            position: absolute
+            top: 25px
+            left: -10px
+            background: $cl-red
+            padding: 5px 15px
+            font-size: 12px
+            color: #ffffff
+            font-weight: 500
+        &::after
+            content: ''
+            position: absolute
+            border-top: 0
+            border-right: 8px solid #c91818
+            border-bottom: 8px solid transparent
+            top: 53px
+            left: -10px
+
+    .item-link
+        @extend %flex-justify-between-wrap
+        padding: 15px 0 15px 15px
+        @media screen and (max-width: 800px)
+            padding: 15px
+
+        
+        
+    .hotel-info
+        width: calc(100% - 150px - 25px)
+        @extend %flex-justify-between-wrap
+        @media screen and (max-width: 800px)
+            width: 100%
+
+        .hotel-img
+            width: 200px
+            height: auto
+            background-position: center
+            background-size: cover
+            background-image: url(/images/noimg.svg)
+            @media screen and (max-width: 800px)
+                width: 100px
+            @media screen and (max-width: 39.9375em)
+                width: 90px
+
+    //- 飯店內容
+    .info_container
+        width: calc(100% - 200px - 20px)
+        @media screen and (max-width: 800px)
+            width: calc(100% - 100px - 20px)
+        @media screen and (max-width: 39.9375em)
+            width: calc(100% - 90px - 15px)
+
+        .con_tit
+            font-size: 20px
+            font-weight: 500
+            @media screen and (max-width: 39.9375em)
+                font-size: 16px
+                line-height: 20px
+
+        .con_rating
+            line-height: 20px
+            .star
+                img
+                    width: 13px
+
+        .con_distance
+            font-size: 12px
+            font-weight: 300
+            margin-bottom: 15px
+            @media screen and (max-width: 39.9375em)
+                font-size: 10px
+                margin-bottom: 5px
+
+        .con_average-price
+            @extend %flex-align-center
+            font-size: 18px
+            font-weight: 500
+            margin-bottom: 15px
+            @media screen and (max-width: 39.9375em)
+                font-size: 14px
+                margin-bottom: 10px
+            .text 
+                margin: 0 5px
+
+        .con_review
+            @extend %flex-align-center
+            .review-num
+                background: $cl-green
+                border-radius: 4px
+                padding: 5px
+                color: #ffffff
+                font-weight: 500
+                margin-right: 15px
+                @media screen and (max-width: 39.9375em)
+                    font-size: 12px
+
+            .review-text
+                font-size: 14px
+                margin-right: 5px
+                @media screen and (max-width: 39.9375em)
+                    font-size: 12px
+            .review-count
+                font-size: 14px
+                font-weight: 300
+                @media screen and (max-width: 39.9375em)
+                    font-size: 12px
+
+
+
+
+    //- 飯店最低價格
+    .info_price
+        @extend %flex-direction-column
+        width: 150px
+        border-left: 1px solid #eeeeee
+        @media screen and (max-width: 800px)
+            border-left: 0
+            border-top: 1px solid #eeeeee
+            width: 100%
+            margin-top: 15px
+            flex-direction: row
+            justify-content: space-between
+            padding-top: 10px
+        .price_con
+            @extend %flex-align-column
+            @media screen and (max-width: 800px)
+                align-items: flex-start
+            .con-top
+                font-size: 14px
+                font-weight: 300
+                @media screen and (max-width: 800px)
+                    font-size: 10px
+            .con-midden
+                font-size: 16px
+                font-weight: 500
+                color: $cl-red
+                margin: 5px 0
+                @media screen and (max-width: 800px)
+                    font-size: 14px
+                    margin: 0
+            .con-bottom
+                font-size: 12px
+                font-weight: 300
+                color: #828282
+                @media screen and (max-width: 800px)
+                    font-size: 10px
+
+        .price_btn
+            background: #ffffff
+            border: 1px solid $cl-green
+            border-radius: 5px
+            color: $cl-green
+            padding: 10px 15px
+            font-weight: 500
+            width: 70%
+            margin-top: 15px
+            @media screen and (max-width: 800px)
+                width: 100px
+                margin-top: 0

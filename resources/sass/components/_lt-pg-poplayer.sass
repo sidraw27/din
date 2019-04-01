@@ -1,0 +1,263 @@
+.pop-layer_outer
+    position: fixed
+    top: 0
+    right: 0
+    left: 0
+    opacity: 0
+    transition: all .3s
+    transform: translateY(100%)
+        
+        
+
+.pop-layer_outer.is-open
+    opacity: 1
+    transform: translateY(0%)
+
+.pop-box
+    height: 100vh
+    width: 100%
+    display: flex
+    justify-content: center
+    background: rgba(0,0,0,.3)
+    padding-top: 30px
+    align-items: flex-start
+        
+
+
+.float-box
+    background: #ffffff
+    border-radius: 5px
+    position: relative
+    overflow: hidden
+    box-shadow: 0 0 8px rgba(0,0,0,.08)
+    width: 90%
+    height: 85%
+
+    .head-wrap
+        padding: 20px 10px
+        @extend %flex-justify-between
+        border-bottom: 1px solid #f7f7f7
+        .close-btn
+            background: transparent
+            border: 0
+            @extend %flex-center
+            img
+                width: 15px
+        .Title
+            font-size: 16px
+            font-weight: 500
+        .clear-btn
+            font-size: 12px
+            color: $cl-biue
+            background: transparent
+            border: 0
+            font-weight: 500
+
+    .filter-body
+        background: #f9f9f9
+        height: calc(100% - 65px - 64px)
+        padding: 25px 17px
+        overflow-y: scroll
+        -webkit-overflow-scrolling: touch
+
+    .filter-body::-webkit-scrollbar 
+        display: none
+
+
+    .filter-con
+        margin-bottom: 30px
+        .top-wrap
+
+            .Title
+                font-size: 14px
+
+        .price_box
+            @extend %flex-justify-between
+            font-size: 12px
+            font-weight: 300
+
+        .box
+            background: #ffffff
+            margin-top: 10px
+            padding: 15px
+            box-shadow: 0 8px 10px rgba(0,0,0,.05)
+            border-radius: 5px
+
+        //- slider
+        .price-slider_range
+            margin: 25px 15px 10px 15px
+            .price-slider
+                position: relative
+                width: 100%
+                background: #f5f5f5
+                height: 5px
+            .price-slider_percent
+                height: 5px
+                background: $cl-green
+                position: absolute
+                top: 0
+            .price-slider_handle
+                width: 20px
+                height: 20px
+                border-radius: 50%
+                background: #ffffff
+                border: 1px solid #eeeeee
+                box-shadow: 0 0 4px rgba(0,0,0,.1)
+                position: absolute
+                top: -8px
+                left: 0
+                cursor: pointer
+                margin-left: -10px
+
+        .checkbox-wrap
+            li
+                @extend %flex-align-center
+                padding: 5px 0
+
+            .con_rating
+                line-height: 20px
+                margin-left: 5px
+                .star
+                    img
+                        width: 14px
+            .text
+                font-size: 13px
+                font-weight: 400
+                margin-left: 10px
+                color: #828282
+
+    .footer-wrap
+        position: absolute
+        right: 0
+        left: 0
+        bottom: 0
+        height: 65px
+        box-shadow: 0 -2px 10px rgba(0,0,0,.05)
+        @extend %flex-justify-between
+        padding: 0 17px
+        button
+            padding: 12px 10px
+            border-radius: 4px
+            font-weight: 500
+            font-size: 12px
+        .cancel-btn
+            width: 35%
+            background: #ffffff
+            border: 1px solid #dddddd
+            color: #828282
+        .apply-btn
+            width: calc(100% - 35% - 10px)
+            border: 1px solid $cl-yellow
+            background: $cl-yellow
+            color: #ffffff
+
+
+
+@keyframes hover-color 
+    from 
+        border-color: #c0c0c0 
+    to 
+        border-color: #3e97eb  
+
+
+.checkbox 
+    position: absolute
+    display: none 
+
+.checkbox + label 
+    position: relative
+    @extend %flex-align-center
+    padding-left: 20px
+    cursor: pointer
+    vertical-align: middle 
+
+.checkbox + label
+    &:hover
+        &::before 
+            animation-duration: 0.4s
+            animation-fill-mode: both
+            animation-name: hover-color
+
+.checkbox + label
+    &::before 
+        position: absolute
+        top: 3px
+        left: 0
+        display: inline-block
+        width: 12px
+        height: 12px
+        content: ''
+        border: 1px solid #dddddd
+
+.checkbox + label
+    &::after 
+        position: absolute
+        display: none
+        content: '' 
+
+.checkbox:checked 
+    + label
+        &::before
+            animation-name: none
+
+.checkbox:checked 
+    + label 
+        &::after 
+            display: block
+
+.checkbox + label
+    &::before 
+        border-radius: 3px
+
+.checkbox + label 
+    &::after 
+        top: 6px
+        left: 5px
+        box-sizing: border-box
+        width: 4px
+        height: 7px
+        transform: rotate(45deg)
+        border-width: 2px
+        border-style: solid
+        border-color: #fff
+        border-top: 0
+        border-left: 0 
+
+.checkbox:checked 
+    + label
+        &::before 
+            border: 1px solid #3e97eb
+            background: #3e97eb 
+
+
+
+
+//- 評價得分
+.btn-wrap
+    @extend %flex-align-between-wrap
+    width: 100%
+    button
+        width: calc(50% - 5px)
+        padding: 8px 5px 5px
+        height: 50px
+        background: #ffffff
+        border: 1px solid #eeeeee
+        border-radius: 4px
+        font-size: 11px
+        font-weight: 500
+        color: #828282
+        margin: 5px 0
+    .btn
+        @extend %flex-direction-column
+        svg
+            width: 25px
+        span
+            font-size: 10px
+            margin-top: 3px
+    .btn.active
+        background: $cl-green
+        border: 1px solid $cl-green
+        color: #ffffff
+        svg
+            .cls-1
+                fill: #ffffff

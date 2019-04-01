@@ -1,0 +1,36 @@
+.pagination_wrapper
+    @extend %flex-center
+    padding: 20px 0 30px
+    li
+        margin: 0 10px
+    
+    .page-btn
+
+        a
+            width: 35px
+            height: 35px
+            @extend %flex-center
+            border: 1px solid $cl-green
+            border-radius: 50%
+            &:hover
+                box-shadow: 0 0 8px rgba(174,202,55,.5)
+        svg
+            width: 8px
+
+    .page-num
+        a
+            border-radius: 50%
+            width: 35px
+            height: 35px
+            font-size: 14px
+            color: $cl-green
+            @extend %flex-center
+            &:hover
+                text-decoration: underline
+        .active
+            background: $cl-green
+            color: #ffffff
+        span
+            width: 35px
+            height: 35px
+            @extend %flex-center

@@ -1,0 +1,221 @@
+.filter-bar
+    border-bottom: 1px solid #eeeeee
+    border-top: 1px solid #eeeeee
+    background: #ffffff
+    padding: 10px 0
+    @media screen and (max-width: 39.9375em)
+        border-bottom: 0
+        box-shadow: 0 2px 5px rgba(0,0,0,.05)
+
+
+    .filter-bar_con
+        @extend %outer-width1200
+        @extend %flex-wrap-align-center
+
+
+    .filter_Label
+        font-size: 14px
+        margin-right: 10px
+        width: 85px
+        @media screen and (max-width: 39.9375em)
+            display: none
+
+
+    .filter_wrapper
+        width: calc(100% - 95px)
+        @extend %flex-wrap-align-center
+
+
+    .bar-item
+        position: relative
+        background: #ffffff
+        border: 1px solid #dddddd
+        border-radius: 50px
+        transition: all .3s
+        margin: 5px 15px 5px 0
+        &:hover
+            box-shadow: 0 0 8px rgba(0,0,0,.05)
+
+        .bar-btn
+            @extend %flex-center
+            cursor: pointer
+            padding: 7px 20px
+            @media screen and (max-width: 39.9375em)
+                padding: 5px 15px
+            
+        .title
+            font-size: 12px
+            margin-right: 10px
+            font-weight: 500
+            max-width: 80px
+            overflow: hidden
+            white-space:  nowrap
+            text-overflow:  ellipsis
+
+        svg
+            width: 10px
+
+        .filter
+            width: 18px
+            margin-right: 10px
+
+    .bar-item.active
+        background: $cl-green
+        border: 1px solid $cl-green
+        .title
+            color: #ffffff
+        .cls-1
+            fill: #ffffff
+
+    .price-item,.rating-item,.review-item,.more-item
+        @media screen and (max-width: 39.9375em)
+            display: none
+
+    .Minmore-item 
+        display: none
+        @media screen and (max-width: 39.9375em)
+            display: block
+
+
+    //- pop
+    .slider-pop
+        min-width: 280px
+    .rating-pop
+        min-width: 220px
+    .review-pop
+        min-width: 180px
+    .more-pop
+        min-width: 350px
+        height: 500px
+
+
+    
+    .float-pop
+        display: none
+        padding: 20px
+        position: absolute
+        top: 45px
+        left: 0
+        background: #ffffff
+        box-shadow: 0 0 8px rgba(0,0,0,.05)
+
+    .more-pop
+        display: none
+        padding: 20px
+        position: absolute
+        top: 45px
+        right: 0
+        left: auto
+        background: #ffffff
+        box-shadow: 0 0 8px rgba(0,0,0,.05)
+        @media screen and (max-width: 665px)
+            left: 0
+            right: auto
+
+        .more-filter_box
+            height: calc(100% - 44px - 49px)
+            overflow-y: scroll
+            -webkit-overflow-scrolling: touch
+            padding: 0 10px
+
+        // .more-filter_box::-webkit-scrollbar 
+        //     display: none
+
+
+    .float-pop,.more-pop
+        .Title
+            font-size: 16px
+            font-weight: 500
+            color: #4f4f4f
+            margin-bottom: 20px
+
+        //- 清除套用
+        .footer-row
+            @extend %flex-judtify-end
+            margin-top: 25px
+            button
+                padding: 5px 15px
+                border-radius: 3px
+                font-weight: 500
+            .clear-btn
+                background: transparent
+                border: 0
+                color: $cl-green-dark
+
+            .sendOut-btn
+                background: $cl-green
+                color: #ffffff
+                margin-left: 10px
+                &:hover
+                    background: $cl-green-dark
+
+        .price_box
+            @extend %flex-justify-between
+            font-size: 12px
+            font-weight: 300
+
+
+        //- slider
+        .price-slider_range
+            margin: 25px 10px 20px 0
+            .price-slider
+                position: relative
+                width: 95%
+                background: #f5f5f5
+                height: 5px
+            .price-slider_percent
+                height: 5px
+                background: $cl-green
+                position: absolute
+                top: 0
+            .price-slider_handle
+                width: 20px
+                height: 20px
+                border-radius: 50%
+                background: #ffffff
+                border: 1px solid #eeeeee
+                box-shadow: 0 0 4px rgba(0,0,0,.1)
+                position: absolute
+                top: -8px
+                cursor: pointer
+                margin-left: -10px
+
+        //- 星級評等
+        .checkbox-wrap
+            li
+                @extend %flex-align-center
+                padding: 5px 0
+
+            .con_rating
+                line-height: 20px
+                margin-left: 5px
+                .star
+                    img
+                        width: 14px
+            .text
+                font-size: 13px
+                font-weight: 400
+                margin-left: 10px
+                color: #828282
+            .review-num 
+                background: $cl-green
+                padding: 3px 5px
+                font-size: 12px
+                font-weight: 500
+                color: #ffffff
+                margin-left: 10px
+                border-radius: 4px
+
+        .filter-con
+            margin-bottom: 20px
+            .minTitle
+                font-size: 14px
+                margin-bottom: 15px
+                color: #4f4f4f
+
+
+
+
+    //- 點了篩選條件btn，幫我加上open
+    .open
+        display: block

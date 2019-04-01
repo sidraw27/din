@@ -1,17 +1,39 @@
-.searchBox
-    background: $cl-black
-    @media screen and (max-width: 39.9375em)
-        display: none
+.main-search_wrapper
+    position: relative
 
-.searchBox.fixed
-    position: fixed
-    top: 0
-    left: 0
-    right: 0
-    z-index: 100
+    .main-search_con
+        position: absolute
+        top: 50%
+        right: 0
+        left: 0
+        transform: translateY(-50%)
+        background: rgba(0,0,0,.4)
+        @extend %outer-width1200
+        padding: 20px 
+        @extend %flex-direction-column
+        
+        h1.Title
+            font-size: 36px
+            font-weight: 500
+            color: #ffffff
+            margin-bottom: 10px
+            @media screen and (max-width: 39.9375em)
+                font-size: 26px
+        .slogan
+            font-size: 20px
+            color: #ffffff
+            width: 50%
+            text-align: center
+            margin-bottom: 30px
+            @media screen and (max-width: 39.9375em)
+                font-size: 14px
+                width: 100%
+                margin-bottom: 20px
+
+.searchBox
+    width: 100%
 
 .searchBox_wrapper
-    @extend %outer-width1200
     @extend %flex-wrap-align-center
     padding: 10px 0
     .IconBox
@@ -24,6 +46,11 @@
         width: calc(100% - 400px - 100px - 30px - 215px)
         @media screen and (max-width: 1000px)
             width: calc(100% - 30% - 10px)
+        @media screen and (max-width: 39.9375em)
+            order: -1
+            width: 100%
+            margin-bottom: 10px
+            margin-right: 0
         img
             width: 20px
         input
@@ -36,7 +63,8 @@
             font-weight: 400
             -webkit-appearance: none
             outline: 0
-
+            @media screen and (max-width: 39.9375em)
+                font-size: 12px
 
     //----- checkin checkout ------//
     .check-in,.check-out
@@ -48,12 +76,15 @@
             width: 30%
             order: -1
             margin-bottom: 10px
+        @media screen and (max-width: 39.9375em)
+            width: 50%
+
 
     .check-out
         border-left: 1px solid #ebebeb
         margin-right: 10px
-    
-    
+        @media screen and (max-width: 39.9375em)
+            margin-right: 0
 
 
     //------ 房間 -----//
@@ -69,6 +100,8 @@
             order: -1
             margin-bottom: 10px
             margin-right: 0
+        @media screen and (max-width: 39.9375em)
+            width: 100%
         
         .occupancy-wrap
             width: 100%
@@ -112,8 +145,12 @@
 
     .picker-icons
         @extend %flex-center
+        @media screen and (max-width: 39.9375em)
+            display: none
         img
             width: 30px
+
+                
 
     .picker-text
         width: 100%
@@ -122,13 +159,16 @@
             font-size: 12px
             font-weight: 300
             color: #888888
+            @media screen and (max-width: 39.9375em)
+                font-size: 10px
         .picker_date
             font-size: 14px
+            @media screen and (max-width: 39.9375em)
+                font-size: 12px
 
     .picker-icons_down
         img
             width: 20px
-
 
     //------ 搜尋btn -----//
     .search-btn
@@ -144,5 +184,19 @@
         font-weight: 500
         @media screen and (max-width: 1000px)
             width: 30%
+        @media screen and (max-width: 39.9375em)
+            width: 100%
         &:hover
             background: $cl-green-dark
+
+
+
+
+.main-search_bg
+    background-image: url(/images/main-bg.jpg)
+    overflow: hidden
+    height: 420px
+    background-position: center
+    background-size: cover
+    @media screen and (max-width: 39.9375em)
+        height: 80vh

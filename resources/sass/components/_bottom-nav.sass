@@ -1,3 +1,5 @@
+
+//- 內頁bottom
 .bottom-nav-outer
     display: none
     position: fixed
@@ -13,35 +15,78 @@
         align-items: center
         justify-content: space-between
 
-.bottom-nav_left
-    .top
+    .bottom-nav_left
+        .top
+            @extend %flex-align-center
+
+        .title
+            font-size: 14px
+            margin-right: 5px
+
+        .text
+            font-size: 10px
+            font-weight: 300
+
+
+        .bottom
+            font-size: 12px
+
+
+    .bottom-nav_middle
         @extend %flex-align-center
+        color: $cl-red
+        .price_currency
+            font-size: 12px
 
-    .title
-        font-size: 14px
-        margin-right: 5px
+        .price_num 
+            font-size: 20px
+            font-weight: 500
+            @media screen and (max-width: 350px)
+                font-size: 16px
 
-    .text
-        font-size: 10px
-        font-weight: 300
-
-
-    .bottom
-        font-size: 12px
+    .bottom-nav_right
+        .btn_gray
+            font-size: 12px
 
 
-.bottom-nav_middle
-    @extend %flex-align-center
-    color: $cl-red
-    .price_currency
-        font-size: 12px
 
-    .price_num 
-        font-size: 20px
-        font-weight: 500
-        @media screen and (max-width: 350px)
-            font-size: 16px
+//- list頁bottom
+.layout_bottom-nav
+    display: none
+    position: fixed
+    bottom: 0
+    right: 0
+    left: 0
+    height: 60px
+    box-shadow: 0 -2px 8px rgba(0,0,0,.06)
+    background: #ffffff
+    @media screen and (max-width: 39.9375em)
+        display: flex
+        align-items: stretch
+        justify-content: space-around
 
-.bottom-nav_right
-    .btn_gray
-        font-size: 12px
+
+    .nav-icons
+        @extend %flex-direction-column
+        flex: 1
+        cursor: pointer
+        padding: 10px
+        max-width: 70px
+        img
+            width: 20px
+        span
+            font-size: 12px
+            font-weight: 300
+            margin-top: 5px
+
+    .bottom-nav__follow
+        position: relative
+        @extend %flex-direction-column
+        flex: 1
+        cursor: pointer
+        padding: 10px
+        max-width: 70px
+        img
+            width: 65px
+            position: absolute
+            top: -25px

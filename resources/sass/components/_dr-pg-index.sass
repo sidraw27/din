@@ -1,0 +1,91 @@
+//- 手機下才出的加入會員box
+.pop-login_box
+    display: none
+    @extend %outer-width1200
+    position: relative
+    @media screen and (max-width: 39.9375em)
+        display: block
+    
+    .pop-login
+        position: absolute
+        right: 0
+        left: 0
+        top: -30px
+        background: #ffffff
+        box-shadow: 0 2px 8px rgba(0,0,0,.05)
+        border-radius: 5px
+        padding: 20px
+        text-align: center
+        @extend %flex-direction-column
+        .Title
+            font-size: 16px
+            margin-bottom: 10px
+        .text
+            font-size: 13px
+            font-weight: 300
+            width: 80%
+            margin-bottom: 10px
+        .login-btn
+            background: $cl-yellow
+            border: 0
+            border-radius: 5px
+            padding: 8px 35px
+            font-size: 14px
+            color: #ffffff
+        .close-btn
+            position: absolute
+            right: 3px
+            top: 10px
+            background: #ffffff
+            border: 0
+            img
+                width: 15px
+
+
+//- 介紹盯房網理念
+.description_wrapper
+    @extend %outer-width1200
+    padding: 40px 0
+    @media screen and (max-width: 39.9375em)
+        padding: 180px 0 40px
+    .Title
+        font-size: 26px
+        text-align: center
+        margin-bottom: 30px
+        @media screen and (max-width: 39.9375em)
+            font-size: 20px
+
+    .description-con
+        @extend %flex-justify-between-wrap
+        width: 100%
+        .description
+            width: 31%
+            padding: 30px
+            box-shadow: 0 2px 20px 0 rgba(0,0,0,.05)
+            background: #ffffff
+            @media screen and (max-width: 39.9375em)
+                width: 100%
+                display: flex
+                align-items: flex-start
+                justify-content: space-between
+                padding: 20px
+                margin-bottom: 15px
+        .icon-img
+            img
+                width: 45px
+                @media screen and (max-width: 39.9375em)
+                    width: 30px
+        .slogan
+            @media screen and (max-width: 39.9375em)
+                width: calc(100% - 50px)
+        .title
+            font-size: 20px
+            font-weight: 500
+            padding: 20px 0 15px
+            @media screen and (max-width: 39.9375em)
+                padding: 0 0 5px
+                font-size: 16px
+        .text
+            font-weight: 300
+            @media screen and (max-width: 39.9375em)
+                font-size: 12px
