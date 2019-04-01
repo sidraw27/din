@@ -447,7 +447,7 @@
                         <div class="recource">
                             <img src="{{ asset('images/hotels-logo.svg') }}" alt="">
                             <div class="detail"><span>73</span>則評論</div>
-                        </div>vi
+                        </div>
                     </div>
                 </div>
             </div>
