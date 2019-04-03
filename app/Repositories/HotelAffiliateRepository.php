@@ -15,4 +15,11 @@ class HotelAffiliateRepository extends AbstractRepository
         $this->entity = $entity;
         $this->setPrefix('HotelAffiliate:');
     }
+
+    public function getByHotelId(int $hotelId)
+    {
+        return $this->entity
+            ->where('hotel_id', $hotelId)
+            ->first();
+    }
 }
