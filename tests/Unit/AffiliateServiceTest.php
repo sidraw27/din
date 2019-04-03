@@ -5,11 +5,9 @@ namespace Tests\Unit;
 use App\Entities\HotelAffiliate;
 use App\Exceptions\ProviderException;
 use App\Repositories\HotelAffiliateRepository;
-use App\Services\Affiliate\AbstractAffiliatePrice;
 use App\Services\Affiliate\Agoda;
 use App\Services\Affiliate\AgodaPrice;
 use App\Services\AffiliateService;
-use Faker\Factory;
 use Mockery\MockInterface;
 use Tests\TestCase;
 
