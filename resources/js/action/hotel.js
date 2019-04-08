@@ -33,7 +33,7 @@
 
 function fixedNavBar(topOffset) {
     const navBar = $('.hotel_NavBar');
-    const navBarFixedClass = 'navbar-fixed';
+    const navBarFixedClass = 'fixed';
 
     if ($(window).scrollTop() + 110 > topOffset) {
         if ( ! navBar.hasClass(navBarFixedClass)) {
