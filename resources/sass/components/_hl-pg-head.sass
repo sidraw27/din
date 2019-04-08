@@ -14,9 +14,9 @@
 
 .hotel_tit-info
     @extend %flex-wrap-align-center
-    width: calc(100% - 180px)
+    width: calc(100% - 210px)
     @media screen and (max-width: 39.9375em)
-        width: calc(100% - 90px)
+        width: calc(100% - 100px)
     .title
         font-size: 24px
         font-weight: 500
@@ -35,6 +35,23 @@
 
 
 .hotel_follow-btn
+    @extend %flex-align-center
+    // .like-btn
+    //     background: #ffffff
+    //     border: 0
+    //     margin-right: 15px
+    //     @extend %flex-center
+    //     img
+    //         width: 25px
+    //     .heart-bg
+    //         display: none
+    // .like-btn.active
+    //     .heart-border
+    //         display: none
+    //     .heart-bg
+    //         display: block
+
+    //- 追蹤按鈕
     .follow-btn
         padding: 15px 25px
         background: $cl-red
@@ -66,7 +83,6 @@
             font-weight: 500
             @media screen and (max-width: 39.9375em)
                 display: none
-
     .follow-btn:before
         content: ''
         position: absolute
@@ -78,10 +94,12 @@
         opacity: 1
         transform: translate(0,105%)
         background-color: rgba(0,0,0,0.25)
-
     .follow-btn:hover:before
         opacity: 0
         transform: translate(0,0)  
+
+    .follow-btn.active
+        background: $cl-yellow
 
 
 .address-info

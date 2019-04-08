@@ -1,0 +1,28 @@
+.footer_wrapper
+    background: $cl-footer
+    @media screen and (max-width: 39.9375em)
+        margin-bottom: 60px
+
+    .footer
+        @extend %outer-width1200
+        padding: 20px 0
+
+    .footer_link
+        @extend %flex-center
+        margin-bottom: 15px
+        a
+            color: #ffffff
+            font-size: 14px
+            padding: 0 20px
+            @media screen and (max-width: 39.9375em)
+                font-size: 12px
+                padding: 0 15px
+
+            &:hover
+                text-decoration: underline
+
+    .footer_copyright
+        color: #ffffff
+        font-size: 12px
+        font-weight: 300
+        text-align: center

@@ -3,6 +3,7 @@
     height: 60px
     background: #ffffff
     padding: 0 20px
+    border-bottom: 1px solid #eeeeee
 
 
 .topbar_nav
@@ -38,6 +39,23 @@
             white-space:  nowrap
             text-overflow:  ellipsis
 
+    .notice-btn
+        position: relative
+        @extend %flex-center
+        img
+            width: 25px
+            
+    .notice-btn.active
+        &::after
+            content: ''
+            width: 7px
+            height: 7px
+            border-radius: 50%
+            background: $cl-biue
+            position: absolute
+            top: 3px
+            right: 3px
+
 
 .topbar_min-nav
     display: none
@@ -48,6 +66,8 @@
         padding: 0 30px
         img
             width: 20px
+
+    
 
     .nav-hamburger
         img

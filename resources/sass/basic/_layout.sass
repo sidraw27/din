@@ -1,4 +1,6 @@
-
+.gray-bg
+    background: #f9f9f9
+    
 // 固定尺1200px
 
 .gl_outer1200
@@ -8,7 +10,8 @@
 // 分左右兩欄
 .gl_flex-row
     @extend %flex-justify-between-wrap
-    margin-bottom: 70px
+    margin-top: 60px
+    margin-bottom: 20px
 
 
 // 飯店頁版面
@@ -21,3 +24,21 @@
     width: 300px
     @media screen and (max-width: 1000px)
         width: 100%
+
+
+
+.gotop
+    width: 40px
+    height: 40px
+    background: rgba(174,202,55,.7)
+    position: fixed
+    right: 20px
+    bottom: 20px
+    border-radius: 50%
+    @extend %flex-center
+    cursor: pointer
+    @media screen and (max-width: 39.9375em)
+        bottom: 80px
+        right: 15px
+    svg
+        width: 20px

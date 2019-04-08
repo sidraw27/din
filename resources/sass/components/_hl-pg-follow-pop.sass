@@ -1,0 +1,149 @@
+.followModal
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    z-index: 101
+    display: none
+    opacity: 0
+    transition: all .2s
+
+
+.flex-outer
+    @extend %flex-center
+    width: 100%
+    height: 100vh
+    background: rgba(0,0,0,.5)
+
+
+.followModal.is-open
+    display: flex
+    opacity: 1
+
+
+.follow-box
+    position: relative
+    background: #ffffff
+    padding: 40px 30px
+    width: 450px
+    border-radius: 5px
+    @extend %flex-direction-column
+    @media screen and (max-width: 39.9375em)
+        width: 100%
+        height: 100vh
+        border-radius: 0
+        justify-content: flex-start
+
+    
+    .Title
+        font-size: 24px
+        font-weight: 500
+        margin-bottom: 15px
+        text-align: center
+    .slogan
+        width: 80%
+        font-weight: 300
+        font-size: 14px
+        text-align: center
+        margin-bottom: 20px
+    .sendOut-btn
+        background: $cl-green
+        border: 0
+        border-radius: 5px
+        padding: 15px 35px
+        color: #ffffff
+        font-size: 16px
+        font-weight: 500
+        margin-top: 40px
+        &:hover
+            background: $cl-green-dark
+
+    .close-btn
+        position: absolute
+        right: 15px
+        top: 15px
+        background: #ffffff
+        border: 0
+        padding: 0
+        img
+            width: 25px
+    
+.follow-con
+    width: 100%
+    // @media screen and (max-width: 400px)
+    //     height: 60%
+    //     overflow-y: scroll
+    //     -webkit-overflow-scrolling: touch
+
+
+
+.follow-wrap
+    width: 100%
+    margin: 20px 0
+    .title
+        font-size: 14px
+        font-weight: 500
+        margin-bottom: 15px
+    
+
+    .date-wrap
+        @extend %flex-justify-between
+        padding: 10px 15px
+        border: 1px solid #eeeeee
+        .check-in,.check-out
+            cursor: pointer
+            @extend %flex-direction-column
+            .picker_label 
+                font-size: 12px
+                font-weight: 300
+            .picker_date
+                font-size: 14px
+                color: $cl-green
+        .right-icon
+            img
+                width: 15px
+    .occupancy-wrap
+        @extend %flex-justify-between
+        select
+            width: 100%
+            height: 50px
+            border: 1px solid #eeeeee
+            background: #ffffff
+            padding: 10px 15px
+            font-size: 14px
+            color: #828282
+            outline: none
+            appearance: none
+            background: url(/images/bg-arrow-down.svg) no-repeat right
+            padding: 10px 15px
+            border-radius: 0
+
+    // .slider-wrap
+    //     .price_box
+    //         @extend %flex-justify-between
+    //         font-size: 12px
+    //         font-weight: 300
+    //     .price-slider_range
+    //         margin: 25px 15px 20px 15px
+    //         .price-slider
+    //             position: relative
+    //             width: 100%
+    //             background: #f5f5f5
+    //             height: 5px
+    //         .price-slider_percent
+    //             height: 5px
+    //             background: $cl-green
+    //             position: absolute
+    //             top: 0
+    //         .price-slider_handle
+    //             width: 20px
+    //             height: 20px
+    //             border-radius: 50%
+    //             background: #ffffff
+    //             border: 1px solid #eeeeee
+    //             box-shadow: 0 0 4px rgba(0,0,0,.1)
+    //             position: absolute
+    //             top: -8px
+    //             cursor: pointer
+    //             margin-left: -10px
+

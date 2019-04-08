@@ -1,0 +1,79 @@
+
+.user-outer
+    @media screen and (max-width: 39.9375em)
+        margin-top: 0
+.sidebar-wrap
+    width: 240px
+    @media screen and (max-width: 800px)
+        width: 100%
+    .user-wrap
+        background: #ffffff
+        border-radius: 5px
+        padding: 30px
+        @extend %flex-direction-column
+        margin-bottom: 25px
+        @media screen and (max-width: 39.9375em)
+            flex-direction: row
+            padding: 30px 20px
+
+        .user-box
+            @extend %flex-direction-column
+            @media screen and (max-width: 39.9375em)
+                flex-direction: row
+                justify-content: flex-start
+                width: calc(100% - 45px)
+        .user-image
+            width: 130px
+            height: 130px
+            border-radius: 50%
+            background-position: center
+            background-size: cover
+            background-image: url(/images/noimg.svg)
+            @media screen and (max-width: 39.9375em)
+                width: 85px
+                height: 85px
+        .user-name
+            margin: 20px 0 30px
+            width: 180px
+            overflow:  hidden
+            white-space:  nowrap
+            text-overflow:  ellipsis
+            text-align: center
+            @media screen and (max-width: 39.9375em)
+                width: calc(100% - 85px - 50px)
+                margin: 20px 0 30px 30px
+                text-align: left
+        .signOut-btn
+            background: #ffffff
+            border: 1px solid #eeeeee
+            border-radius: 50%
+            width: 45px
+            height: 45px
+            @extend %flex-center
+            &:hover
+                box-shadow: 0 0 5px rgba(0,0,0,.05)
+            img
+                width: 25px
+
+    .user-menu
+        background: #ffffff
+        border-radius: 5px
+        .menu-link
+            border-bottom: 1px solid #eeeeee
+            a
+                font-size: 14px
+                padding: 15px 30px
+                @extend %flex-justify-between
+                &:hover
+                    background: #F4F7EA
+        .menu-link:last-child
+            border-bottom: 0
+        .menu-link.active
+            border-left: 4px solid $cl-green
+            a
+                color: $cl-green
+
+.content-wrap
+    width: calc(100% - 240px - 20px)
+    @media screen and (max-width: 800px)
+        width: 100%

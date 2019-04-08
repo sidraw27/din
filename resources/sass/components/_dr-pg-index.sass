@@ -5,7 +5,6 @@
     position: relative
     @media screen and (max-width: 39.9375em)
         display: block
-    
     .pop-login
         position: absolute
         right: 0
@@ -13,7 +12,7 @@
         top: -30px
         background: #ffffff
         box-shadow: 0 2px 8px rgba(0,0,0,.05)
-        border-radius: 5px
+        border-radius: 10px
         padding: 20px
         text-align: center
         @extend %flex-direction-column
@@ -34,7 +33,7 @@
             color: #ffffff
         .close-btn
             position: absolute
-            right: 3px
+            right: 10px
             top: 10px
             background: #ffffff
             border: 0
@@ -42,12 +41,13 @@
                 width: 15px
 
 
+
 //- 介紹盯房網理念
 .description_wrapper
     @extend %outer-width1200
-    padding: 40px 0
+    padding: 50px 0
     @media screen and (max-width: 39.9375em)
-        padding: 180px 0 40px
+        padding: 180px 0 30px
     .Title
         font-size: 26px
         text-align: center
@@ -70,6 +70,7 @@
                 justify-content: space-between
                 padding: 20px
                 margin-bottom: 15px
+                border-radius: 10px
         .icon-img
             img
                 width: 45px
@@ -89,3 +90,89 @@
             font-weight: 300
             @media screen and (max-width: 39.9375em)
                 font-size: 12px
+
+
+
+//- 熱門tag
+.tag_wrapper
+    @extend %outer-width1200
+    padding: 50px 0
+    @media screen and (max-width: 39.9375em)
+        padding: 30px 0
+    .title
+        font-size: 18px
+        margin-bottom: 20px
+    .tag-con
+        @extend %flex-wrap-align-center
+        .tag
+            background: #ffffff
+            border: 1px solid #f7f7f7
+            box-shadow: 0 2px 8px rgba(0,0,0,.05)
+            border-radius: 50px
+            font-size: 14px
+            font-weight: 300
+            padding: 8px 25px
+            margin: 0 15px 15px 0
+            &:hover
+                border: 1px solid $cl-green
+                background: $cl-green
+                color: #ffffff
+
+
+//- 推薦地區
+.topDestination_wrapper
+    @extend %outer-width1200
+    padding: 50px 0
+    @media screen and (max-width: 39.9375em)
+        padding: 30px 0
+    .title
+        font-size: 18px
+        margin-bottom: 20px
+
+    .destination-scroll
+        @media screen and (max-width: 820px)
+            overflow: hidden
+            white-space: nowrap
+            overflow-x: scroll
+            -webkit-overflow-scrolling: touch
+            padding-bottom: 10px
+
+    .destination-scroll::-webkit-scrollbar 
+        @media screen and (max-width: 39.9375em)
+            display: none
+
+    .destination-con
+        @extend %flex-align-center
+        @media screen and (max-width: 820px)
+            width: 845px
+        .item
+            width: 25%
+            overflow: hidden
+            background-position: center
+            background-size: cover
+            height: 180px
+            border-radius: 4px
+            margin-right: 15px
+            transition: all .3s
+            @media screen and (max-width: 820px)
+                width: 200px
+                height: 120px
+            &:hover
+                transform: translateY(-10px)
+
+        .item:last-child
+            margin-right: 0
+
+        a
+            width: 100%
+            height: 100%
+            background: rgba(0,0,0,.1)
+            @extend %flex-direction-column
+
+            .MainTitle
+                color: #ffffff
+                font-size: 20px
+                font-weight: 500
+            .SubTitle
+                color: #ffffff
+                font-size: 14px

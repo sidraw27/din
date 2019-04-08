@@ -1,10 +1,41 @@
 .hotel_NavBar
     background: $cl-navbar
     @media screen and (max-width: 39.9375em)
-        display: none
+        background: #ffffff
+        border-top: 1px solid #f7f7f7
+
+.top_header
+    height: 50px
+    padding: 0 20px 
+    border-bottom: 1px solid #eeeeee
+    display: none
+
+    .icons
+        @extend %flex-center
+        img
+            width: 15px
+
+    .hotel-name
+        padding-left: 15px
+        font-size: 16px
+        overflow:  hidden
+        white-space:  nowrap
+        text-overflow:  ellipsis
+
+.top_tags
+    @media screen and (max-width: 39.9375em)
+        box-shadow: 0 2px 5px rgba(0,0,0,.05)
+        padding: 0 15px 0 10px
+
+.Navbar_wrapper::-webkit-scrollbar 
+    display: none
 
 .Navbar_wrapper
     @extend %flex-align-center
+    @media screen and (max-width: 39.9375em)
+        white-space: nowrap
+        overflow-x: scroll
+        -webkit-overflow-scrolling: touch
 
     .tabs-item
         height: 45px
@@ -16,6 +47,8 @@
             font-weight: 400
             color: #999999
             transition: all .2s ease-in
+            @media screen and (max-width: 39.9375em)
+                font-size: 12px
             &:hover
                 color: $cl-green
             
@@ -25,15 +58,22 @@
         span
             font-weight: 500
             color: $cl-green
+            
 
 
-.navbar-fixed
+.hotel_NavBar.fixed
     position: fixed
     top: 70px
     left: 0
     width: 100%
     box-shadow: 0 2px 5px rgba(0,0,0,.05)
-    z-index: 100
+    z-index: 90
+    @media screen and (max-width: 39.9375em)
+        top: 40px
     .Navbar_wrapper
         max-width: 1200px
         margin: 0 auto
+
+    .top_header
+        display: flex
+        align-items: center
