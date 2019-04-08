@@ -21,19 +21,12 @@
             @extend %flex-justify-between
 
         .filter_date
-            width: calc(40% - 5px)
-            @media screen and (max-width: 1150px)
-                width: calc(60% - 5px)
-                margin-bottom: 10px
-        .filter_room
-            width: calc(20% - 5px)
-            @media screen and (max-width: 1150px)
-                width: calc(40% - 5px)
-                margin-bottom: 10px
+            width: calc(100% - 25% - 20% - 20px)
+
+
         .filter_child
-            width: calc(25% - 5px)
-            @media screen and (max-width: 1150px)
-                width: calc(60% - 5px)
+            width: 25%
+
 
         .filter-icon
             @extend %flex-center
@@ -59,7 +52,7 @@
         .filter_button
             background: $cl-green
             height: 45px
-            width: calc(15% - 5px)
+            width: 20%
             border-radius: 5px
             border: 0
             color: #ffffff
@@ -67,8 +60,7 @@
             font-weight: 500
             &:hover
                 background: $cl-green-dark
-            @media screen and (max-width: 1150px)
-                width: calc(40% - 5px)
+
 
     .filter_tags
         @extend %flex-align-center
@@ -115,7 +107,7 @@
     .filter-date
         @extend %flex-justify-between
         padding: 0 20px
-        width: calc(100% - 70px - 70px)
+        width: calc(100% - 80px)
         .right-icon
             @extend %flex-center
             padding: 0 25px
@@ -136,9 +128,9 @@
             font-size: 16px
             color: $cl-green
 
-    .filter-child,.filter-room
+    .filter-child
         @extend %flex-direction-column
-        width: 70px
+        width: 80px
         border-left: 1px solid #ebebeb
 
 

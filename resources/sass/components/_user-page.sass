@@ -1,7 +1,4 @@
-
-.user-outer
-    @media screen and (max-width: 39.9375em)
-        margin-top: 0
+//- siderbar
 .sidebar-wrap
     width: 240px
     @media screen and (max-width: 800px)
@@ -15,6 +12,7 @@
         @media screen and (max-width: 39.9375em)
             flex-direction: row
             padding: 30px 20px
+            margin-bottom: 10px
 
         .user-box
             @extend %flex-direction-column
@@ -58,6 +56,8 @@
     .user-menu
         background: #ffffff
         border-radius: 5px
+        @media screen and (max-width: 39.9375em)
+            display: none
         .menu-link
             border-bottom: 1px solid #eeeeee
             a
@@ -73,7 +73,93 @@
             a
                 color: $cl-green
 
+    .min-user-menu
+        display: none
+        background: #ffffff
+        @media screen and (max-width: 39.9375em)
+            display: flex
+        .menu-wrap
+            @extend %flex-justify-between
+            width: 100%
+        .menu-link
+            width: 30%
+            a
+                font-size: 12px
+                padding: 15px 20px
+                width: 100%
+                height: 78px
+                @extend %flex-direction-column
+                &:hover
+                    background: #F4F7EA
+                @media screen and (max-width: 39.9375em)
+                    &:hover
+                        background: #ffffff
+                @media screen and (max-width: 370px)
+                    padding: 15px 20px
+                    
+            svg
+                width: 25px
+                margin-bottom: 5px
+        .menu-link.active
+            svg
+                .cls-1
+                    fill: $cl-green
+            a
+                color: $cl-green
+
+
+
+//- content
 .content-wrap
-    width: calc(100% - 240px - 20px)
+    width: calc(100% - 240px - 30px)
     @media screen and (max-width: 800px)
         width: 100%
+    @media screen and (max-width:800px)
+        padding: 20px 0
+    @media screen and (max-width: 39.9375em)
+        margin-top: 10px
+        padding: 20px
+        background: #ffffff
+    .Title
+        font-size: 20px
+        margin-bottom: 20px
+        @media screen and (max-width: 39.9375em)
+            font-size: 18px
+
+
+//- 我的追蹤
+.follow-outer
+    .nav-tabs
+        @extend %flex-align-center
+        border-bottom: 1px solid #eaeaea
+    .list-tab
+        a
+            padding: 10px 25px
+            &:hover
+                color: $cl-green
+            @media screen and (max-width: 39.9375em)
+                font-size: 14px
+                padding: 10px 20px
+
+    .list-tab.active
+        position: relative
+        a
+            color: $cl-green
+        &::after
+                content: ''
+                position: absolute
+                bottom: -2px
+                right: 0
+                left: 0
+                border-bottom: 3px solid $cl-green
+
+.follow-cards_wrapper
+    .follow-card
+        margin: 20px 0
+        .card_head
+            @extend %flex-justify-between
+            .edit-btn
+                button
+                    background: #f1f1f1
+                    border: 0
+                    border-radius: 20px
