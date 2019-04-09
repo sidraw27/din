@@ -26,6 +26,45 @@
 
         .filter_child
             width: 25%
+            position: relative
+            .child-wrap
+                @extend %flex-justify-between
+                width: 100%
+            .float_child-box
+                display: none
+                min-width: 100%
+                position: absolute
+                top: 45px
+                right: 0
+                background: #ffffff
+                box-shadow: 0 2px 8px rgba(0,0,0,.05)
+                border: 1px solid #eeeeee
+                padding: 20px
+            .float_child-box.open
+                display: block
+            
+            .child-count
+                @extend %flex-justify-between
+                .count-left
+                    font-size: 14px
+                .counter
+                    padding: 0 15px
+                .count-right
+                    @extend %flex-align-center
+                .button-minus,.button-plus
+                    width: 20px
+                    height: 20px
+                    border-radius: 50%
+                    border: 1px solid #d1d1d1
+                    @extend %flex-center
+                    cursor: pointer
+                    transition: all .3s
+                    &:hover
+                        border: 1px solid #B8D3EA
+                        box-shadow: 0 0 3px #B8D3EA
+                    img
+                        width: 10px
+
 
 
         .filter-icon

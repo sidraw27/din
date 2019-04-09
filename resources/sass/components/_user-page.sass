@@ -152,14 +152,174 @@
                 right: 0
                 left: 0
                 border-bottom: 3px solid $cl-green
+            
+    
 
 .follow-cards_wrapper
     .follow-card
+        margin: 40px 0
+        @media screen and (max-width: 39.9375em)
+            margin: 25px 0
+    .follow-card.expire
+        .over-time_wrap
+            position: absolute
+            width: 100%
+            height: 100%
+            background: rgba(211,211,211,.8)
+            top: 0px
+            right: 0
+            @extend %flex-center
+        .over-time
+            background: #ffffff
+            border-radius: 50px
+            padding: 15px 30px
+            font-size: 14px
+            font-weight: 300
+            @media screen and (max-width: 39.9375em)
+                font-size: 12px
+                padding: 10px 20px
+
+    .card_head
+        @extend %flex-justify-between
+        margin-bottom: 15px
+        .switch-box
+            width: calc(100% - 64px - 15px)
+        .edit-btn
+            button
+                background: #e5e5e5e5
+                border: 0
+                border-radius: 20px
+                padding: 5px 20px
+                font-size: 12px
+                color: #4f4f4f
+                &:hover
+                    background: #dddddd
+                @media screen and (max-width: 39.9375em)
+                    font-size: 10px
+                    padding: 5px 15px
+    .card_con
+        background: #ffffff
+        padding: 20px
+        border-radius: 4px
+        box-shadow: 0 2px 8px rgba(0,0,0,.05)
+        position: relative
+        overflow: hidden
+        .title
+            font-size: 18px
+            color: #333333
+            @media screen and (max-width: 39.9375em)
+                font-size: 16px
+                padding-right: 40px
+        .rating-wrap
+            .star
+                img
+                    width: 13px
+        .option-list
+            margin-top: 15px
+            @media screen and (max-width: 39.9375em)
+                margin-top: 10px
+            li
+                @extend %flex-align-center
+                padding: 5px 0
+                @media screen and (max-width: 39.9375em)
+                    padding: 2px 0
+            .icon-text
+                @extend %flex-align-center
+                width: 150px
+                @media screen and (max-width: 39.9375em)
+                    width: 140px
+                @media screen and (max-width: 370px)
+                    width: 120px
+                img
+                    width: 25px
+                    margin-right: 10px
+                    @media screen and (max-width: 39.9375em)
+                        width: 20px
+                    @media screen and (max-width: 370px)
+                        margin-right: 5px
+                .tit
+                    font-size: 14px
+                    font-weight: 300
+                    @media screen and (max-width: 39.9375em)
+                        font-size: 12px
+            .list-con
+                @extend %flex-align-center
+                .text
+                    color: $cl-green
+                    font-size: 14px
+                    @media screen and (max-width: 39.9375em)
+                        font-size: 12px
+                .right-icon
+                    @extend %flex-align-center 
+                    padding: 0 10px
+                    img
+                        width: 15px
+
+    .delete-box
+        position: absolute
+        right: 20px
+        top: 20px
+
+        button
+            border-radius: 50%
+            border: 1px solid #eeeeee
+            box-shadow: 0 0 4px rgba(0,0,0,.08)
+            background: #ffffff
+            width: 35px
+            height: 35px
+            @extend %flex-center
+            img
+                width: 15px
+
+
+
+//-我的通知
+.notice-outer
+    .notice-card
+        background: #ffffff
+        padding: 20px
+        border-radius: 4px
+        box-shadow: 0 2px 8px rgba(0,0,0,.05)
+        position: relative
         margin: 20px 0
-        .card_head
-            @extend %flex-justify-between
-            .edit-btn
-                button
-                    background: #f1f1f1
-                    border: 0
-                    border-radius: 20px
+        @media screen and (max-width: 39.9375em)
+            margin: 10px 0
+        .main-text
+            padding-right: 40px
+            @media screen and (max-width: 39.9375em)
+                font-size: 14px
+            .main
+                color: $cl-green
+                margin-right: 5px
+        .footer-text
+            margin-top: 10px
+            .time
+                font-size: 12px
+                font-weight: 300
+                color: #4f4f4f
+                @media screen and (max-width: 39.9375em)
+                    font-size: 10px
+        .close-btn
+            position: absolute
+            right: 15px
+            top: 15px
+            background: #ffffff
+            border: 0
+            padding: 0
+            img
+                width: 15px
+
+
+.none-con
+    @extend %flex-direction-column
+    padding: 0 0 20px
+    @media screen and (max-width: 39.9375em)
+        padding: 20px 0
+    img
+        width: 50%
+    .text
+        font-size: 18px
+        color: #828282
+        @media screen and (max-width: 39.9375em)
+            font-size: 14px
+            margin-top: 20px
