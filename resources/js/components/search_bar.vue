@@ -6,41 +6,73 @@
                 <input type="search" name="query" placeholder="搜尋你要找的飯店">
             </div>
 
-            <div class="check-in IconBox">
+            <div class="check-in IconBox" @click="openDate()" id="search_bar-datepicker-target">
                 <div class="picker-icons">
                     <img src="/images/checkin.svg" alt="">
                 </div>
-                <div class="picker-text" @click.stop="openDate">
+                <div class="picker-text">
                     <div class="picker_label">入住日期</div>
-                    <div class="picker_date">{{ checkinTime }}</div>
-                    <date-picker v-model="rangeDate" :lang="config.lang"
-                                 confirm confirm-text="確認"
-                                 :shortcuts="config.shortcuts"
-                                 :not-before="config.disableBefore" range>
-                    </date-picker>
+                    <div class="picker_date">{{ checkTime.in.str }}</div>
                 </div>
             </div>
 
-            <div class="check-out IconBox" @click.stop="openDate">
+            <div class="check-out IconBox" @click="openDate()">
                 <div class="picker-icons">
                     <img src="/images/checkout.svg" alt="">
                 </div>
                 <div class="picker-text">
                     <div class="picker_label">退房日期</div>
-                    <div class="picker_date">{{ checkoutTime }}</div>
+                    <div class="picker_date">{{ checkTime.out.str }}</div>
                 </div>
             </div>
 
-            <div class="occupancy IconBox">
-                <div class="picker-icons">
-                    <img src="/images/travelers.svg" alt=""
-                    ></div>
-                <div class="picker-text">
-                    <div class="picker_label">入住人數</div>
-                    <div class="picker_date">{{ numberOfPeople }} 人</div>
+            <AirbnbStyleDatepicker
+                    :triggerElementId="'search_bar-datepicker-target'"
+                    :mode="'range'"
+                    :minDate="new Date()"
+                    :offset-y="datePickerConfig.offset.y"
+                    :offset-x="datePickerConfig.offset.x"
+                    :fullscreen-mobile="true"
+                    :date-one="checkTime.in.date"
+                    :date-two="checkTime.out.date"
+                    :trigger="datePickerConfig.trigger"
+                    :showActionButtons="false"
+                    :showShortcutsMenuTrigger="false"
+                    @date-one-selected="val => { checkTime.in.date = val }"
+                    @date-two-selected="val => { checkTime.out.date = val}"
+                    @closed="() => {datePickerConfig.trigger = false}"
+            />
+
+            <div class="occupancy IconBox" v-click-outside="hiddenNumsDrop">
+                <div class="occupancy-wrap" @click="() => {nums.isDrop = ! nums.isDrop}">
+                    <div class="picker-icons">
+                        <img src="/images/travelers.svg" alt="">
+                    </div>
+                    <div class="picker-text">
+                        <div class="picker_label">入住人數</div>
+                        <div class="picker_date">
+                            {{ nums.pool[nums.currentIndex] }}人
+                        </div>
+                    </div>
+                    <div class="picker-icons_down">
+                        <img src="/images/arrow-down.svg" alt="">
+                    </div>
                 </div>
-                <div class="picker-icons_down">
-                    <img src="/images/arrow-down.svg" alt="">
+                <div class="float_child-box" :class="{'open': nums.isDrop}">
+                    <div class="child-count" style="user-select: none">
+                        <div class="count-left">人數</div>
+                        <div class="count-right">
+                            <div class="button-minus" @click="adjustNums(false)">
+                                <img src="/images/minus.svg" alt="">
+                            </div>
+                            <div class="counter">
+                                {{ nums.pool[nums.currentIndex] }}
+                            </div>
+                            <div class="button-plus" @click="adjustNums()">
+                                <img src="/images/plus.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -50,67 +82,65 @@
 </template>
 
 <script>
-    import DatePicker from 'modules/vue2-datepicker';
-
     export default {
-        components: {
-            DatePicker
-        },
-        watch: {
-            rangeDate: {
-                handler: function (item) {
-                    let rs = [];
-
-                    for (let i = 0; i <= 1; i++) {
-                        rs[i] = item[i].toJSON().slice(0,10).replace(/-/g,'-');
-                        rs[i] += "(" + this.config.lang.days[item[i].getDay()] +")";
-                    }
-
-                    this.checkinTime  = rs[0];
-                    this.checkoutTime = rs[1];
-                },
-                immediate: true
-            }
-        },
         data: function () {
+            const defaultDate = this.$parent.createDateRange(1, 3);
+
             return {
-                checkinTime: '',
-                checkoutTime: '',
-                rangeDate: this.createDateRange(1, 3),
-                numberOfPeople: 2,
-                config: {
-                    lang: {
-                        days: ['日', '一', '二', '三', '四', '五', '六'],
-                        months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+                datePickerConfig: {
+                    offset: {
+                        x: -95,
+                        y: 90
                     },
-                    disableBefore: new Date().toJSON().slice(0,10).replace(/-/g,'-'),
-                    shortcuts: [
-                        {
-                            text: '下七天',
-                            onClick: () => {
-                                this.rangeDate = this.createDateRange(1, 8)
-                            }
-                        }
-                    ]
+                    trigger: false
+                },
+                dateFormat: 'YYYY-MM-DD',
+                checkTime: {
+                    in: {
+                        date: defaultDate[0],
+                        str: ''
+                    },
+                    out: {
+                        date: defaultDate[1],
+                        str: ''
+                    }
+                },
+                nums: {
+                    pool: [1, 2, 3, 4, 5, 6, 7, 8],
+                    currentIndex: 1,
+                    isDrop: false
                 }
             }
         },
+        watch: {
+            checkTime: {
+                handler: function (time) {
+                    _.forEach(time, item => {
+                        if (item.date !== '') {
+                            const tmpDate = new Date(item.date);
+                            item.str = item.date + "(週" + this.$parent.formatRDayToZhDay(tmpDate.getDay()) + ")";
+                        }
+                    })
+                },
+                immediate: true,
+                deep: true
+            }
+        },
         methods: {
-            openDate: function () {
-                document.getElementsByClassName('mx-input')[0].click()
+            hiddenNumsDrop: function () {
+                this.nums.isDrop = false;
             },
-            createDateRange: function(beginDiffDay, endDiffDay) {
-                const todayDate = new Date();
-
-                let beginDate = new Date(todayDate);
-                beginDate.setDate(todayDate.getDate() + beginDiffDay);
-                let endDate = new Date(todayDate);
-                endDate.setDate(todayDate.getDate() + endDiffDay);
-
-                return [
-                    beginDate,
-                    endDate
-                ]
+            openDate: function () {
+                this.datePickerConfig.trigger = true;
+            },
+            adjustNums: function (isPlus = true) {
+                if (isPlus) {
+                    if (this.nums.currentIndex + 1 === this.nums.pool.length) return;
+                    this.nums.currentIndex ++;
+                } else {
+                    if (this.nums.currentIndex === 0) return;
+                    this.nums.currentIndex --;
+                }
             },
             search: function () {
 

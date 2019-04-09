@@ -53,7 +53,7 @@ class AffiliateController extends Controller
         } catch (ProviderException $e) {
             $response['message'] = $e->getMessage();
 
-            return response()->json($response);
+            return response()->json($response, 404);
         }
 
         return response()->json($response, 202);

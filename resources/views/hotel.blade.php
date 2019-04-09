@@ -88,33 +88,35 @@
         </div>
 
         <div class="hotel_NavBar">
-            <ul class="Navbar_wrapper">
-                <li class="tabs-item __item_overview" onclick="scrollToAnchor('overview', 200)">
-                    <span>
-                        概述
-                    </span>
-                </li>
-                <li class="tabs-item __item_price" onclick="scrollToAnchor('price')">
-                    <span>
-                        價格
-                    </span>
-                </li>
-                <li class="tabs-item __item_position" onclick="scrollToAnchor('position')">
-                    <span>
-                        位置
-                    </span>
-                </li>
-                <li class="tabs-item __item_comment" onclick="scrollToAnchor('comment')">
-                    <span>
-                        評論
-                    </span>
-                </li>
-                <li class="tabs-item __item_info" onclick="scrollToAnchor('info')">
-                    <span>
-                        詳細資訊
-                    </span>
-                </li>
-            </ul>
+            <div class="top_tags">
+                <ul class="Navbar_wrapper">
+                    <li class="tabs-item __item_overview" onclick="scrollToAnchor('overview', 200)">
+                        <span>
+                            概述
+                        </span>
+                    </li>
+                    <li class="tabs-item __item_price" onclick="scrollToAnchor('price')">
+                        <span>
+                            價格
+                        </span>
+                    </li>
+                    <li class="tabs-item __item_position" onclick="scrollToAnchor('position')">
+                        <span>
+                            位置
+                        </span>
+                    </li>
+                    <li class="tabs-item __item_comment" onclick="scrollToAnchor('comment')">
+                        <span>
+                            評論
+                        </span>
+                    </li>
+                    <li class="tabs-item __item_info" onclick="scrollToAnchor('info')">
+                        <span>
+                            詳細資訊
+                        </span>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="hotel_intro">
@@ -147,194 +149,8 @@
 
     <div class="gl_outer1200 gl_flex-row">
         <div class="hl_main-content">
-            <div class="hl_rate-wrapper __anchor_price">
-                <div class="hl_detail-filter">
-                    <div class="filter_box">
-                        <div class="filter_date filter-bg">
-                            <div class="filter-icon">
-                                <img src="{{ asset('images/date.svg') }}" alt="">
-                            </div>
-                            <div class="picker-label">3月10日,週日</div>
-                            <span>～</span>
-                            <div class="picker-label">3月15日,週五</div>
-                        </div>
-                        <div class="filter_room filter-bg">
-                            <div class="picker-label">一間客房</div>
-                            <div class="arrow-icon">
-                                <img src="{{ asset('images/arrow-down.svg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="filter_child filter-bg">
-                            <div class="filter-icon">
-                                <img src="{{ asset('images/people.svg') }}" alt="">
-                            </div>
-                            <div class="picker-label">
-                                <span class="room-info">2 成人</span>
-                                <span>，</span>
-                                <span class="room-info">0 兒童</span>
-                            </div>
-                            <div class="arrow-icon">
-                                <img src="{{ asset('images/arrow-down.svg') }}" alt="">
-                            </div>
-                        </div>
-                        <button class="filter_button">更新</button>
-                    </div>
-                    <ul class="filter_tags">
-                        <li class="tags active">免費早餐</li>
-                        <li class="tags">到店付款</li>
-                        <li class="tags">免費取消</li>
-                    </ul>
-                </div>
-                <div class="hl_min-detail-filter">
-                    <div class="min_filter-box">
-                        <div class="filter-date">
-                            <div class="check-in min-text">
-                                <div class="picker_label">入住日期</div>
-                                <div class="picker_date">3月13日</div>
-                            </div>
-                            <div class="right-icon">
-                                <img src="{{ asset('images/cc-arrow-left.svg') }}" alt="">
-                            </div>
-                            <div class="check-out min-text">
-                                <div class="picker_label">退房日期</div>
-                                <div class="picker_date">3月15日</div>
-                            </div>
-                        </div>
-                        <div class="filter-child min-text">
-                            <div class="picker_label">人</div>
-                            <div class="picker_date">2</div>
-                        </div>
-                        <div class="filter-room min-text">
-                            <div class="picker_label">客房</div>
-                            <div class="picker_date">1</div>
-                        </div>
-                    </div>
-                    <div class="min_filter-tags">
-                        <ul class="filter-tags_wrapper">
-                            <li class="tags active">免費早餐</li>
-                            <li class="tags">到店付款</li>
-                            <li class="tags">免費取消</li>
-                            <li class="tags">到店付款</li>
-                            <li class="tags">到店付款</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="hl_rate-list">
-                    <div class="list_tit">
-                        <h3 class="title">來自所有網站的價格</h3>
-                        <div class="price-wrap">平均價格
-                            <div class="price">NT$7,345</div>
-                            <span>～</span>
-                            <div class="price">NT$8,136</div>
-                        </div>
-                        <div class="text">(共<span>5</span>筆)</div>
-                    </div>
-                    <div class="list_room-detail">
-                        <div class="text"><span>5</span>晚，</div>
-                        <div class="text"><span>2</span>位房客，</div>
-                        <div class="text"><span>1</span>間客房的總價</div>
-                    </div>
-                    <ul class="list_wrapper">
-                        <li class="list-item">
-                            <div class="item-wrap">
-                                <div class="provider_logo">
-                                    <img src="{{ asset('images/agoda-logo.svg') }}" alt="">
-                                </div>
-                                <div class="provider_info">
-                                    <div class="room-con">標準雙人房 - 無窗 (Standard Double Room No Window)</div>
-                                    <div class="room-attributes">
-                                        <div class="text">不包括早餐</div>
-                                        <div class="text green">免費取消</div>
-                                        <div class="text blue">到店付款</div>
-                                    </div>
-                                </div>
-                                <div class="provider_price">
-                                    <div class="price">NT$<span>3,415</span></div>
-                                    <div class="hotel-name">agoda.com</div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="check-btn">前往網站</div>
-                                <div class="icons">
-                                    <img src="{{ asset('images/arrow-right.svg') }}" alt="">
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-item">
-                            <div class="item-wrap">
-                                <div class="provider_logo">
-                                    <img src="{{ asset('images/trip-logo.svg') }}" alt="">
-                                </div>
-                                <div class="provider_info">
-                                    <div class="room-con">標準雙人房 - 無窗</div>
-                                    <div class="room-attributes">
-                                        <div class="text">不包括早餐</div>
-                                        <div class="text blue">到店付款</div>
-                                    </div>
-                                </div>
-                                <div class="provider_price">
-                                    <div class="price">NT$<span>3,415</span></div>
-                                    <div class="hotel-name">trip.com</div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="check-btn">前往網站</div>
-                                <div class="icons">
-                                    <img src="{{ asset('images/arrow-right.svg') }}" alt="">
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-item">
-                            <div class="item-wrap">
-                                <div class="provider_logo">
-                                    <img src="{{ asset('images/hotels-logo.svg') }}" alt="">
-                                </div>
-                                <div class="provider_info">
-                                    <div class="room-con">Standard Double Room</div>
-                                    <div class="room-attributes">
-                                        <div class="text">不包括早餐</div>
-                                        <div class="text green">免費取消</div>
-                                    </div>
-                                </div>
-                                <div class="provider_price">
-                                    <div class="price">NT$<span>3,415</span></div>
-                                    <div class="hotel-name">hotels.com</div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="check-btn">前往網站</div>
-                                <div class="icons">
-                                    <img src="{{ asset('images/arrow-right.svg') }}" alt="">
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-item">
-                            <div class="item-wrap">
-                                <div class="provider_logo">
-                                    <img src="{{ asset('images/booking-logo.svg') }}" alt="">
-                                </div>
-                                <div class="provider_info">
-                                    <div class="room-con">小型雙人房 (Small Double Room)</div>
-                                    <div class="room-attributes">
-                                        <div class="text">不包括早餐</div>
-                                    </div>
-                                </div>
-                                <div class="provider_price">
-                                    <div class="price">NT$<span>3,415</span></div>
-                                    <div class="hotel-name">booking.com</div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="check-btn">前往網站</div>
-                                <div class="icons">
-                                    <img src="{{ asset('images/arrow-right.svg') }}" alt="">
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="rate-ps">平均每晚的價格是由我們的合作夥伴提供，且可能不含任何稅金和服務費。 顯示的稅金及費用皆僅為約略金額。 如需更多詳細資料，請參閱我們合作夥伴的網站。</div>
-                </div>
-            </div>
+
+            <vue_real_time_price hotel-id="1"></vue_real_time_price>
 
             <div class="hl_map-wrapper __anchor_position">
                 <div class="map_tit">
@@ -662,40 +478,47 @@
         </div>
         <div class="hl_sidebar"></div>
     </div>
-
-    <div class="min-top-fixed">
-        <div class="top_header">
-            <div class="icons">
-                <img src="{{ asset('images/arrow-left.svg') }}" alt="">
-            </div>
-            <div class="hotel-name">台北貴都大飯店 Taipei Crystal Hotel</div>
-        </div>
-        <div class="top_tags">
-            <ul class="tags_wrapper">
-                <li class="tabs-item current"><span>概述</span></li>
-                <li class="tabs-item"><span>價格</span></li>
-                <li class="tabs-item"><span>位置</span></li>
-                <li class="tabs-item"><span>評論</span></li>
-                <li class="tabs-item"><span>設施與服務</span></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="bottom-nav-outer">
-        <div class="bottom-nav_left">
-            <div class="top">
-                <div class="title">最低價格</div>
-                <div class="text">比價<span>4</span>個網站</div>
-            </div>
-            <div class="bottom"><span>agoda.com</span></div>
-        </div>
-        <div class="bottom-nav_middle">
-            <div class="price_currency">NT$</div>
-            <div class="price_num">3,410</div>
-        </div>
-        <div class="bottom-nav_right"><a class="btn_gray" href="#">前往訂房</a></div>
-    </div>
 @endsection
+
+@push('modal')
+    <!-- 點了.follow-btn ，幫我加上class: .is-open-->
+    <div class="followModal flex-outer">
+        <div class="follow-box">
+            <div class="Title">價格追蹤</div>
+            <div class="slogan">台北貴都大飯店 Taipei Crystal Hotel</div>
+            <div class="follow-con">
+                <div class="follow-wrap">
+                    <div class="title">何時入住</div>
+                    <div class="date-wrap">
+                        <div class="check-in">
+                            <div class="picker_label">入住時間</div>
+                            <div class="picker_date">4月10日</div>
+                        </div>
+                        <div class="right-icon"><img src="/images/cc-arrow-left.svg" alt=""></div>
+                        <div class="check-out">
+                            <div class="picker_label">退房時間</div>
+                            <div class="picker_date">4月14日</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="follow-wrap">
+                    <div class="title">入住人數</div>
+                    <div class="occupancy-wrap">
+                        <select>
+                            <option value="1人">1 人</option>
+                            <option value="2人">2 人</option>
+                            <option value="3人">3 人</option>
+                            <option value="4人">4 人</option>
+                            <option value="5人">5 人</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button class="sendOut-btn">立即追蹤</button>
+            <button class="close-btn"><img src="/images/close.svg" alt=""></button>
+        </div>
+    </div>
+@endpush
 
 @push('javascript')
     <script src="{{ mix('js/action/hotel.js') }}"></script>
