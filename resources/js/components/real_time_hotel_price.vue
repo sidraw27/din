@@ -3,17 +3,21 @@
 
         <div class="hl_min-detail-filter" v-if="this.$parent.isMobile()">
             <div class="min_filter-box">
-                <div class="filter-date">
+                <div class="filter-date" @click.stop="openDate()">
                     <div class="check-in min-text">
                         <div class="picker_label">入住日期</div>
-                        <div class="picker_date">3月13日</div>
+                        <div class="picker_date">
+                            {{ checkTime.in.mobileStr }}
+                        </div>
                     </div>
                     <div class="right-icon">
                         <img src="/images/cc-arrow-left.svg" alt="">
                     </div>
                     <div class="check-out min-text">
                         <div class="picker_label">退房日期</div>
-                        <div class="picker_date">3月15日</div>
+                        <div class="picker_date">
+                            {{ checkTime.out.mobileStr }}
+                        </div>
                     </div>
                 </div>
                 <div class="filter-child min-text">
@@ -87,25 +91,27 @@
                 <li class="tags">到店付款</li>
                 <li class="tags">免費取消</li>
             </ul>
-
-            <AirbnbStyleDatepicker
-                    style="z-index: 1"
-                    :triggerElementId="'price-datepicker-target'"
-                    :mode="'range'"
-                    :offset-y="datePickerConfig.offset.y"
-                    :offset-x="datePickerConfig.offset.x"
-                    :minDate="new Date()"
-                    :fullscreen-mobile="true"
-                    :date-one="checkTime.in.date"
-                    :date-two="checkTime.out.date"
-                    :trigger="datePickerConfig.trigger"
-                    :showActionButtons="false"
-                    :showShortcutsMenuTrigger="false"
-                    @date-one-selected="val => { checkTime.in.date = val }"
-                    @date-two-selected="val => { checkTime.out.date = val}"
-                    @closed="() => {this.datePickerConfig.trigger = false}"
-            />
         </div>
+
+        <AirbnbStyleDatepicker
+                :style="{'z-index': this.$parent.isMobile() ? 100 : 1}"
+                :triggerElementId="'price-datepicker-target'"
+                :mode="'range'"
+                :offset-y="datePickerConfig.offset.y"
+                :offset-x="datePickerConfig.offset.x"
+                :minDate="new Date()"
+                :fullscreen-mobile="true"
+                :date-one="checkTime.in.date"
+                :date-two="checkTime.out.date"
+                :trigger="datePickerConfig.trigger"
+                :showActionButtons="this.$parent.isMobile()"
+                :showShortcutsMenuTrigger="false"
+                mobileHeader="選擇住宿日期"
+                @date-one-selected="val => { checkTime.in.date = val }"
+                @date-two-selected="val => { checkTime.out.date = val}"
+                @closed="() => {this.datePickerConfig.trigger = false}"
+                @apply="renewal"
+        />
 
         <div class="hl_rate-list" id="price-datepicker-target">
             <div class="list_tit">
@@ -137,9 +143,9 @@
                         <div class="provider_info">
                             <div class="room-con">{{ info['roomType'] }}</div>
                             <div class="room-attributes">
-                                <div class="text">不包括早餐</div>
-                                <div class="text green">免費取消</div>
-                                <div class="text blue">到店付款</div>
+                                <!--<div class="text">不包括早餐</div>-->
+                                <!--<div class="text green">免費取消</div>-->
+                                <!--<div class="text blue">到店付款</div>-->
                             </div>
                         </div>
 
@@ -156,11 +162,9 @@
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div @click="redirect(info.landingUrl)">
                         <div class="check-btn">
-                            <!--<a :href="info.landingUrl">-->
-                                前往網站
-                            <!--</a>-->
+                            前往網站
                         </div>
                         <div class="icons">
                             <img src="/images/arrow-right.svg" alt="">
@@ -206,11 +210,13 @@
                 checkTime: {
                     in: {
                         date: defaultDate[0],
-                        str: ''
+                        str: '',
+                        mobileStr: ''
                     },
                     out: {
                         date: defaultDate[1],
-                        str: ''
+                        str: '',
+                        mobileStr: ''
                     }
                 },
                 nums: {
@@ -239,6 +245,7 @@
                         if (item.date !== '') {
                             const tmpDate = new Date(item.date);
                             item.str = item.date + "，週" + this.$parent.formatRDayToZhDay(tmpDate.getDay());
+                            item.mobileStr = tmpDate.getMonth() + "月" + tmpDate.getDate() + "日";
                         }
                     });
 
@@ -313,6 +320,9 @@
                     if (this.nums.currentIndex === 0) return;
                     this.nums.currentIndex --;
                 }
+            },
+            redirect: function (url) {
+                window.open(url);
             }
         }
     }

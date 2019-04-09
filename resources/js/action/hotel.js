@@ -10,7 +10,10 @@
         item.top = $('.__anchor_' + name).offset().top;
     });
 
-    const topOffset = $('.hotel_NavBar').offset().top;
+    const hotelNavBar = $('.hotel_NavBar');
+    const hotelNavBarOffsetTop = hotelNavBar.offset().top;
+    const breadcrumb = $('.breadcrumb-outer');
+    const breadcrumbOffsetTop = breadcrumb.offset().top;
 
     $(window).scroll(function () {
         let lastScrollToItem = null;
@@ -27,23 +30,23 @@
             lastScrollToItem.addClass('current');
         }
 
-        fixedNavBar(topOffset);
+        if (window.isMobile()) {
+            fixedElem(breadcrumbOffsetTop, breadcrumb, 'fixed', 10);
+        }
+        fixedElem(hotelNavBarOffsetTop, hotelNavBar, 'fixed', window.isMobile() ? 10 : 115);
     });
 } ());
 
-function fixedNavBar(topOffset) {
-    const navBar = $('.hotel_NavBar');
-    const navBarFixedClass = 'fixed';
-
-    if ($(window).scrollTop() + 110 > topOffset) {
-        if ( ! navBar.hasClass(navBarFixedClass)) {
+function fixedElem(topOffset, elem, className, t) {
+    if ($(window).scrollTop() + t > topOffset) {
+        if ( ! elem.hasClass(className)) {
             adjustHeight(115);
-            navBar.addClass(navBarFixedClass);
+            elem.addClass(className);
         }
     } else {
-        if (navBar.hasClass(navBarFixedClass)) {
+        if (elem.hasClass(className)) {
             adjustHeight(70);
-            navBar.removeClass(navBarFixedClass)
+            elem.removeClass(className)
         }
     }
 }
