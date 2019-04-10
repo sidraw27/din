@@ -50,9 +50,13 @@ Vue.use(AirbnbStyleDatepicker, {
     }
 });
 
+import VueCarousel from '@chenfengyuan/vue-carousel';
+Vue.use(VueCarousel);
 
 import vue_search_bar from "./components/search_bar";
 import vue_real_time_price from "./components/real_time_hotel_price";
+import vue_history_price from "./components/history_price";
+import vue_carousel from './components/carousel';
 
 Vue.directive('click-outside', {
     bind: function (el, binding, vnode) {
@@ -73,6 +77,8 @@ new Vue({
     components: {
         vue_search_bar,
         vue_real_time_price,
+        vue_history_price,
+        vue_carousel
     },
     methods: {
         createDateRange: function(beginDiffDay, endDiffDay) {

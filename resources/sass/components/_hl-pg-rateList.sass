@@ -146,7 +146,7 @@
     .filter-date
         @extend %flex-justify-between
         padding: 0 20px
-        width: calc(100% - 80px)
+        width: calc(100% - 100px)
         .right-icon
             @extend %flex-center
             padding: 0 25px
@@ -168,9 +168,27 @@
             color: $cl-green
 
     .filter-child
-        @extend %flex-direction-column
-        width: 80px
+        @extend %flex-center
+        width: 100px
         border-left: 1px solid #ebebeb
+        padding: 10px 20px
+        .picker_label
+            @extend %flex-center
+            margin-right: 5px
+            img
+                width: 25px
+
+        .picker_date
+            @extend %flex-center
+            .people-num
+                outline: none
+                appearance: none
+                background: #ffffff
+                border: 0
+                font-size: 15px
+                color: $cl-green
+                @media screen and (max-width: 390px)
+                    font-size: 13px
 
 
     //- tags
@@ -261,7 +279,7 @@
             border: 1px solid #eeeeee
 
         .list-item
-            @extend %flex-align-center
+            display: flex
             margin: 10px 0
             cursor: pointer
             @media screen and (max-width: 39.9375em)
@@ -310,8 +328,6 @@
 
         .room-attributes 
             @extend %flex-wrap-align-center
-            max-height: 25px
-            overflow: hidden
             .text
                 font-size: 12px
                 font-weight: 300
@@ -345,15 +361,19 @@
                 color: #828282
                 @media screen and (max-width: 39.9375em)
                     display: block
-
-
+        a
+            @media screen and (max-width: 39.9375em)
+                display: flex
+                align-items: center
+                justify-content: center
+                
         .check-btn
             background: $cl-yellow
             color: #ffffff
             font-size: 14px
             font-weight: 500
-            height: 66px
             width: 120px
+            height: 100%
             transition: all .3s
             @extend %flex-center
             @media screen and (max-width: 39.9375em)

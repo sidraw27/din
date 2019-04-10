@@ -61,7 +61,7 @@
 
                 <div class="hotel_follow-btn">
                     <button class="follow-btn">
-                        <img src="{{ asset('images/follow.svg') }}" alt="">
+                        <img src="{{ asset('images/track-border.svg') }}" alt="">
                         <span>價格追蹤</span>
                     </button>
                 </div>
@@ -120,12 +120,8 @@
         </div>
 
         <div class="hotel_intro">
-            <div class="intro_chart inrto_min">
-                <div class="chart_tit">
-                    <h3 class="title">歷史價格</h3>
-                    <span>(以每晚價格統計)</span>
-                </div>
-            </div>
+            <vue_history_price></vue_history_price>
+
             <div class="intro_reviews inrto_min">
                 <div class="reviews-wrap">
                     <div class="reviews_num">
@@ -141,8 +137,41 @@
                     <img src="{{ asset('images/arrow-right.svg') }}" alt=""></a>
             </div>
             <div class="intro_gallery inrto_min">
-                {{--<img style="height: 100%;width: 100%"--}}
-                     {{--src="http://pix2.agoda.net/hotelimages/agoda-homes/6584501/fa5afcc98691249611041402b4c32665.jpg?s=700x">--}}
+                <vue_carousel></vue_carousel>
+                {{--<div class="test">--}}
+                    {{--<div>--}}
+                        {{--<img style="width: 600px;height: 400px"--}}
+                             {{--src="http://pix2.agoda.net/hotelimages/agoda-homes/6584501/fa5afcc98691249611041402b4c32665.jpg?s=600x">--}}
+                    {{--</div>--}}
+                    {{--<div>--}}
+                        {{--<img style="width: 600px;height: 400px"--}}
+                             {{--src="http://pix6.agoda.net/hotelImages/603/60395/60395_16042612080041805392.jpg?s=600x">--}}
+                    {{--</div>--}}
+                    {{--<div>--}}
+                        {{--<img style="width: 600px;height: 400px"--}}
+                             {{--src="http://pix2.agoda.net/hotelimages/agoda-homes/6584501/fa5afcc98691249611041402b4c32665.jpg?s=600x">--}}
+                    {{--</div>--}}
+                    {{--<div>--}}
+                        {{--<img style="width: 600px;height: 400px"--}}
+                             {{--src="http://pix6.agoda.net/hotelImages/603/60395/60395_16042612080041805392.jpg?s=600x">--}}
+                    {{--</div>--}}
+                    {{--<div>--}}
+                        {{--<img style="width: 600px;height: 400px"--}}
+                             {{--src="http://pix2.agoda.net/hotelimages/agoda-homes/6584501/fa5afcc98691249611041402b4c32665.jpg?s=600x">--}}
+                    {{--</div>--}}
+                    {{--<div>--}}
+                        {{--<img style="width: 600px;height: 400px"--}}
+                             {{--src="http://pix6.agoda.net/hotelImages/603/60395/60395_16042612080041805392.jpg?s=600x">--}}
+                    {{--</div>--}}
+                    {{--<div>--}}
+                        {{--<img style="width: 600px;height: 400px"--}}
+                             {{--src="http://pix2.agoda.net/hotelimages/agoda-homes/6584501/fa5afcc98691249611041402b4c32665.jpg?s=600x">--}}
+                    {{--</div>--}}
+                    {{--<div>--}}
+                        {{--<img style="width: 600px;height: 400px"--}}
+                             {{--src="http://pix6.agoda.net/hotelImages/603/60395/60395_16042612080041805392.jpg?s=600x">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
         </div>
     </div>

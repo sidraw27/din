@@ -245,7 +245,7 @@
                         if (item.date !== '') {
                             const tmpDate = new Date(item.date);
                             item.str = item.date + "，週" + this.$parent.formatRDayToZhDay(tmpDate.getDay());
-                            item.mobileStr = tmpDate.getMonth() + "月" + tmpDate.getDate() + "日";
+                            item.mobileStr = (tmpDate.getMonth() + 1) + "月" + tmpDate.getDate() + "日";
                         }
                     });
 
