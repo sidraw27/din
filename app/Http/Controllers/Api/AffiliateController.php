@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exceptions\HotelException;
 use App\Exceptions\ProviderException;
 use App\Http\Controllers\Controller;
 use App\Services\AffiliateService;
@@ -54,8 +55,12 @@ class AffiliateController extends Controller
             $response['message'] = $e->getMessage();
 
             return response()->json($response, 404);
+        } catch (HotelException $e) {
+            $response['message'] = $e->getMessage();
+
+            return response()->json($response, 202);
         }
 
-        return response()->json($response, 202);
+        return response()->json($response, 200);
     }
 }

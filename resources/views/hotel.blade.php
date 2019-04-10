@@ -138,40 +138,6 @@
             </div>
             <div class="intro_gallery inrto_min">
                 <vue_carousel></vue_carousel>
-                {{--<div class="test">--}}
-                    {{--<div>--}}
-                        {{--<img style="width: 600px;height: 400px"--}}
-                             {{--src="http://pix2.agoda.net/hotelimages/agoda-homes/6584501/fa5afcc98691249611041402b4c32665.jpg?s=600x">--}}
-                    {{--</div>--}}
-                    {{--<div>--}}
-                        {{--<img style="width: 600px;height: 400px"--}}
-                             {{--src="http://pix6.agoda.net/hotelImages/603/60395/60395_16042612080041805392.jpg?s=600x">--}}
-                    {{--</div>--}}
-                    {{--<div>--}}
-                        {{--<img style="width: 600px;height: 400px"--}}
-                             {{--src="http://pix2.agoda.net/hotelimages/agoda-homes/6584501/fa5afcc98691249611041402b4c32665.jpg?s=600x">--}}
-                    {{--</div>--}}
-                    {{--<div>--}}
-                        {{--<img style="width: 600px;height: 400px"--}}
-                             {{--src="http://pix6.agoda.net/hotelImages/603/60395/60395_16042612080041805392.jpg?s=600x">--}}
-                    {{--</div>--}}
-                    {{--<div>--}}
-                        {{--<img style="width: 600px;height: 400px"--}}
-                             {{--src="http://pix2.agoda.net/hotelimages/agoda-homes/6584501/fa5afcc98691249611041402b4c32665.jpg?s=600x">--}}
-                    {{--</div>--}}
-                    {{--<div>--}}
-                        {{--<img style="width: 600px;height: 400px"--}}
-                             {{--src="http://pix6.agoda.net/hotelImages/603/60395/60395_16042612080041805392.jpg?s=600x">--}}
-                    {{--</div>--}}
-                    {{--<div>--}}
-                        {{--<img style="width: 600px;height: 400px"--}}
-                             {{--src="http://pix2.agoda.net/hotelimages/agoda-homes/6584501/fa5afcc98691249611041402b4c32665.jpg?s=600x">--}}
-                    {{--</div>--}}
-                    {{--<div>--}}
-                        {{--<img style="width: 600px;height: 400px"--}}
-                             {{--src="http://pix6.agoda.net/hotelImages/603/60395/60395_16042612080041805392.jpg?s=600x">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
             </div>
         </div>
     </div>
@@ -179,7 +145,7 @@
     <div class="gl_outer1200 gl_flex-row">
         <div class="hl_main-content">
 
-            <vue_real_time_price hotel-id="1"></vue_real_time_price>
+            <vue_real_time_price hotel-id="{{ $hotelView['id'] }}"></vue_real_time_price>
 
             <div class="hl_map-wrapper __anchor_position">
                 <div class="map_tit">
