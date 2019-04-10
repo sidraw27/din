@@ -186,11 +186,9 @@
                     <h3 class="title">位置</h3>
                 </div>
                 <div class="map_box">
-                    <div class="map-localtion">
-                        {{--<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14460.468282249692!2d121.5028641!3d25.0301008!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x978d80a93c0fb030!2z6LK06YO95aSn6aOv5bqX!5e0!3m2!1szh-TW!2stw!4v1552551355958"--}}
-                                {{--width="580" height="350" frameborder="0" style="border:0" allowfullscreen="">--}}
-                        {{--</iframe>--}}
-                    </div>
+                    @if ( ! empty($hotelView['geo']))
+                        <vue_map longitude="{{ $hotelView['geo']['lng'] }}" latitude="{{ $hotelView['geo']['lat'] }}"></vue_map>
+                    @endif
                     <div class="map-distance">
                         <div class="distance_scroll">
                             <div class="item-con">
@@ -323,7 +321,7 @@
                                 <ul class="list-con">
                                     @foreach($facilities as $facility)
                                         <li class="facility-item">
-                                            <img src="{{ asset('images/facility/room-icons-08.svg') }}" alt="">
+                                            <img src="{{ asset('images/facility/room-icons-08.svg') }}" alt="icon">
                                             <div class="name">
                                                 {{ $facility['name'] }}
                                             </div>

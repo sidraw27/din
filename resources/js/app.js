@@ -57,6 +57,7 @@ import vue_search_bar from "./components/search_bar";
 import vue_real_time_price from "./components/real_time_hotel_price";
 import vue_history_price from "./components/history_price";
 import vue_carousel from './components/carousel';
+import vue_map from './components/map';
 
 Vue.directive('click-outside', {
     bind: function (el, binding, vnode) {
@@ -78,7 +79,8 @@ new Vue({
         vue_search_bar,
         vue_real_time_price,
         vue_history_price,
-        vue_carousel
+        vue_carousel,
+        vue_map
     },
     methods: {
         createDateRange: function(beginDiffDay, endDiffDay) {

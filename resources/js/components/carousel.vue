@@ -1,5 +1,5 @@
 <template>
-    <carousel :data="data" indicator-trigger="hover" :autoplay="true" interval="2500"></carousel>
+    <carousel :data="data" indicator-trigger="hover" :autoplay="true" :interval="2500"></carousel>
 </template>
 
 <script>

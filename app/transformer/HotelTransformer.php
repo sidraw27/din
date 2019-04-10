@@ -14,6 +14,7 @@ class HotelTransformer
                 'translated' => $hotel['translated_name']
             ],
             'address'      => $hotel['location']['address'],
+            'geo'          => $hotel['location']['geo'],
             'countryName'  => $hotel['location']['belong']['country']['name']['tw'] ?? '未取得',
             'cityName'     => $hotel['location']['belong']['city']['name']['tw'] ?? '未取得',
             'introduction' => $hotel['introduction'],
