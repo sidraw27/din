@@ -1,4 +1,4 @@
-(function() {
+window.initDetectScrollElem = function () {
     const items = {
         'overview': {},
         'price': {},
@@ -10,9 +10,13 @@
         item.top = $('.__anchor_' + name).offset().top;
     });
 
+    const fixedClass = 'fixed';
     const hotelNavBar = $('.hotel_NavBar');
+    // 需先確認無固定後再取得高度
+    hotelNavBar.removeClass(fixedClass);
     const hotelNavBarOffsetTop = hotelNavBar.offset().top;
     const breadcrumb = $('.breadcrumb-outer');
+    breadcrumb.removeClass(fixedClass);
     const breadcrumbOffsetTop = breadcrumb.offset().top;
 
     $(window).scroll(function () {
@@ -31,11 +35,13 @@
         }
 
         if (window.isMobile()) {
-            fixedElem(breadcrumbOffsetTop, breadcrumb, 'fixed', 10);
+            fixedElem(breadcrumbOffsetTop, breadcrumb, fixedClass, 10);
         }
-        fixedElem(hotelNavBarOffsetTop, hotelNavBar, 'fixed', window.isMobile() ? 10 : 115);
+        fixedElem(hotelNavBarOffsetTop, hotelNavBar, fixedClass, window.isMobile() ? 10 : 115);
     });
-} ());
+
+    window.scrollTo(window.scrollX, window.scrollY - 1);
+};
 
 function fixedElem(topOffset, elem, className, t) {
     if ($(window).scrollTop() + t > topOffset) {
@@ -50,3 +56,7 @@ function fixedElem(topOffset, elem, className, t) {
         }
     }
 }
+
+(function() {
+    initDetectScrollElem()
+} ());

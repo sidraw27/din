@@ -239,6 +239,14 @@
             }
         },
         watch: {
+            price: {
+                handler: function () {
+                    if (typeof window.initDetectScrollElem === 'function') {
+                        window.initDetectScrollElem();
+                    }
+                },
+                immediate: true
+            },
             checkTime: {
                 handler: function (time) {
                     _.forEach(time, item => {
