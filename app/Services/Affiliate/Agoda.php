@@ -9,13 +9,13 @@ use Illuminate\Support\Arr;
 class Agoda extends AbstractAffiliate
 {
     /**
-     * @param int $hotelId
+     * @param int $providerHotelId
      * @param DateRange $dateRange
      * @param int $personNums
      * @return AgodaPrice
      * @throws \Exception
      */
-    public function getRealTimePrice(int $hotelId, DateRange $dateRange, int $personNums): AbstractAffiliatePrice
+    public function getRealTimePrice(int $providerHotelId, DateRange $dateRange, int $personNums): AbstractAffiliatePrice
     {
         $header = [
             'Authorization' => env('AGODA_SECRET'),
@@ -38,7 +38,7 @@ class Agoda extends AbstractAffiliate
                         'checkInDate'  => $dateRange->getStartDate(),
                         'checkOutDate' => $dateRange->getEndDate(),
                         'hotelId'      => [
-                            $hotelId
+                            $providerHotelId
                         ]
                     ]
                 ]

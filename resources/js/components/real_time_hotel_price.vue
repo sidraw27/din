@@ -121,7 +121,7 @@
                     <span>～</span>
                     <div class="price">NT$8,136</div>
                 </div>
-                <div class="text">(共<span>5</span>筆)</div>
+                <div class="text">(共<span>{{ totalInfo }}</span>筆)</div>
             </div>
             <div class="list_room-detail">
                 <div class="text">
@@ -192,7 +192,7 @@
 <script>
     export default {
         props: [
-            'hotelId'
+            'hotelUrlId'
         ],
         data: function () {
             const defaultDate = this.$parent.createDateRange(1, 3);
@@ -233,6 +233,9 @@
         computed: {
             checkHasInfo: function () {
                 return _.size(this.price) > 0;
+            },
+            totalInfo: function () {
+                return _.size(this.price);
             },
             numsOfPeople: function () {
                 return this.nums.pool[this.nums.currentIndex];
@@ -317,7 +320,7 @@
                 parameters = _.trimEnd(parameters, '&');
 
                 return window.$http.get(
-                    '/api/affiliate/price/' + this.hotelId + parameters
+                    '/api/affiliate/price/' + this.hotelUrlId + parameters
                 );
             },
             adjustNums: function (isPlus = true) {

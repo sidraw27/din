@@ -17,18 +17,18 @@ class AffiliateController extends Controller
         $this->affiliateService = $affiliateService;
     }
 
-    public function getPrice(int $hotelId)
+    public function getPrice(string $hotelUrlId)
     {
         $data = \Request::all();
-        $data = Arr::add($data, 'hotel-id', $hotelId);
+        $data = Arr::add($data, 'hotel-url-id', $hotelUrlId);
 
         $dateReg = '/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/';
 
         $validator = \Validator::make($data, [
-            'hotel-id'  => ['required', 'numeric'],
+            'hotel-url-id'  => ['required', 'string', 'size:6'],
             'check-in'  => ['required', "regex:{$dateReg}"],
             'check-out' => ['required', "regex:{$dateReg}"],
-            'provider'  => ['required'],
+            'provider'  => ['required', 'string'],
             'nums'      => ['required', 'numeric']
         ], [
             'required' => ':attribute was required',
@@ -46,7 +46,7 @@ class AffiliateController extends Controller
         try {
             $response['message'] = $this->affiliateService->getPriceByProvider(
                 $data['provider'],
-                $data['hotel-id'],
+                $data['hotel-url-id'],
                 $data['check-in'],
                 $data['check-out'],
                 $data['nums']
