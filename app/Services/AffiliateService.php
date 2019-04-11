@@ -45,6 +45,10 @@ class AffiliateService
         }
 
         $affiliateEntity = $this->hotelAffiliateRepo->getByHotelId($hotel->id);
+        if (is_null($affiliateEntity)) {
+            throw new HotelException(HotelException::AFFILIATE_NOT_FOUND);
+        }
+
         $providerId      = $affiliateEntity->getAttribute("{$provider}_hotel_id");
 
         try {
