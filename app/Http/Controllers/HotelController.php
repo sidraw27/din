@@ -26,4 +26,9 @@ class HotelController extends Controller
 
         return view('hotel', compact('hotelView'));
     }
+
+    public function list()
+    {
+        return view('list');
+    }
 }

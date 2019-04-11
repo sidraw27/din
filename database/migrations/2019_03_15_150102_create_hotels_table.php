@@ -26,6 +26,8 @@ class CreateHotelsTable extends Migration
             $table->decimal('latitude', 10, 8);
             $table->decimal('longitude', 11, 8);
 
+            $table->tinyInteger('star_rated')->nullable();
+
             $table->string('checkin')->nullable();
             $table->string('checkout')->nullable();
 
@@ -36,6 +38,8 @@ class CreateHotelsTable extends Migration
 
             $table->string('year_of_open')->nullable();
             $table->string('year_of_renovated')->nullable();
+
+            $table->json('photo')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

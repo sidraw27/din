@@ -49,6 +49,31 @@ class HotelService
             }
         }
 
+        $photos = [];
+        if ( ! is_null($hotel->photo)) {
+            $hotelPhotos = json_decode($hotel->photo);
+
+            foreach ($hotelPhotos as $photoUrl) {
+                $photoUrl = filter_var($photoUrl, FILTER_VALIDATE_URL);
+
+                if (is_bool($photoUrl) && ! $photoUrl) {
+                    continue;
+                }
+
+                $parseUrl = parse_url($photoUrl);
+                if ($parseUrl['scheme'] === 'http') {
+                    $parseUrl['scheme'] = 'https';
+                }
+                parse_str($parseUrl['query'], $query);
+                if (isset($query['s'])) {
+                    $query['s'] = '600x';
+                }
+                $query = http_build_query($query);
+                $photos[] = "{$parseUrl['scheme']}://{$parseUrl['host']}{$parseUrl['path']}?{$query}";
+            }
+        }
+        $hotel->setAttribute('photo', $photos);
+
         $location = [
             'address' => $hotel->address,
             'geo'     => $hotel->geo,

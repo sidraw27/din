@@ -15,12 +15,14 @@ class HotelTransformer
             ],
             'address'      => $hotel['location']['address'],
             'geo'          => $hotel['location']['geo'],
+            'starRated'    => $hotel['star_rated'],
             'countryName'  => $hotel['location']['belong']['country']['name']['tw'] ?? '未取得',
             'cityName'     => $hotel['location']['belong']['city']['name']['tw'] ?? '未取得',
             'introduction' => $hotel['introduction'],
             'supportFacilities' => $hotel['facility'],
             'info'   => $hotel['info'],
-            'rating' => $hotel['rating']
+            'rating' => $hotel['rating'],
+            'photos' => $hotel['photo']
         ];
     }
 }

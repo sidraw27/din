@@ -1,5 +1,9 @@
 @extends('layout.master')
 
+@push('head')
+    <link rel="stylesheet" href="{{ mix('css/hotel.css') }}">
+@endpush
+
 @section('content')
     <div class="breadcrumb-outer">
         <ul class="breadcrumb">
@@ -134,10 +138,16 @@
                     <div class="reviewMore">
                         (共有<span>52</span>則評論)
                     </div>
-                    <img src="{{ asset('images/arrow-right.svg') }}" alt=""></a>
+                    <img src="{{ asset('images/arrow-right.svg') }}" alt="">
+                </a>
             </div>
             <div class="intro_gallery inrto_min">
-                <vue_carousel></vue_carousel>
+                @empty($hotelView['photos'])
+                    目前沒有提供照片
+                @else
+                    <vue_carousel img-url="{{ json_encode($hotelView['photos']) }}"></vue_carousel>
+                @endempty
+
             </div>
         </div>
     </div>
@@ -372,8 +382,8 @@
                                 <div class="image"
                                      style="background-image: url('https://a0.muscache.com/im/pictures/47985619/11203a2d_original.jpg?aki_policy=xx_large')"></div>
                             </div>
-                            <div class="item-info"><a class="info-tit" href="#">紐約千禧希爾頓酒店(The Millennium Hilton New
-                                    York)</a>
+                            <div class="item-info">
+                                <a class="info-tit" href="#">紐約千禧希爾頓酒店(The Millennium Hilton New York)</a>
                                 <div class="info-rating">
                                 <span class="star">
                                     <img src="/images/star.svg" alt="">

@@ -20,13 +20,21 @@ class HotelSeeder extends AbstractSeeder
             'address'           => $twFaker->address,
             'latitude'          => $faker->randomFloat(null, 21, 25),
             'longitude'         => $faker->randomFloat(null, 120, 125),
+            'star_rated'        => $faker->numberBetween(1, 5),
             'checkin'           => Arr::random(['14:00', '12:00']),
             'checkout'          => Arr::random(['11:00', '10:00']),
             'introduction'      => $faker->realText(200),
             'total_room'        => $faker->numberBetween(10, 1000),
             'total_floor'       => $faker->numberBetween(2, 12),
             'year_of_open'      => $faker->year(),
-            'year_of_renovated' => $faker->year()
+            'year_of_renovated' => $faker->year(),
+            'photo'             => $faker->boolean ? json_encode([
+                'http://pix5.agoda.net/hotelimages/656/6567220/6567220_19020515050072011620.jpg?s=312x',
+                'http://pix2.agoda.net/hotelimages/656/6567220/6567220_19020415350071994970.jpg?s=312x',
+                'http://pix5.agoda.net/hotelimages/656/6567220/6567220_19020515050072011612.jpg?s=312x',
+                'http://pix5.agoda.net/hotelimages/656/6567220/6567220_19020515050072011613.jpg?s=312x',
+                'http://pix4.agoda.net/hotelimages/656/6567220/6567220_19020515050072011614.jpg?s=312x,'
+            ]) : null
         ];
     }
 
