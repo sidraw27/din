@@ -26,7 +26,8 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/sw.js', 'public');
 
 mix.sass('resources/sass/app.scss', 'public/css')
-    .sass('resources/sass/hotel.sass', 'public/css');
+    .sass('resources/sass/hotel.sass', 'public/css')
+    .sass('resources/sass/list-page.sass', 'public/css/list.css');
 
 mix.version();
 

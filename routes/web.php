@@ -15,6 +15,11 @@ Route::get('/', function() {
     var_dump(\Auth::check());
 })->name('index');
 
+Route::get('hotel', [
+    'uses' => 'HotelController@list',
+    'as'   => 'list'
+]);
+
 Route::get('hotel/{id}', [
     'uses' => 'HotelController@index',
     'as'   => 'hotel'

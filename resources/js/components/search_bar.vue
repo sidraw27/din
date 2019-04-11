@@ -3,7 +3,7 @@
         <div class="searchBox_wrapper">
             <div class="search-input IconBox">
                 <img src="/images/search.svg" alt="">
-                <input type="search" name="query" placeholder="搜尋你要找的飯店">
+                <input name="query" placeholder="搜尋你要找的飯店">
             </div>
 
             <div class="check-in IconBox" @click="openDate()" id="search_bar-datepicker-target">
