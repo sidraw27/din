@@ -281,28 +281,32 @@
             renewal: function () {
                 this.isLoading = true;
                 this.price = {};
+
                 const provider = [
                     'agoda',
                     'booking'
                 ];
 
-                setTimeout(() => {
-                    _.forEach(provider, value => {
-                        const promise = this.getPrice(value);
+                let promises = [];
 
-                        promise.then(
-                            response => {
-                                let data = response.data.message;
-                                data.imgUrl = '/images/' + data.provider + '-logo.svg';
-                                this.$set(this.price, value, response.data.message);
-                                if (this.isLoading) this.isLoading = false;
-                            }
-                        ).catch(
-                            () => {
-                                if (this.isLoading) this.isLoading = false;
-                            }
-                        );
+                setTimeout(() => {
+                    promises = provider.map(value => {
+                        return this.getPrice(value);
                     });
+
+                    Promise.all(promises)
+                        .then(responses => {
+                            _.forEach(responses, response => {
+                                const data = response.data.message;
+                                data.imgUrl = '/images/' + data.provider + '-logo.svg';
+                                this.$set(this.price, data.provider, response.data.message);
+                            });
+
+                            if (this.isLoading) this.isLoading = false;
+                        })
+                        .catch(() => {
+                            if (this.isLoading) this.isLoading = false;
+                        });
                 }, 1000)
             },
             getPrice: function (provider) {
@@ -321,7 +325,9 @@
 
                 return window.$http.get(
                     '/api/affiliate/price/' + this.hotelUrlId + parameters
-                );
+                ).catch(error => {
+                    return error;
+                });
             },
             adjustNums: function (isPlus = true) {
                 if (isPlus) {
