@@ -49,6 +49,10 @@ class Rating
         $totalScore = 0;
         $totalNums  = 0;
 
+        if (is_null($entity)) {
+            return [];
+        }
+
         foreach ($mapping as $type => $item) {
             if (is_null($entity->getAttribute($type))) {
                 continue;

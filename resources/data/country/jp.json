@@ -4,335 +4,382 @@
   "en": "Japan",
   "code": "JP",
   "type": "country",
-  "cities": [
+  "districts": [
     {
       "origin": "Hokkaidô",
       "tw": "北海道",
       "en": "Hokkaido",
       "code": "JP-01",
-      "type": "city"
+      "type": "district",
+      "level":1
     },
     {
       "origin": "Aomori",
       "tw": "青森縣",
       "en": "",
       "code": "JP-02",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Iwate",
       "tw": "岩手縣",
       "en": "",
       "code": "JP-03",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Miyagi",
       "tw": "宮城縣",
       "en": "",
       "code": "JP-04",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Akita",
       "tw": "秋田縣",
       "en": "",
       "code": "JP-05",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Yamagata",
       "tw": "山形縣",
       "en": "",
       "code": "JP-06",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Hukusima",
       "tw": "福島縣",
       "en": "Fukushima",
       "code": "JP-07",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Ibaraki",
       "tw": "茨城縣",
       "en": "",
       "code": "JP-08",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Totigi",
       "tw": "栃木縣",
       "en": "Tochigi",
       "code": "JP-09",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Gunma",
       "tw": "群馬縣",
       "en": "",
       "code": "JP-10",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Saitama",
       "tw": "埼玉縣",
       "en": "",
       "code": "JP-11",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Tiba",
       "tw": "千葉縣",
       "en": "Chiba",
       "code": "JP-12",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Tôkyô",
       "tw": "東京都",
       "en": "Tokyo",
       "code": "JP-13",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Kanagawa",
       "tw": "神奈川縣",
       "en": "",
       "code": "JP-14",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Niigata",
       "tw": "新潟縣",
       "en": "",
       "code": "JP-15",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Toyama",
       "tw": "富山縣",
       "en": "",
       "code": "JP-16",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Isikawa",
       "tw": "石川縣",
       "en": "Ishikawa",
       "code": "JP-17",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Hukui",
       "tw": "福井縣",
       "en": "Fukui",
       "code": "JP-18",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Yamanasi",
       "tw": "山梨縣",
       "en": "Yamanashi",
       "code": "JP-19",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Nagano",
       "tw": "長野縣",
       "en": "",
       "code": "JP-20",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Gihu",
       "tw": "岐阜縣",
       "en": "Gifu",
       "code": "JP-21",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Sizuoka",
       "tw": "靜岡縣",
       "en": "Shizuoka",
       "code": "JP-22",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Aiti",
       "tw": "愛知縣",
       "en": "Aichi",
       "code": "JP-23",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Mie",
       "tw": "三重縣",
       "en": "",
       "code": "JP-24",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Siga",
       "tw": "滋賀縣",
       "en": "Shiga",
       "code": "JP-25",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Kyôto",
       "tw": "京都府",
       "en": "Kyoto",
       "code": "JP-26",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Ôsaka",
       "tw": "大阪府",
       "en": "Osaka",
       "code": "JP-27",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Hyôgo",
       "tw": "兵庫縣",
       "en": "Hyogo",
       "code": "JP-28",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Nara",
       "tw": "奈良縣",
       "en": "",
       "code": "JP-29",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Wakayama",
       "tw": "和歌山縣",
       "en": "",
       "code": "JP-30",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Tottori",
       "tw": "鳥取縣",
       "en": "",
       "code": "JP-31",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Simane",
       "tw": "島根縣",
       "en": "Shimane",
       "code": "JP-32",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Okayama",
       "tw": "岡山縣",
       "en": "",
       "code": "JP-33",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Hirosima",
       "tw": "廣島縣",
       "en": "Hiroshima",
       "code": "JP-34",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Yamaguti",
       "tw": "山口縣",
       "en": "Yamaguchi",
       "code": "JP-35",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Tokusima",
       "tw": "德島縣",
       "en": "Tokushima",
       "code": "JP-36",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Kagawa",
       "tw": "香川縣",
       "en": "",
       "code": "JP-37",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Ehime",
       "tw": "愛媛縣",
       "en": "",
       "code": "JP-38",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Kôti",
       "tw": "高知縣",
       "en": "Kochi",
       "code": "JP-39",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Hukuoka",
       "tw": "福岡縣",
       "en": "Fukuoka",
       "code": "JP-40",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Saga",
       "tw": "佐賀縣",
       "en": "",
       "code": "JP-41",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Nagasaki",
       "tw": "長崎縣",
       "en": "",
       "code": "JP-42",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Kumamoto",
       "tw": "熊本縣",
       "en": "",
       "code": "JP-43",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Ôita",
       "tw": "大分縣",
       "en": "Oita",
       "code": "JP-44",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Miyazaki",
       "tw": "宮崎縣",
       "en": "",
       "code": "JP-45",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Kagosima",
       "tw": "鹿兒島縣",
       "en": "Kagoshima",
       "code": "JP-46",
-      "type": "city"
+      "type": "district",
+      "level": 1
     },
     {
       "origin": "Okinawa",
       "tw": "沖繩縣",
       "en": "",
       "code": "JP-47",
-      "type": "city"
+      "type": "district",
+      "level": 1
     }
   ]
 }

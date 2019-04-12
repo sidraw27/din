@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCitiesTable extends Migration
+class CreateDistrictsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateCitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('districts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('country_id');
 
@@ -20,6 +20,7 @@ class CreateCitiesTable extends Migration
             $table->string('en_name')->nullable();
             $table->string('tw_name')->nullable();
             $table->string('code');
+            $table->unsignedTinyInteger('level');
 
             $table->softDeletes();
             // index
@@ -35,6 +36,6 @@ class CreateCitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('districts');
     }
 }

@@ -2,18 +2,18 @@
 
 namespace App\Repositories;
 
-use App\Entities\City;
+use App\Entities\District;
 
-class CityRepository extends AbstractRepository
+class DistrictRepository extends AbstractRepository
 {
     /**
-     * CityRepository constructor.
-     * @param City | \Illuminate\Database\Eloquent\Builder $entity
+     * DistrictRepository constructor.
+     * @param District | \Illuminate\Database\Eloquent\Builder $entity
      */
-    public function __construct(City $entity)
+    public function __construct(District $entity)
     {
         $this->entity = $entity;
-        $this->setPrefix('City:');
+        $this->setPrefix('District:');
     }
 
     public function getWithCountry(int $id, array $columns = ['*'], $relationColumns = ['*'])

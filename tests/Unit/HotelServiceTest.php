@@ -71,18 +71,10 @@ class HotelServiceTest extends TestCase
             ->once()
             ->andReturn($entity);
 
-        $this->locationMock->shouldReceive('getCityInfo')
+        $this->locationMock->shouldReceive('getLocationInfo')
             ->once()
             ->andReturn([
                 'country' => [
-                    'id' => 1,
-                    'name' => [
-                        'origin' => '',
-                        'en' => '',
-                        'tw' => '',
-                    ]
-                ],
-                'city' => [
                     'id' => 1,
                     'name' => [
                         'origin' => '',

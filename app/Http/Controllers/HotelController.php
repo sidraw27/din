@@ -29,6 +29,35 @@ class HotelController extends Controller
 
     public function list()
     {
-        return view('list');
+        $validator = $this->validateHotelParameter();
+
+        if ($validator->fails()) {
+            $response['message'] = implode(',', $validator->messages()->all());
+
+            return response()->json($response, 422);
+        }
+
+        $searchData = $validator->getData();
+
+        return view('list', compact('searchData'));
+    }
+
+    private function validateHotelParameter()
+    {
+        $searchData = \Request::all([
+            'search', 'check-in', 'check-out', 'adult'
+        ]);
+
+        $dateReg = '/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/';
+
+        return \Validator::make($searchData, [
+            'search'    => ['required', 'string'],
+            'check-in'  => ['required', "regex:{$dateReg}"],
+            'check-out' => ['required', "regex:{$dateReg}"],
+            'adult'     => ['required', 'numeric']
+        ], [
+            'required' => ':attribute was required',
+            'regex'    => 'Invalid request format: :attribute'
+        ]);
     }
 }

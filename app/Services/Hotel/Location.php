@@ -2,37 +2,26 @@
 
 namespace App\Services\Hotel;
 
-use App\Repositories\CityRepository;
 use App\Repositories\CountryRepository;
 use Illuminate\Support\Arr;
 
 class Location
 {
     private $countryRepo;
-    private $cityRepo;
 
-    public function __construct(CountryRepository $countryRepo, CityRepository $cityRepo)
+    public function __construct(CountryRepository $countryRepo)
     {
         $this->countryRepo = $countryRepo;
-        $this->cityRepo    = $cityRepo;
     }
 
-    public function getCityInfo(string $cityId)
+    public function getLocationInfo(string $countryId)
     {
         $columns = ['id', 'origin_name', 'en_name', 'tw_name'];
 
-        $data = $this->cityRepo->getWithCountry($cityId, Arr::prepend($columns, 'country_id'), $columns);
+        $data = $this->countryRepo->getById($countryId, $columns);
 
         $result = [
             'country' => [
-                'id' => $data->country->id,
-                'name' => [
-                    'origin' => $data->country->origin_name,
-                    'en' => $data->country->en_name,
-                    'tw' => $data->country->tw_name,
-                ]
-            ],
-            'city' => [
                 'id' => $data->id,
                 'name' => [
                     'origin' => $data->origin_name,

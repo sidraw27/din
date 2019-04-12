@@ -4,7 +4,7 @@ namespace App\Jobs\Init;
 
 use Illuminate\Database\Seeder;
 
-class CityInit extends Seeder
+class CountryInit extends Seeder
 {
     public function run()
     {
@@ -37,15 +37,16 @@ class CityInit extends Seeder
             ]);
 
             /** @var \Illuminate\Database\Eloquent\Builder $entity */
-            $entity = \App::make(\App\Entities\City::class);
+            $entity = \App::make(\App\Entities\District::class);
 
-            foreach ($data['cities'] as $city) {
+            foreach ($data['districts'] as $district) {
                 $entity->create([
                     'country_id'  => $countryId,
-                    'origin_name' => $this->formatString($city['origin']),
-                    'en_name'     => $this->formatString($city['en']),
-                    'tw_name'     => $this->formatString($city['tw']),
-                    'code'        => $city['code']
+                    'origin_name' => $this->formatString($district['origin']),
+                    'en_name'     => $this->formatString($district['en']),
+                    'tw_name'     => $this->formatString($district['tw']),
+                    'code'        => $district['code'],
+                    'level'       => 1
                 ]);
             }
         }

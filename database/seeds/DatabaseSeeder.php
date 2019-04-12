@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
             $this->command->call('migrate:fresh');
             $this->command->line('fresh done');
 
-            $this->call(\App\Jobs\Init\CityInit::class);
+            $this->call(\App\Jobs\Init\CountryInit::class);
 
             $this->call(HotelSeeder::class);
             $this->call(FacilitiesSeeder::class);

@@ -39,8 +39,7 @@ class HotelService
         $checkIsNull = [
             'name',
             'url_id',
-            'country_id',
-            'city_id'
+            'country_id'
         ];
 
         foreach ($checkIsNull as $item) {
@@ -77,7 +76,7 @@ class HotelService
         $location = [
             'address' => $hotel->address,
             'geo'     => $hotel->geo,
-            'belong'  => $this->location->getCityInfo($hotel->getAttribute('city_id'))
+            'belong'  => $this->location->getLocationInfo($hotel->getAttribute('country_id'))
         ];
         $hotel->setAttribute('location', $location);
 

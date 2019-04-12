@@ -17,6 +17,7 @@ class CreateHotelsTable extends Migration
             $table->string('url_id')->unique();
 
             $table->unsignedSmallInteger('country_id');
+            $table->unsignedSmallInteger('district_id')->nullable();
             $table->unsignedSmallInteger('city_id')->nullable();
 
             $table->string('name');

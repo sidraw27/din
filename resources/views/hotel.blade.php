@@ -17,11 +17,11 @@
                     {{ $hotelView['countryName'] }}
                 </a>
             </li>
-            <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="#">
-                    {{ $hotelView['cityName'] }}
-                </a>
-            </li>
+            {{--<li class="breadcrumb-item">--}}
+                {{--<a class="breadcrumb-link" href="#">--}}
+                    {{--{{ $hotelView['cityName'] }}--}}
+                {{--</a>--}}
+            {{--</li>--}}
             <li class="breadcrumb-item">
                 <span>{{ $hotelView['name']['origin'] }} ({{ $hotelView['name']['translated'] }})</span>
             </li>
@@ -77,7 +77,7 @@
                         <img src="{{ asset('images/add.svg') }}" alt="">
                     </div>
                     <div class="address">
-                        {{ $hotelView['countryName'] }} {{ $hotelView['cityName'] }}
+                        {{ $hotelView['countryName'] }}
                         {{ $hotelView['address'] ?? '地址未取得' }}
                     </div>
                     <a class="add-map" onclick="scrollToAnchor('position')">
@@ -230,7 +230,11 @@
                     <div class="score-box_total">
                         <div class="total-score">
                             <div class="score-number">
-                                {{ $hotelView['rating']['statistics']['avg'] }}
+                                @isset($hotelView['rating']['statistics'])
+                                    {{ $hotelView['rating']['statistics']['avg'] }}
+                                @else
+                                    0
+                                @endisset
                             </div>
                             <div class="score-ten">/10</div>
                         </div>
@@ -238,21 +242,23 @@
                         <div class="review-basedon">(共有<span>52</span>則評論)</div>
                     </div>
                     <div class="score-box_intro">
-                        @foreach($hotelView['rating']['detail']['agoda'] as $rating)
-                            <div class="review-standard_item">
-                                <div class="review-grade_wrap">
-                                    <div class="category">
-                                        {{ $rating['description'] }}
+                        @isset($hotelView['rating']['detail'])
+                            @foreach($hotelView['rating']['detail']['agoda'] as $rating)
+                                <div class="review-standard_item">
+                                    <div class="review-grade_wrap">
+                                        <div class="category">
+                                            {{ $rating['description'] }}
+                                        </div>
+                                        <div class="score">
+                                            {{ round($rating['score'] / 10, 1) }}
+                                        </div>
                                     </div>
-                                    <div class="score">
-                                        {{ round($rating['score'] / 10, 1) }}
+                                    <div class="review-grade_progressBar">
+                                        <div class="percent" style="width: {{ $rating['score'] }}%"></div>
                                     </div>
                                 </div>
-                                <div class="review-grade_progressBar">
-                                    <div class="percent" style="width: {{ $rating['score'] }}%"></div>
-                                </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        @endisset
                     </div>
                 </div>
                 <div class="review_resource">
