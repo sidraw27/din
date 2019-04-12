@@ -99,4 +99,53 @@ class HotelService
 
         return $hotel->toArray();
     }
+
+    /**
+     * @param array $parameter
+     * @return array
+     */
+    public function formatHotelParameter(array $parameter)
+    {
+        $result  = [
+            'target'   => '',
+            'checkIn'  => date('Y-m-d', strtotime('+ 10 day')),
+            'checkOut' => date('Y-m-d', strtotime('+ 13 day')),
+            'adult'    => 2,
+        ];
+
+        $dateReg = '/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/';
+
+        foreach ($result as $key => &$defaultValue) {
+            if ( ! isset($parameter[$key]) || is_null($parameter[$key])) {
+                continue;
+            }
+            $value = $parameter[$key];
+
+            switch ($key) {
+                case 'target':
+                    break;
+                case 'checkIn':
+                    if ( ! preg_match($dateReg, $value)) {
+                        continue 2;
+                    }
+                    break;
+                case 'checkOut':
+                    if ( ! preg_match($dateReg, $value)) {
+                        continue 2;
+                    }
+                    break;
+                case 'adult':
+                    if ( ! is_numeric($value) || ($value > 8 && $value < 1)) {
+                        continue 2;
+                    }
+
+                    $result['adult'] = $value;
+                    break;
+            }
+
+            $defaultValue = $value;
+        }
+
+        return $result;
+    }
 }

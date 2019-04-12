@@ -48,18 +48,11 @@
                     </h1>
 
                     <div class="rating-wrap">
-                        <span class="star">
-                            <img src="{{ asset('images/star.svg') }}" alt="">
-                        </span>
-                        <span class="star">
-                            <img src="{{ asset('images/star.svg') }}" alt="">
-                        </span>
-                        <span class="star">
-                            <img src="{{ asset('images/star.svg') }}" alt="">
-                        </span>
-                        <span class="star">
-                            <img src="{{ asset('images/star.svg') }}" alt="">
-                        </span>
+                        @for($i = 0; $i <= $hotelView['starRated']; $i++)
+                            <span class="star">
+                                <img src="{{ asset('images/star.svg') }}" alt="star-rated">
+                            </span>
+                        @endfor
                     </div>
                 </div>
 

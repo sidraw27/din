@@ -120,4 +120,22 @@ class HotelServiceTest extends TestCase
         $this->assertArrayHasKey('lat', $location['geo']);
         $this->assertArrayHasKey('lng', $location['geo']);
     }
+    /**
+     * @covers \App\Services\HotelService::formatHotelParameter
+     */
+    public function testFormatHotelParameter()
+    {
+        $actual = $this->target->formatHotelParameter([
+            'checkIn'  => 'test',
+            'adult'    => 1000000000,
+            'testFail' => 'sds'
+        ]);
+
+        $this->assertIsArray($actual);
+        $this->assertIsString($actual['target']);
+        $this->assertIsInt($actual['adult']);
+        $this->assertRegExp('/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/', $actual['checkIn']);
+        $this->assertRegExp('/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/', $actual['checkOut']);
+    }
+
 }

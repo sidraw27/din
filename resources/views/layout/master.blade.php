@@ -3,6 +3,7 @@
 
 <head>
     <title>dinroom</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
@@ -39,7 +40,13 @@
             </div>
         </div>
 
-        <vue_search_bar></vue_search_bar>
+        <vue_search_bar action="{{ route('list') }}"
+                        target="{{ $searchData['target'] }}"
+                        check-in="{{ $searchData['checkIn'] }}"
+                        check-out="{{ $searchData['checkOut'] }}"
+                        adult="{{ $searchData['adult'] }}"
+        >
+        </vue_search_bar>
 
         @yield('content')
 
