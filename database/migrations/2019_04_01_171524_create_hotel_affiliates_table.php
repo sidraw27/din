@@ -13,11 +13,15 @@ class CreateHotelAffiliatesTable extends Migration
     public function up()
     {
         Schema::create('hotel_affiliates', function (Blueprint $table) {
-            $table->unsignedBigInteger('hotel_id')->primary();
+            $table->unsignedBigInteger('hotel_id');
 
-            $table->unsignedBigInteger('agoda_hotel_id')->nullable()->unique();
-            $table->unsignedBigInteger('booking_hotel_id')->nullable()->unique();
+            $table->unsignedBigInteger('agoda_hotel_id')->unique();
             // index
+            $table->primary([
+                'hotel_id',
+                'agoda_hotel_id'
+            ], 'hotel_affiliates_primary_key');
+
             $table->foreign('hotel_id')->references('id')->on('hotels');
         });
     }
