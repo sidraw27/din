@@ -25,7 +25,7 @@ window.initDetectScrollElem = function () {
         _.forOwn(items, function (item, name) {
             const targetItem = $('.__item_' + name);
             targetItem.removeClass('current');
-            if ($(window).scrollTop() > item.top - 190) {
+            if ($(window).scrollTop() > item.top - 240) {
                 lastScrollToItem = targetItem;
             }
         });
