@@ -21,123 +21,58 @@
             </div>
         </div>
         <ul class="hotel-list_wrapper">
-            <li class="hotel-item hot-item">
-                <div class="item-link" style="cursor: pointer" onclick="location.href=''">
-                    <div class="hotel-info">
-                        <div class="hotel-img" style="background-image: url('https://a0.muscache.com/im/pictures/47985619/11203a2d_original.jpg?aki_policy=xx_large')"></div>
-                        <div class="info_container">
-                            <h3 class="con_tit">
-                                <a>
-                                    台北貴都大飯店 Taipei Crystal Hotel
-                                </a>
-                            </h3>
-                            <div class="con_rating">
-                               <span class="star">
-                                    <img src="/images/star.svg" alt="">
-                                </span>
-                            </div>
-                            <div class="con_distance">距離市中心 <span>3.1 公里</span></div>
-                            <div class="con_average-price">
-                                <div class="price">NT<span>$2,345</span></div>
-                                <div class="text">~</div>
-                                <div class="price">NT$<span>2,345</span></div>
-                            </div>
-                            <div class="con_review">
-                                <div class="review-num">8.1</div>
-                                <div class="review-text">很讚</div>
-                                <div class="review-count">
-                                    (<span>1245</span>則評論)
+            @empty($list)
+                未找到相關房源，請調整字詞後再次搜尋。
+            @endempty
+            @foreach($list as $item)
+                <li class="hotel-item hot-item">
+                    <div class="item-link" style="cursor: pointer" onclick="location.href='{{ route('hotel', ['url_id' => $item->url_id]) }}'">
+                        <div class="hotel-info">
+                            <div class="hotel-img" style="background-image: url('')"></div>
+                            <div class="info_container">
+                                <h3 class="con_tit">
+                                    <a href="{{ route('hotel', ['url_id' => $item->url_id]) }}">
+                                        {{ $item->translated_name }}({{ $item->name }})
+                                    </a>
+                                </h3>
+                                <div class="con_rating">
+                                   <span class="star">
+                                        <img src="/images/star.svg" alt="">
+                                    </span>
+                                </div>
+                                <div class="con_distance">
+                                    {{ $item->address }}
+                                </div>
+                                <div class="con_average-price">
+                                    <div class="price">NT<span>$2,345</span></div>
+                                    <div class="text">~</div>
+                                    <div class="price">NT$<span>2,345</span></div>
+                                </div>
+                                <div class="con_review">
+                                    <div class="review-num">8.1</div>
+                                    <div class="review-text">很讚</div>
+                                    <div class="review-count">
+                                        (<span>1245</span>則評論)
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="info_price">
-                        <div class="price_con">
-                            <div class="con-top">
-                                <span>4</span>
-                                個價格，最低
-                            </div>
-                            <div class="con-midden">NT$<span>2,345 </span></div>
-                            <div class="con-bottom"><span>Agoda.com</span></div>
-                        </div>
-                        <button class="price_btn">立即訂房</button>
-                    </div>
-                </div>
-            </li>
-            <li class="hotel-item"><a class="item-link" href="#">
-                    <div class="hotel-info">
-                        <div class="hotel-img"
-                             style="background-image: url('https://dimg04.c-ctrip.com/images/22070v000000k6xek7609_R_1136_750_R5_D.jpg')"></div>
-                        <div class="info_container">
-                            <h3 class="con_tit">台北貴都大飯店 Taipei Crystal Hotel</h3>
-                            <div class="con_rating"><span class="star"><img src="/images/star.svg" alt=""></span><span
-                                        class="star"><img src="/images/star.svg" alt=""></span><span class="star"><img
-                                            src="/images/star.svg" alt=""></span><span class="star"><img
-                                            src="/images/star.svg" alt=""></span></div>
-                            <div class="con_distance">台灣 <span>台北</span></div>
-                            <div class="con_average-price">
-                                <div class="price">NT<span>$2,345</span></div>
-                                <div class="text">~</div>
-                                <div class="price">NT$<span>2,345</span></div>
-                            </div>
-                            <div class="con_review">
-                                <div class="review-num">8.1</div>
-                                <div class="review-text">很讚</div>
-                                <div class="review-count">
-                                    (<span>1245</span>則評論)
+                        <div class="info_price">
+                            <div class="price_con">
+                                <div class="con-top">
+                                    <span>4</span>
+                                    個價格，最低
                                 </div>
+                                <div class="con-midden">NT$<span>2,345 </span></div>
+                                <div class="con-bottom"><span>Agoda.com</span></div>
                             </div>
+                            <button class="price_btn">
+                                前往訂房
+                            </button>
                         </div>
                     </div>
-                    <div class="info_price">
-                        <div class="price_con">
-                            <div class="con-top">
-                                <span>4</span>
-                                個價格，最低
-                            </div>
-                            <div class="con-midden">NT$<span>2,345 </span></div>
-                            <div class="con-bottom"><span>Agoda.com</span></div>
-                        </div>
-                        <button class="price_btn">立即訂房</button>
-                    </div>
-                </a></li>
-            <li class="hotel-item"><a class="item-link" href="#">
-                    <div class="hotel-info">
-                        <div class="hotel-img"
-                             style="background-image: url('https://dimg04.c-ctrip.com/images/200110000000qaysw9880_R_1136_750_R5_D.jpg')"></div>
-                        <div class="info_container">
-                            <h3 class="con_tit">台北貴都大飯店 Taipei Crystal Hotel</h3>
-                            <div class="con_rating"><span class="star"><img src="/images/star.svg" alt=""></span><span
-                                        class="star"><img src="/images/star.svg" alt=""></span><span class="star"><img
-                                            src="/images/star.svg" alt=""></span><span class="star"><img
-                                            src="/images/star.svg" alt=""></span></div>
-                            <div class="con_distance">台灣 <span>台北</span></div>
-                            <div class="con_average-price">
-                                <div class="price">NT<span>$2,345</span></div>
-                                <div class="text">~</div>
-                                <div class="price">NT$<span>2,345</span></div>
-                            </div>
-                            <div class="con_review">
-                                <div class="review-num">8.1</div>
-                                <div class="review-text">很讚</div>
-                                <div class="review-count">
-                                    (<span>1245</span>則評論)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="info_price">
-                        <div class="price_con">
-                            <div class="con-top">
-                                <span>4</span>
-                                個價格，最低
-                            </div>
-                            <div class="con-midden">NT$<span>2,345 </span></div>
-                            <div class="con-bottom"><span>Agoda.com</span></div>
-                        </div>
-                        <button class="price_btn">立即訂房</button>
-                    </div>
-                </a></li>
+                </li>
+            @endforeach
         </ul>
         <div class="none-hotel_wrapper" style="display: none;"><img src="/images/bed-img.svg" alt="">
             <div class="none-hotel">

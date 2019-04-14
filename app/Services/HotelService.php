@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Elasticsearch\HotelEs;
 use App\Exceptions\HotelException;
 use App\Repositories\HotelRepository;
 use App\Services\Hotel\Facility;
@@ -10,13 +11,20 @@ use App\Services\Hotel\Rating;
 
 class HotelService
 {
+    private $hotelEs;
     private $hotelRepo;
     private $location;
     private $facility;
     private $rating;
 
-    public function __construct(HotelRepository $hotelRepo, Location $location, Facility $facility, Rating $rating)
-    {
+    public function __construct(
+        HotelEs $hotelEs,
+        HotelRepository $hotelRepo,
+        Location $location,
+        Facility $facility,
+        Rating $rating
+    ) {
+        $this->hotelEs   = $hotelEs;
         $this->hotelRepo = $hotelRepo;
         $this->location  = $location;
         $this->facility  = $facility;
@@ -24,13 +32,19 @@ class HotelService
     }
 
     /**
-     * @param string $urlId
+     * @param $id
      * @return array
      * @throws HotelException
      */
-    public function getHotel(string $urlId): array
+    public function getHotel($id): array
     {
-        $hotel = $this->hotelRepo->getByUrlId($urlId);
+        $hotel = null;
+
+        if (is_string($id) && strlen($id) === 6) {
+            $hotel = $this->hotelRepo->getByUrlId($id);
+        } else if (is_numeric($id)) {
+            $hotel = $this->hotelRepo->getById($id);
+        }
 
         if (is_null($hotel)) {
             throw new HotelException(HotelException::NOT_FOUND);
@@ -67,7 +81,7 @@ class HotelService
                 if (isset($query['s'])) {
                     $query['s'] = '600x';
                 }
-                $query = http_build_query($query);
+                $query    = http_build_query($query);
                 $photos[] = "{$parseUrl['scheme']}://{$parseUrl['host']}{$parseUrl['path']}?{$query}";
             }
         }
@@ -101,12 +115,44 @@ class HotelService
     }
 
     /**
+     * @param string $target
+     * @param int $page
+     * @return \Illuminate\Database\Eloquent\Collection
+     * @throws HotelException
+     */
+    public function getList(string $target, int $page = 1)
+    {
+        $esResult = $this->hotelEs->searchList($target, $page, 10);
+
+        if ($esResult['total'] === 0) {
+            throw new HotelException(HotelException::LIST_EMPTY);
+        }
+
+        $hotelIds = [];
+
+        foreach ($esResult['hits'] as $item) {
+            $hotelIds[] = $item['_id'];
+        }
+
+        $columns = [
+            'url_id',
+            'name',
+            'translated_name',
+            'address'
+        ];
+
+        $hotels = $this->hotelRepo->getByIds($hotelIds, $columns);
+
+        return $hotels;
+    }
+
+    /**
      * @param array $parameter
      * @return array
      */
     public function formatHotelParameter(array $parameter)
     {
-        $result  = [
+        $result = [
             'target'   => '',
             'checkIn'  => date('Y-m-d', strtotime('+ 10 day')),
             'checkOut' => date('Y-m-d', strtotime('+ 13 day')),

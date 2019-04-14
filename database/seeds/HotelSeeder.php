@@ -47,7 +47,9 @@ class HotelSeeder extends AbstractSeeder
         for ($i = 1; $i <= self::$hotelNums; $i++) {
             $country = Arr::random($countries, 1);
 
-            $entity->create(self::getSeeder($country[0]));
+            $id = $entity->insertGetId(self::getSeeder($country[0]));
+
+            \App\Jobs\IndexHotelToEs::dispatch($id);
         }
     }
 }

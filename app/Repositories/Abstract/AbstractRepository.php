@@ -23,10 +23,21 @@ abstract class AbstractRepository
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
      * @throws ModelNotFoundException
      */
-    public function getById(int $id, array $columns)
+    public function getById(int $id, array $columns = ['*'])
     {
         if (is_null($result = $this->entity->find($id, $columns))) {
             throw new ModelNotFoundException("Not Found");
+        }
+
+        return $result;
+    }
+
+    public function getByIds(array $ids, array $columns = ['*'])
+    {
+        $result = $this->entity->findMany($ids, $columns);
+
+        if ($result->isEmpty()) {
+            throw new ModelNotFoundException('Not Found');
         }
 
         return $result;

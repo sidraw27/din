@@ -35,6 +35,12 @@ class HotelController extends Controller
     {
         $searchData = $this->hotelService->formatHotelParameter(\Request::all());
 
-        return view('list', compact('searchData'));
+        try {
+            $list = $this->hotelService->getList($searchData['target'], \Request::get('page', 1));
+        } catch (HotelException $e) {
+            $list = [];
+        }
+
+        return view('list', compact('searchData', 'list'));
     }
 }
