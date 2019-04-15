@@ -42,7 +42,7 @@
                     </h1>
 
                     <div class="rating-wrap">
-                        <vue_star_rated star-rated="{{ $hotel['starRated'] }}"></vue_star_rated>
+                        <vue_star_rated star-rated="{{ $hotelView['starRated'] }}"></vue_star_rated>
                     </div>
                 </div>
 
@@ -394,76 +394,6 @@
                             </div>
                             <div class="item-review">8.3</div>
                         </li>
-                        <li class="recommed-item">
-                            <div class="item-img">
-                                <div class="image"
-                                     style="background-image: url('https://a0.muscache.com/im/pictures/47985619/11203a2d_original.jpg?aki_policy=xx_large')"></div>
-                            </div>
-                            <div class="item-info"><a class="info-tit" href="#">紐約千禧希爾頓酒店(The Millennium Hilton New
-                                    York)</a>
-                                <div class="info-rating"><span class="star"><img src="/images/star.svg"
-                                                                                 alt=""></span><span
-                                            class="star"><img src="/images/star.svg" alt=""></span><span
-                                            class="star"><img
-                                                src="/images/star.svg" alt=""></span><span class="star"><img
-                                                src="/images/star.svg" alt=""></span></div>
-                                <div class="info-price">最低價
-                                    <div class="currency">NT$</div>
-                                    <div class="price">2,345</div>
-                                </div>
-                            </div>
-                            <div class="item-review">8.3</div>
-                        </li>
-                        <li class="recommed-item">
-                            <div class="item-img">
-                                <div class="image"
-                                     style="background-image: url('https://a0.muscache.com/im/pictures/47985619/11203a2d_original.jpg?aki_policy=xx_large')"></div>
-                            </div>
-                            <div class="item-info"><a class="info-tit" href="#">紐約千禧希爾頓酒店(The Millennium Hilton New
-                                    York)</a>
-                                <div class="info-rating"><span class="star"><img src="/images/star.svg"
-                                                                                 alt=""></span><span
-                                            class="star"><img src="/images/star.svg" alt=""></span><span
-                                            class="star"><img
-                                                src="/images/star.svg" alt=""></span><span class="star"><img
-                                                src="/images/star.svg" alt=""></span></div>
-                                <div class="info-price">最低價
-                                    <div class="currency">NT$</div>
-                                    <div class="price">2,345</div>
-                                </div>
-                            </div>
-                            <div class="item-review">8.3</div>
-                        </li>
-                        <li class="recommed-item">
-                            <div class="item-img">
-                                <div class="image"
-                                     style="background-image: url('https://a0.muscache.com/im/pictures/47985619/11203a2d_original.jpg?aki_policy=xx_large')"></div>
-                            </div>
-                            <div class="item-info">
-                                <a class="info-tit" href="#">
-                                    紐約千禧希爾頓酒店(The Millennium Hilton New York)
-                                </a>
-                                <div class="info-rating">
-                                    <span class="star">
-                                        <img src="/images/star.svg" alt="">
-                                    </span>
-                                    <span class="star">
-                                        <img src="/images/star.svg" alt="">
-                                    </span>
-                                    <span class="star">
-                                        <img src="/images/star.svg" alt="">
-                                    </span>
-                                    <span class="star">
-                                        <img src="/images/star.svg" alt="">
-                                    </span>
-                                </div>
-                                <div class="info-price">最低價
-                                    <div class="currency">NT$</div>
-                                    <div class="price">2,345</div>
-                                </div>
-                            </div>
-                            <div class="item-review">8.3</div>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -474,45 +404,45 @@
 
 @push('modal')
     <!-- 點了.follow-btn ，幫我加上class: .is-open-->
-    <div class="followModal flex-outer">
-        <div class="follow-box">
-            <div class="Title">價格追蹤</div>
-            <div class="slogan">台北貴都大飯店 Taipei Crystal Hotel</div>
-            <div class="follow-con">
-                <div class="follow-wrap">
-                    <div class="title">何時入住</div>
-                    <div class="date-wrap">
-                        <div class="check-in">
-                            <div class="picker_label">入住時間</div>
-                            <div class="picker_date">4月10日</div>
-                        </div>
-                        <div class="right-icon"><img src="/images/cc-arrow-left.svg" alt=""></div>
-                        <div class="check-out">
-                            <div class="picker_label">退房時間</div>
-                            <div class="picker_date">4月14日</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="follow-wrap">
-                    <div class="title">入住人數</div>
-                    <div class="occupancy-wrap">
-                        <select>
-                            <option value="1人">1 人</option>
-                            <option value="2人">2 人</option>
-                            <option value="3人">3 人</option>
-                            <option value="4人">4 人</option>
-                            <option value="5人">5 人</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <button class="sendOut-btn">立即追蹤</button>
-            <button class="close-btn"><img src="/images/close.svg" alt=""></button>
-        </div>
-    </div>
+    {{--<div class="followModal flex-outer">--}}
+        {{--<div class="follow-box">--}}
+            {{--<div class="Title">價格追蹤</div>--}}
+            {{--<div class="slogan">台北貴都大飯店 Taipei Crystal Hotel</div>--}}
+            {{--<div class="follow-con">--}}
+                {{--<div class="follow-wrap">--}}
+                    {{--<div class="title">何時入住</div>--}}
+                    {{--<div class="date-wrap">--}}
+                        {{--<div class="check-in">--}}
+                            {{--<div class="picker_label">入住時間</div>--}}
+                            {{--<div class="picker_date">4月10日</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="right-icon"><img src="/images/cc-arrow-left.svg" alt=""></div>--}}
+                        {{--<div class="check-out">--}}
+                            {{--<div class="picker_label">退房時間</div>--}}
+                            {{--<div class="picker_date">4月14日</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="follow-wrap">--}}
+                    {{--<div class="title">入住人數</div>--}}
+                    {{--<div class="occupancy-wrap">--}}
+                        {{--<select>--}}
+                            {{--<option value="1人">1 人</option>--}}
+                            {{--<option value="2人">2 人</option>--}}
+                            {{--<option value="3人">3 人</option>--}}
+                            {{--<option value="4人">4 人</option>--}}
+                            {{--<option value="5人">5 人</option>--}}
+                        {{--</select>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<button class="sendOut-btn">立即追蹤</button>--}}
+            {{--<button class="close-btn"><img src="/images/close.svg" alt=""></button>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 @endpush
 
 @push('javascript')
-    <script src="{{ mix('js/action/hotel.js') }}"></script>
     <script src="{{ mix('js/app/hotel.js') }}"></script>
+    <script src="{{ mix('js/action/hotel.js') }}"></script>
 @endpush

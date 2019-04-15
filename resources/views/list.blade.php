@@ -71,7 +71,8 @@
                                 <div class="con-midden">NT$<span> - </span></div>
                                 {{--<div class="con-bottom"><span>Agoda.com</span></div>--}}
                             </div>
-                            <button class="price_btn">
+                            <button class="price_btn"
+                                    v-tooltip.top="'該價格為歷史平均價格，準確優惠的價格依照時段會有不同的浮動請進入內頁查看詳細資訊。'">
                                 查看價格
                             </button>
                         </div>

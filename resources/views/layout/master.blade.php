@@ -66,7 +66,7 @@
     @stack('modal')
 
     <script src="{{ mix('js/app.js') }}"></script>
-    <script src="{{ mix('js/action/master.js') }}"></script>
     @stack('javascript')
+    <script src="{{ mix('js/action/master.js') }}"></script>
 </body>
 </html>

@@ -53,6 +53,10 @@ Vue.use(AirbnbStyleDatepicker, {
 import VueCarousel from '@chenfengyuan/vue-carousel';
 Vue.use(VueCarousel);
 
+import Tooltip from 'vue-directive-tooltip';
+import 'vue-directive-tooltip/css/index.css';
+Vue.use(Tooltip);
+
 Vue.directive('click-outside', {
     bind: function (el, binding, vnode) {
         el.clickOutsideEvent = function (event) {
