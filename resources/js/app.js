@@ -57,6 +57,9 @@ import Tooltip from 'vue-directive-tooltip';
 import 'vue-directive-tooltip/css/index.css';
 Vue.use(Tooltip);
 
+import VueCookie from 'vue-cookie';
+Vue.use(VueCookie);
+
 Vue.directive('click-outside', {
     bind: function (el, binding, vnode) {
         el.clickOutsideEvent = function (event) {

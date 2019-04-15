@@ -46,12 +46,7 @@
                     </div>
                 </div>
 
-                <div class="hotel_follow-btn">
-                    <button class="follow-btn">
-                        <img src="{{ asset('images/track-border.svg') }}" alt="">
-                        <span>價格追蹤</span>
-                    </button>
-                </div>
+                <vue_price_trace></vue_price_trace>
             </div>
 
             <div class="address-info __anchor_overview">

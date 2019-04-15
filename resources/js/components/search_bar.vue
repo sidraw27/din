@@ -52,7 +52,7 @@
                         @date-one-selected="val => { checkTime.in.date = val }"
                         @date-two-selected="val => { checkTime.out.date = val}"
                         @opened="toggleMask(true)"
-                        @closed="() => {datePickerConfig.trigger = false}"
+                        @closed="() => {datePickerConfig.trigger = this.isShowMask = false}"
                         @apply="goSearch"
                 />
 
@@ -186,12 +186,13 @@
             </div>
         </div>
 
-        <div class="__full_mask" v-show="isShowMask" @click="() => {this.isShowMask = false}"></div>
+        <vue_mask :show="isShowMask" @close="closeMask"></vue_mask>
     </div>
 </template>
 
 <script>
     import {VueAutosuggest} from 'vue-autosuggest';
+    import vue_mask from '../components/mask';
 
     export default {
         props: [
@@ -202,7 +203,8 @@
             'adult'
         ],
         components: {
-            VueAutosuggest
+            VueAutosuggest,
+            vue_mask
         },
         created: function () {
             if (this.checkIn !== '') {
@@ -341,6 +343,9 @@
                     `&checkIn=${this.checkTime.in.date}` +
                     `&checkOut=${this.checkTime.out.date}` +
                     `&adult=${this.nums.adult.pool[this.nums.adult.currentIndex]}`;
+            },
+            closeMask: function () {
+                this.isShowMask = false
             },
             onInputChange(text) {
                 if (text === '' || text === undefined) {
