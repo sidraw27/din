@@ -31,22 +31,21 @@
             </div>
 
             <div class="topbar_min-nav">
-                <a class="search-btn" href="#">
-                    <img src="{{ asset('images/search.svg') }}" alt="">
-                </a>
                 <a class="nav-hamburger" href="#">
                     <img src="{{ asset('images/hamburger.svg') }}" alt="">
                 </a>
             </div>
         </div>
 
-        <vue_search_bar action="{{ route('list') }}"
-                        target="{{ $searchData['target'] }}"
-                        check-in="{{ $searchData['checkIn'] }}"
-                        check-out="{{ $searchData['checkOut'] }}"
-                        adult="{{ $searchData['adult'] }}"
-        >
-        </vue_search_bar>
+        @if ($isShowSearchBar)
+            <vue_search_bar action="{{ route('list') }}"
+                            target="{{ $searchData['target'] }}"
+                            check-in="{{ $searchData['checkIn'] }}"
+                            check-out="{{ $searchData['checkOut'] }}"
+                            adult="{{ $searchData['adult'] }}"
+            >
+            </vue_search_bar>
+        @endif
 
         @yield('content')
 

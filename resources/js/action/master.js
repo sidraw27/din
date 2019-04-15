@@ -27,14 +27,14 @@ window.adjustHeight = function (pixel = 0) {
 (function () {
     scrollToAnchor(null, 100);
 
-    const searchBox = $('.searchBox');
+    const searchBox = window.isMobile() ? $('.breadcrumb-outer') : $('.searchBox');
     const searchBoxTop = searchBox.offset().top;
 
     $(window).scroll(function () {
         const searchBoxFixedClass = 'fixed';
         if ($(window).scrollTop() > searchBoxTop) {
             if ( ! searchBox.hasClass(searchBoxFixedClass)) {
-                adjustHeight(70);
+                adjustHeight(window.isMobile() ? 25 : 70);
                 searchBox.addClass(searchBoxFixedClass);
             }
         } else {

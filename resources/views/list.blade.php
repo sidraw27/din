@@ -9,7 +9,9 @@
     <div class="hl_main-content">
         <div class="result_wrapper">
             <div class="result_tit">
-                共有<span>823</span>間飯店
+                共有
+                <span>{{ $list['total'] }}</span>
+                間 相關飯店
             </div>
             <div class="result_sorting">
                 <select class="sorting">
@@ -21,27 +23,33 @@
             </div>
         </div>
         <ul class="hotel-list_wrapper">
-            @empty($list)
+            @empty($list['data'])
                 未找到相關房源，請調整字詞後再次搜尋。
             @endempty
-            @foreach($list as $item)
+            @foreach($list['data'] as $hotel)
                 <li class="hotel-item hot-item">
-                    <div class="item-link" style="cursor: pointer" onclick="location.href='{{ route('hotel', ['url_id' => $item->url_id]) }}'">
+                    <div class="item-link" style="cursor: pointer" onclick="location.href='{{ $hotel['link'] }}'">
                         <div class="hotel-info">
-                            <div class="hotel-img" style="background-image: url('')"></div>
+                            <div class="hotel-img" style="background-image: url('{{ $hotel['photo'] ?? asset('images/noimg.svg') }}')"></div>
                             <div class="info_container">
                                 <h3 class="con_tit">
-                                    <a href="{{ route('hotel', ['url_id' => $item->url_id]) }}">
-                                        {{ $item->translated_name }}({{ $item->name }})
+                                    <a href="{{ $hotel['link'] }}">
+                                        {{ $hotel['translatedName'] }}({{ $hotel['name'] }})
                                     </a>
                                 </h3>
                                 <div class="con_rating">
-                                   <span class="star">
-                                        <img src="/images/star.svg" alt="">
-                                    </span>
+                                    @if(is_null($hotel['starRated']))
+                                        未確認星級
+                                    @else
+                                        <span class="star">
+                                            @for($i = 1; $i <= $hotel['starRated']; $i++)
+                                                <img src="{{ asset('images/star.svg') }}" alt="starRated">
+                                            @endfor
+                                        </span>
+                                    @endif
                                 </div>
                                 <div class="con_distance">
-                                    {{ $item->address }}
+                                    {{ $hotel['address'] }}
                                 </div>
                                 <div class="con_average-price">
                                     <div class="price">NT<span>$2,345</span></div>
@@ -60,14 +68,15 @@
                         <div class="info_price">
                             <div class="price_con">
                                 <div class="con-top">
-                                    <span>4</span>
-                                    個價格，最低
+                                    {{--<span>4</span>--}}
+                                    {{--個價格，最低--}}
+                                    尚未取得價格
                                 </div>
-                                <div class="con-midden">NT$<span>2,345 </span></div>
-                                <div class="con-bottom"><span>Agoda.com</span></div>
+                                <div class="con-midden">NT$<span> - </span></div>
+                                {{--<div class="con-bottom"><span>Agoda.com</span></div>--}}
                             </div>
                             <button class="price_btn">
-                                前往訂房
+                                查看價格
                             </button>
                         </div>
                     </div>

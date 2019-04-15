@@ -265,7 +265,9 @@
                     if (outDateObj > inDateObj) {
                         const tmp = Math.abs(outDateObj - inDateObj) / 1000;
                         this.daysNight = Math.floor(tmp / 86400);
+                        this.daysNight += 1;
                     }
+                    if (outDateObj === inDateObj) this.daysNight = 1;
                 },
                 immediate: true,
                 deep: true

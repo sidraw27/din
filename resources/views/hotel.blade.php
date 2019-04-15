@@ -6,37 +6,31 @@
 
 @section('content')
     <div class="breadcrumb-outer">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="#">
-                    首頁
-                </a>
-            </li>
-            <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="#">
-                    {{ $hotelView['countryName'] }}
-                </a>
-            </li>
-            {{--<li class="breadcrumb-item">--}}
-                {{--<a class="breadcrumb-link" href="#">--}}
-                    {{--{{ $hotelView['cityName'] }}--}}
-                {{--</a>--}}
-            {{--</li>--}}
-            <li class="breadcrumb-item">
-                <span>{{ $hotelView['name']['origin'] }} ({{ $hotelView['name']['translated'] }})</span>
-            </li>
-        </ul>
-
-        <div class="breadcrumb_search-more">
-            <div class="icons">
-                <img src="{{ asset('images/arrow-left.svg') }}" alt="arrow-left-icon">
+        @if (Agent::isMobile())
+            <div class="breadcrumb_search-more">
+                <div class="icons">
+                    <img src="{{ asset('images/arrow-left.svg') }}" alt="arrow-left-icon">
+                </div>
+                <div class="search-more">
+                    <a href="{{ $listLink }}">
+                        搜尋其他房源
+                    </a>
+                </div>
             </div>
-            <div class="search-more">
-                查看更多
-                <span>{{ $hotelView['countryName'] }}</span>
-                的飯店
-            </div>
-        </div>
+        @else
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a class="breadcrumb-link" href="#">
+                        首頁
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a class="breadcrumb-link" href="{{ $listLink }}">
+                        {{ $hotelView['name']['origin'] }}
+                    </a>
+                </li>
+            </ul>
+        @endif
     </div>
 
     <div class="gl_outer1200">

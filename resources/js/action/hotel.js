@@ -15,9 +15,9 @@ window.initDetectScrollElem = function () {
     // 需先確認無固定後再取得高度
     hotelNavBar.removeClass(fixedClass);
     const hotelNavBarOffsetTop = hotelNavBar.offset().top;
-    const breadcrumb = $('.breadcrumb-outer');
-    breadcrumb.removeClass(fixedClass);
-    const breadcrumbOffsetTop = breadcrumb.offset().top;
+    // const breadcrumb = $('.breadcrumb-outer');
+    // breadcrumb.removeClass(fixedClass);
+    // const breadcrumbOffsetTop = breadcrumb.offset().top;
 
     $(window).scroll(function () {
         let lastScrollToItem = null;
@@ -34,9 +34,6 @@ window.initDetectScrollElem = function () {
             lastScrollToItem.addClass('current');
         }
 
-        if (window.isMobile()) {
-            fixedElem(breadcrumbOffsetTop, breadcrumb, fixedClass, 10);
-        }
         fixedElem(hotelNavBarOffsetTop, hotelNavBar, fixedClass, window.isMobile() ? 10 : 115);
     });
 

@@ -8,6 +8,7 @@ use App\Repositories\HotelRepository;
 use App\Services\Hotel\Facility;
 use App\Services\Hotel\Location;
 use App\Services\Hotel\Rating;
+use Illuminate\Support\Arr;
 
 class HotelService
 {
@@ -117,16 +118,23 @@ class HotelService
     /**
      * @param string $target
      * @param int $page
-     * @return \Illuminate\Database\Eloquent\Collection
-     * @throws HotelException
+     * @param array $withParameter
+     * @return array
      */
-    public function getList(string $target, int $page = 1)
+    public function getList(string $target, int $page = 1, array $withParameter = [])
     {
+        $result = [
+            'total' => 0,
+            'data'  => []
+        ];
+
         $esResult = $this->hotelEs->searchList($target, $page, 10);
 
         if ($esResult['total'] === 0) {
-            throw new HotelException(HotelException::LIST_EMPTY);
+            return $result;
         }
+
+        $result['total'] = $esResult['total'];
 
         $hotelIds = [];
 
@@ -138,12 +146,28 @@ class HotelService
             'url_id',
             'name',
             'translated_name',
-            'address'
+            'address',
+            'star_rated',
+            'photo'
         ];
 
         $hotels = $this->hotelRepo->getByIds($hotelIds, $columns);
 
-        return $hotels;
+        foreach ($hotels as $hotel) {
+            $photos = json_decode($hotel['photo']);
+
+            $result['data'][] = [
+                'urlId'          => $hotel->url_id,
+                'name'           => $hotel->name,
+                'translatedName' => $hotel->translated_name,
+                'address'        => $hotel->address,
+                'starRated'      => $hotel->star_rated,
+                'photo'          => empty($photos) ? null : Arr::first($photos),
+                'link'           => route('hotel', ['url_id' => $hotel->url_id]) . '?' . http_build_query($withParameter),
+            ];
+        }
+
+        return $result;
     }
 
     /**
@@ -169,6 +193,9 @@ class HotelService
 
             switch ($key) {
                 case 'target':
+                    if (is_null($value)) {
+                        continue 2;
+                    }
                     break;
                 case 'checkIn':
                     if ( ! preg_match($dateReg, $value)) {

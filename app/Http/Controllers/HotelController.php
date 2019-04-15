@@ -17,30 +17,38 @@ class HotelController extends Controller
 
     public function index(string $urlId)
     {
-        try {
-            $searchData = $this->hotelService->formatHotelParameter(\Request::all());
+        $searchData = $this->hotelService->formatHotelParameter(\Request::all());
 
+        try {
             $hotel     = $this->hotelService->getHotel($urlId);
             $hotelView = HotelTransformer::transToHotelView($hotel);
 
-            $searchData['target'] = $hotelView['name']['origin'];
+            if (is_null($searchData['target']) || strlen($searchData['target']) === 0) {
+                $searchData['target'] = $hotelView['name']['origin'];
+            }
         } catch (HotelException $e) {
             abort(404);
         }
 
-        return view('hotel', compact('hotelView', 'searchData'));
+        $listLink = route('list') . '?' . http_build_query($searchData);
+        $isShowSearchBar = ( ! \Agent::isMobile());
+
+        return view('hotel', compact(
+            'hotelView',
+            'searchData',
+            'isShowSearchBar',
+            'listLink'
+        ));
     }
 
     public function list()
     {
         $searchData = $this->hotelService->formatHotelParameter(\Request::all());
 
-        try {
-            $list = $this->hotelService->getList($searchData['target'], \Request::get('page', 1));
-        } catch (HotelException $e) {
-            $list = [];
-        }
+        $list = $this->hotelService->getList($searchData['target'], \Request::get('page', 1), $searchData);
 
-        return view('list', compact('searchData', 'list'));
+        $isShowSearchBar = true;
+
+        return view('list', compact('searchData', 'list', 'isShowSearchBar'));
     }
 }
