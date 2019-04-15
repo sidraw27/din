@@ -180,7 +180,9 @@
                     </div>
                 </div>
 
-                <button class="search-btn" @click="goSearch">搜尋房價</button>
+                <button class="search-btn" @click="goSearch">
+                    搜出好房
+                </button>
             </div>
         </div>
 

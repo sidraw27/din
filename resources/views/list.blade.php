@@ -41,11 +41,7 @@
                                     @if(is_null($hotel['starRated']))
                                         未確認星級
                                     @else
-                                        <span class="star">
-                                            @for($i = 1; $i <= $hotel['starRated']; $i++)
-                                                <img src="{{ asset('images/star.svg') }}" alt="starRated">
-                                            @endfor
-                                        </span>
+                                        <vue_star_rated star-rated="{{ $hotel['starRated'] }}"></vue_star_rated>
                                     @endif
                                 </div>
                                 <div class="con_distance">
@@ -83,7 +79,8 @@
                 </li>
             @endforeach
         </ul>
-        <div class="none-hotel_wrapper" style="display: none;"><img src="/images/bed-img.svg" alt="">
+        <div class="none-hotel_wrapper" style="display: none;">
+            <img src="{{ asset('images/bed-img.svg') }}" alt="bed">
             <div class="none-hotel">
                 <div class="Title">找不到您搜尋的住宿地點</div>
                 <div class="text">建議您重新設定篩選條件，以便搜尋到您理想的飯店。</div>
@@ -147,3 +144,7 @@
     <div class="hl_sidebar"></div>
 </div>
 @endsection
+
+@push('javascript')
+    <script src="{{ mix('js/app/list.js') }}"></script>
+@endpush

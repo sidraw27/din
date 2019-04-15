@@ -42,11 +42,7 @@
                     </h1>
 
                     <div class="rating-wrap">
-                        @for($i = 0; $i <= $hotelView['starRated']; $i++)
-                            <span class="star">
-                                <img src="{{ asset('images/star.svg') }}" alt="star-rated">
-                            </span>
-                        @endfor
+                        <vue_star_rated star-rated="{{ $hotel['starRated'] }}"></vue_star_rated>
                     </div>
                 </div>
 
@@ -518,4 +514,5 @@
 
 @push('javascript')
     <script src="{{ mix('js/action/hotel.js') }}"></script>
+    <script src="{{ mix('js/app/hotel.js') }}"></script>
 @endpush
