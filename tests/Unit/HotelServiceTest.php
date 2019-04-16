@@ -11,6 +11,7 @@ use App\Services\Hotel\Location;
 use App\Services\Hotel\Rating;
 use App\Services\HotelService;
 use Faker\Factory;
+use Illuminate\Support\Collection;
 use Tests\TestCase;
 
 /**
@@ -120,6 +121,7 @@ class HotelServiceTest extends TestCase
         $this->assertArrayHasKey('lat', $location['geo']);
         $this->assertArrayHasKey('lng', $location['geo']);
     }
+
     /**
      * @covers \App\Services\HotelService::formatHotelParameter
      */
@@ -138,4 +140,47 @@ class HotelServiceTest extends TestCase
         $this->assertRegExp('/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/', $actual['checkOut']);
     }
 
+    /**
+     * @covers \App\Services\HotelService::getList
+     */
+    public function testGetList()
+    {
+        $this->esMock->shouldReceive('searchList')
+            ->once()
+            ->andReturn([
+                'total' => 1,
+                'max_score' => $this->faker->randomFloat(),
+                'hits' => [
+                    [
+                        '_index' => 'hotels',
+                        '_type'  => 'doc',
+                        '_id'    => 1,
+                        '_score' => $this->faker->randomFloat(),
+                        '_source' => [
+                            'name'       => $this->faker->company,
+                            'translated' => $this->faker->company,
+                            'address'    => $this->faker->address,
+                            'geo'        => [
+                                'lat' => $this->faker->randomFloat(),
+                                'lon' => $this->faker->randomFloat()
+                            ]
+                        ]
+                    ]
+                ]
+            ]);
+
+        $this->repoMock->shouldReceive('getByIds')
+            ->andReturn(new Collection([
+                new Hotel(\HotelSeeder::getSeeder([
+                    'id'         => 1,
+                    'country_id' => 1
+                ]))
+            ]));
+
+        $actual = $this->target->getList($this->faker->text(10), 1, ['abc' => 123]);
+
+        $this->assertIsArray($actual);
+        $this->assertGreaterThan(0, $actual['total']);
+        $this->assertGreaterThan(0, count($actual['data']));
+    }
 }
