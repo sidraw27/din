@@ -31,7 +31,7 @@ window.Vue = require('vue');
  * 通用 date picker 設定
  */
 import AirbnbStyleDatepicker from 'vue-airbnb-style-datepicker';
-import 'vue-airbnb-style-datepicker/dist/vue-airbnb-style-datepicker.min.css'
+import 'vue-airbnb-style-datepicker/dist/vue-airbnb-style-datepicker.min.css';
 Vue.use(AirbnbStyleDatepicker, {
     sundayFirst: true,
     daysShort: ['一', '二', '三', '四', '五', '六', '日'],
@@ -50,14 +50,11 @@ Vue.use(AirbnbStyleDatepicker, {
     }
 });
 
-import VueCarousel from '@chenfengyuan/vue-carousel';
-Vue.use(VueCarousel);
-
 import Tooltip from 'vue-directive-tooltip';
 import 'vue-directive-tooltip/css/index.css';
-Vue.use(Tooltip);
-
 import VueCookie from 'vue-cookie';
+
+Vue.use(Tooltip);
 Vue.use(VueCookie);
 
 Vue.directive('click-outside', {
@@ -73,3 +70,18 @@ Vue.directive('click-outside', {
         document.body.removeEventListener('click', el.clickOutsideEvent)
     },
 });
+
+import nProgress from "nprogress";
+import 'nprogress/nprogress.css';
+
+window.NProgress = nProgress;
+let npInterval = setInterval(() => {
+    if (document.body != null) {
+        clearInterval(npInterval);
+        window.NProgress.start();
+        window.NProgress.done();
+        window.addEventListener('beforeunload', function() {
+            window.NProgress.start();
+        });
+    }
+}, 100);

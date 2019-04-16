@@ -146,6 +146,6 @@
 </div>
 @endsection
 
-@push('javascript')
+@push('app_js')
     <script src="{{ mix('js/app/list.js') }}"></script>
 @endpush

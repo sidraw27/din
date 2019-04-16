@@ -11,6 +11,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @stack('head')
+
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+        #nprogress .bar {
+            background: rgba(124, 219, 47, 0.79) !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -66,7 +75,8 @@
     @stack('modal')
 
     <script src="{{ mix('js/app.js') }}"></script>
-    @stack('javascript')
+    @stack('app_js')
     <script src="{{ mix('js/action/master.js') }}"></script>
+    @stack('action_js')
 </body>
 </html>

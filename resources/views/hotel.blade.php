@@ -437,7 +437,10 @@
     {{--</div>--}}
 @endpush
 
-@push('javascript')
+@push('app_js')
     <script src="{{ mix('js/app/hotel.js') }}"></script>
+@endpush
+
+@push('action_js')
     <script src="{{ mix('js/action/hotel.js') }}"></script>
 @endpush

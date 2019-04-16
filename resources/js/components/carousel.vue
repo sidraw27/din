@@ -1,12 +1,17 @@
 <template>
-    <carousel :data="data" indicator-trigger="hover" :autoplay="true" :interval="2500"></carousel>
+    <VueCarousel :data="data" indicator-trigger="hover" :autoplay="true" :interval="2500"></VueCarousel>
 </template>
 
 <script>
+    import VueCarousel from '@chenfengyuan/vue-carousel';
+
     export default {
         props: [
             'imgUrl'
         ],
+        components: {
+            VueCarousel
+        },
         data() {
             let carousel = [];
 
@@ -36,8 +41,8 @@
     };
 </script>
 
-<style>
-    .__carousel_img {
+<style scoped>
+    >>> .__carousel_img {
         height: 420px;
         align-items: center;
         background-color: #646660;
