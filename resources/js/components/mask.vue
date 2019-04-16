@@ -54,8 +54,8 @@
         right: 0;
         bottom: 0;
         left: 0;
-        opacity: .35;
-        background-color: #1b1515;
+        opacity: .55;
+        background-color: #404555;
         z-index: 1001;
     }
 </style>
