@@ -57,7 +57,7 @@
                             <img src="/images/people.svg" alt="">
                         </div>
                         <div class="picker-label">
-                            <span class="room-info">{{ numsOfPeople }} 人</span>
+                            <span class="room-info">{{ numsOfAdult }} 人</span>
                         </div>
                         <div class="arrow-icon">
                             <img src="/images/arrow-down.svg" alt="">
@@ -71,7 +71,7 @@
                                     <img src="/images/minus.svg" alt="">
                                 </div>
                                 <div class="counter">
-                                    {{ numsOfPeople }}
+                                    {{ numsOfAdult }}
                                 </div>
                                 <div class="button-plus" @click="adjustNums()">
                                     <img src="/images/plus.svg" alt="">
@@ -86,11 +86,11 @@
                 </button>
             </div>
 
-            <ul class="filter_tags">
-                <li class="tags active">免費早餐</li>
-                <li class="tags">到店付款</li>
-                <li class="tags">免費取消</li>
-            </ul>
+            <!--<ul class="filter_tags">-->
+                <!--<li class="tags active">免費早餐</li>-->
+                <!--<li class="tags">到店付款</li>-->
+                <!--<li class="tags">免費取消</li>-->
+            <!--</ul>-->
         </div>
 
         <AirbnbStyleDatepicker
@@ -116,10 +116,7 @@
         <div class="hl_rate-list" id="price-datepicker-target">
             <div class="list_tit">
                 <h3 class="title">來自所有網站的價格</h3>
-                <div class="price-wrap">平均價格
-                    <div class="price">NT$7,345</div>
-                    <span>～</span>
-                    <div class="price">NT$8,136</div>
+                <div class="price-wrap" v-html="priceRangeHtml">
                 </div>
                 <div class="text">(共<span>{{ totalInfo }}</span>筆)</div>
             </div>
@@ -128,7 +125,7 @@
                     <span>{{ daysNight }}</span>晚，
                 </div>
                 <div class="text">
-                    <span>{{ numsOfPeople }}</span>
+                    <span>{{ numsOfAdult }}</span>
                     位房客
                 </div>
             </div>
@@ -202,6 +199,19 @@
         mixins: [
             dateMixin
         ],
+        created: function () {
+            if (this.checkIn !== '') {
+                this.checkTime.in.date = this.checkIn;
+            }
+            if (this.checkOut !== '') {
+                this.checkTime.out.date = this.checkOut;
+            }
+
+            const adultIndex = this.nums.adult.pool.indexOf(parseInt(this.adult));
+            if (adultIndex >= 0) {
+                this.nums.adult.currentIndex = adultIndex;
+            }
+        },
         data: function () {
             const defaultDate = dateMixin.createDateRange(1, 3);
 
@@ -209,7 +219,7 @@
                 datePickerConfig: {
                     offset: {
                         x: -30,
-                        y: 690
+                        y: 750
                     },
                     trigger: false
                 },
@@ -218,18 +228,20 @@
                 checkTime: {
                     in: {
                         date: defaultDate[0],
-                        str: '',
-                        mobileStr: ''
+                        str: null,
+                        mobileStr: null
                     },
                     out: {
                         date: defaultDate[1],
-                        str: '',
-                        mobileStr: ''
+                        str: null,
+                        mobileStr: null
                     }
                 },
                 nums: {
-                    pool: [1, 2, 3, 4, 5, 6, 7, 8],
-                    currentIndex: 1,
+                    adult: {
+                        pool: [1, 2, 3, 4, 5, 6, 7, 8],
+                        currentIndex: 1
+                    },
                     isDrop: false
                 },
                 daysNight: 0
@@ -245,8 +257,41 @@
             totalInfo: function () {
                 return _.size(this.price);
             },
-            numsOfPeople: function () {
-                return this.nums.pool[this.nums.currentIndex];
+            numsOfAdult: function () {
+                return this.nums.adult.pool[this.nums.adult.currentIndex];
+            },
+            priceRangeHtml: function () {
+                const priceCount = _.size(this.price);
+                let html = '';
+
+                if (priceCount === 0) {
+                    html = '未取得來自夥伴的價格';
+                }
+
+                if (priceCount === 1) {
+                    const key = Object.keys(this.price)[0];
+                    html = `夥伴最優惠價格 NT$ ${this.price[key].price}`;
+                }
+
+                if (priceCount > 1) {
+                    let max = null;
+                    let min = null;
+
+                    _.forEach(this.price, item => {
+                        if (max === null) max = item.price;
+                        if (min === null) min = item.price;
+
+                        if (item.price > max) max = item.price;
+                        if (item.price < min) min = item.price;
+                    });
+
+                    html = `平均價格` +
+                        `<div class="price">NT$ ${min}</div>` +
+                        `<span>～</span>` +
+                        `<div class="price">NT$ ${max}</div>`;
+                }
+
+                return html;
             }
         },
         watch: {
@@ -326,7 +371,7 @@
                     'check-in': this.checkTime.in.date,
                     'check-out': this.checkTime.out.date,
                     'provider': provider,
-                    'nums': this.nums.pool[this.nums.currentIndex],
+                    'nums': this.nums.adult.pool[this.nums.adult.currentIndex],
                 };
 
                 let parameters = '?';
@@ -341,13 +386,13 @@
                     return error;
                 });
             },
-            adjustNums: function (isPlus = true) {
+            adjustNums: function (isPlus = true, type = 'adult') {
                 if (isPlus) {
-                    if (this.nums.currentIndex + 1 === this.nums.pool.length) return;
-                    this.nums.currentIndex ++;
+                    if (this.nums[type].currentIndex + 1 === this.nums[type].pool.length) return;
+                    this.nums[type].currentIndex ++;
                 } else {
-                    if (this.nums.currentIndex === 0) return;
-                    this.nums.currentIndex --;
+                    if (this.nums[type].currentIndex === 0) return;
+                    this.nums[type].currentIndex --;
                 }
             },
             redirect: function (url) {

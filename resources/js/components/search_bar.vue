@@ -7,6 +7,7 @@
                     <form autocomplete="off" @submit="goSearch">
                         <vue-autosuggest
                                 @focus="toggleMask(true)"
+                                @selected="goSearch"
                                 :suggestions="suggestions"
                                 :limit="10"
                                 :searchInput="this.value"
@@ -79,6 +80,7 @@
                     <img src="/images/search.svg" alt="">
                     <form autocomplete="off" style="width: 100%">
                         <vue-autosuggest
+                                @keyup.enter="goSearch"
                                 @focus="toggleMask(true)"
                                 :suggestions="suggestions"
                                 :limit="10"
@@ -153,7 +155,7 @@
                                 入住人數
                             </div>
                             <div class="picker_date">
-                                {{ nums.adult.pool[nums.adult.currentIndex] }}人
+                                {{ numsOfAdult }}人
                             </div>
                         </div>
                         <div class="picker-icons_down">
@@ -287,6 +289,9 @@
                 return {
                     'z-index': this.isShowMask ? 1003 : 100
                 };
+            },
+            numsOfAdult: function () {
+                return this.nums.adult.pool[this.nums.adult.currentIndex];
             }
         },
         watch: {
