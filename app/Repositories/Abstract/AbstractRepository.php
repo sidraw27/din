@@ -32,6 +32,11 @@ abstract class AbstractRepository
         return $result;
     }
 
+    /**
+     * @param array $ids
+     * @param array $columns
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function getByIds(array $ids, array $columns = ['*'])
     {
         $result = $this->entity->findMany($ids, $columns);

@@ -133,7 +133,11 @@
     <div class="gl_outer1200 gl_flex-row">
         <div class="hl_main-content">
 
-            <vue_real_time_price hotel-url-id="{{ $hotelView['urlId'] }}"></vue_real_time_price>
+            <vue_real_time_price hotel-url-id="{{ $hotelView['urlId'] }}"
+                                 check-in="{{ $searchData['checkIn'] }}"
+                                 check-out="{{ $searchData['checkOut'] }}"
+                                 adult="{{ $searchData['adult'] }}">
+            </vue_real_time_price>
 
             <div class="hl_map-wrapper __anchor_position">
                 <div class="map_tit">

@@ -1,7 +1,7 @@
 <template>
     <div class="hl_rate-wrapper __anchor_price">
 
-        <div class="hl_min-detail-filter" v-if="this.$parent.isMobile()">
+        <div class="hl_min-detail-filter" v-if="this.$isMobile">
             <div class="min_filter-box">
                 <div class="filter-date" @click.stop="openDate()">
                     <div class="check-in min-text">
@@ -94,7 +94,7 @@
         </div>
 
         <AirbnbStyleDatepicker
-                :style="{'z-index': this.$parent.isMobile() ? 100 : 1}"
+                :style="{'z-index': this.$isMobile ? 100 : 1}"
                 :triggerElementId="'price-datepicker-target'"
                 :mode="'range'"
                 :offset-y="datePickerConfig.offset.y"
@@ -104,7 +104,7 @@
                 :date-one="checkTime.in.date"
                 :date-two="checkTime.out.date"
                 :trigger="datePickerConfig.trigger"
-                :showActionButtons="this.$parent.isMobile()"
+                :showActionButtons="this.$isMobile"
                 :showShortcutsMenuTrigger="false"
                 mobileHeader="選擇住宿日期"
                 @date-one-selected="val => { checkTime.in.date = val }"
@@ -190,12 +190,20 @@
 </template>
 
 <script>
+    import dateMixin from '../mixin/date';
+
     export default {
         props: [
-            'hotelUrlId'
+            'hotelUrlId',
+            'checkIn',
+            'checkOut',
+            'adult'
+        ],
+        mixins: [
+            dateMixin
         ],
         data: function () {
-            const defaultDate = this.$parent.createDateRange(1, 3);
+            const defaultDate = dateMixin.createDateRange(1, 3);
 
             return {
                 datePickerConfig: {
@@ -255,18 +263,20 @@
                     _.forEach(time, item => {
                         if (item.date !== '') {
                             const tmpDate = new Date(item.date);
-                            item.str = item.date + "，週" + this.$parent.formatRDayToZhDay(tmpDate.getDay());
+                            item.str = item.date + "，週" + dateMixin.formatRDayToZhDay(tmpDate.getDay());
                             item.mobileStr = (tmpDate.getMonth() + 1) + "月" + tmpDate.getDate() + "日";
                         }
                     });
 
                     const outDateObj = new Date(time.out.date);
                     const inDateObj = new Date(time.in.date);
+
                     if (outDateObj > inDateObj) {
                         const tmp = Math.abs(outDateObj - inDateObj) / 1000;
                         this.daysNight = Math.floor(tmp / 86400);
                         this.daysNight += 1;
                     }
+
                     if (outDateObj === inDateObj) this.daysNight = 1;
                 },
                 immediate: true,

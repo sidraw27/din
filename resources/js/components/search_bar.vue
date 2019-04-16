@@ -1,6 +1,6 @@
 <template itemscope>
     <div>
-        <div class="hl_min-search-bar" v-if="this.$parent.isMobile()">
+        <div class="hl_min-search-bar" v-if="this.$isMobile">
             <div class="min-search-bar" :style="beforeMaskStyle">
                 <div class="search-input IconBox">
                     <img src="/images/search.svg" alt="">
@@ -46,7 +46,7 @@
                         :date-one="checkTime.in.date"
                         :date-two="checkTime.out.date"
                         :trigger="datePickerConfig.trigger"
-                        :showActionButtons="this.$parent.isMobile()"
+                        :showActionButtons="this.$isMobile"
                         :showShortcutsMenuTrigger="false"
                         :mobileHeader="'選擇入住日期'"
                         @date-one-selected="val => { checkTime.in.date = val }"
@@ -133,7 +133,7 @@
                         :date-one="checkTime.in.date"
                         :date-two="checkTime.out.date"
                         :trigger="datePickerConfig.trigger"
-                        :showActionButtons="this.$parent.isMobile()"
+                        :showActionButtons="this.$isMobile"
                         :showShortcutsMenuTrigger="false"
                         :mobileHeader="'選擇入住日期'"
                         @date-one-selected="val => { checkTime.in.date = val }"
@@ -191,6 +191,7 @@
 </template>
 
 <script>
+    import dateMixin from '../mixin/date';
     import {VueAutosuggest} from 'vue-autosuggest';
     import vue_mask from '../components/mask';
 
@@ -201,6 +202,9 @@
             'checkIn',
             'checkOut',
             'adult'
+        ],
+        mixins: [
+            dateMixin
         ],
         components: {
             VueAutosuggest,
@@ -220,7 +224,7 @@
             }
         },
         data: function () {
-            const defaultDate = this.$parent.createDateRange(10, 13);
+            const defaultDate = dateMixin.createDateRange(10, 13);
 
             return {
                 triggerElementId: 'search_bar-datepicker-target',
@@ -291,12 +295,12 @@
                     _.forEach(time, item => {
                         if (item.date !== '') {
                             const tmpDate = new Date(item.date);
-                            if (this.$parent.isMobile()) {
+                            if (this.$isMobile) {
                                 if (typeof item.date === 'string') {
                                     item.str = item.date.replace(/-/g, '/');
                                 }
                             } else {
-                                item.str = item.date + "(週" + this.$parent.formatRDayToZhDay(tmpDate.getDay()) + ")";
+                                item.str = item.date + "(週" + dateMixin.formatRDayToZhDay(tmpDate.getDay()) + ")";
                             }
                         }
                     })

@@ -12,6 +12,7 @@ use App\Services\Hotel\Rating;
 use App\Services\HotelService;
 use Faker\Factory;
 use Illuminate\Support\Collection;
+use Mockery\MockInterface;
 use Tests\TestCase;
 
 /**
@@ -23,15 +24,15 @@ class HotelServiceTest extends TestCase
 {
     /* @var $target HotelService */
     private $target;
-    /* @var $esMock HotelEs */
+    /* @var $esMock MockInterface */
     private $esMock;
-    /* @var $repoMock HotelRepository */
+    /* @var $repoMock MockInterface */
     private $repoMock;
-    /* @var $facilityMock Facility */
+    /* @var $facilityMock MockInterface */
     private $facilityMock;
-    /* @var $locationMock Location */
+    /* @var $locationMock MockInterface */
     private $locationMock;
-    /* @var $ratingMock Rating */
+    /* @var $ratingMock MockInterface */
     private $ratingMock;
 
     protected function setUp(): void

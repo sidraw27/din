@@ -28,7 +28,7 @@
         data () {
             const cookieName = 'is_show_price_tip';
             const isShowTip = this.$cookie.get(cookieName) === null;
-            const isShowMask = ( ! this.$parent.isMobile()) && isShowTip;
+            const isShowMask = ( ! this.$isMobile) && isShowTip;
 
             if (isShowTip) {
                 this.$cookie.set(cookieName, true, 30);
