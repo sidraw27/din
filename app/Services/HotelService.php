@@ -118,17 +118,18 @@ class HotelService
     /**
      * @param string $target
      * @param int $page
+     * @param int $perPage
      * @param array $withParameter
      * @return array
      */
-    public function getList(string $target, int $page = 1, array $withParameter = [])
+    public function getList(string $target, int $page = 1, int $perPage = 10, array $withParameter = [])
     {
         $result = [
             'total' => 0,
             'data'  => []
         ];
 
-        $esResult = $this->hotelEs->searchList($target, $page, 10);
+        $esResult = $this->hotelEs->searchList($target, $page, $perPage);
 
         if ($esResult['total'] === 0) {
             return $result;
@@ -174,7 +175,7 @@ class HotelService
      * @param array $parameter
      * @return array
      */
-    public function formatHotelParameter(array $parameter)
+    public static function formatHotelParameter(array $parameter)
     {
         $result = [
             'target'   => '',

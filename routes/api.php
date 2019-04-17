@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('affiliate/price/{hotelId}', [
-    'uses' => 'Api\AffiliateController@getPrice'
-]);
+Route::group(['prefix' => 'affiliate'], function() {
+    Route::get('price/{hotelId}', [
+        'uses' => 'Api\AffiliateController@getPrice'
+    ]);
+});
+
+Route::group(['prefix' => 'search'], function () {
+    Route::get('suggest/{string}', [
+        'uses' => 'Api\SearchController@getSuggestion'
+    ]);
+});

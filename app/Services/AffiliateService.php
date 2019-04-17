@@ -49,7 +49,7 @@ class AffiliateService
             throw new HotelException(HotelException::AFFILIATE_NOT_FOUND);
         }
 
-        $providerId      = $affiliateEntity->getAttribute("{$provider}_hotel_id");
+        $providerId = $affiliateEntity->getAttribute("{$provider}_hotel_id");
 
         try {
             $result = $affiliate->getRealTimePrice($providerId, new DateRange($checkIn, $checkOut), $nums);

@@ -6,12 +6,12 @@
                     <img src="/images/search.svg" alt="">
                     <form autocomplete="off" @submit="goSearch">
                         <vue-autosuggest
+                                @keyup.enter="goSearch"
                                 @focus="toggleMask(true)"
-                                @selected="goSearch"
+                                @selected="selectedHandle"
+                                :renderSuggestion="renderSuggestion"
                                 :suggestions="suggestions"
                                 :limit="10"
-                                :searchInput="this.value"
-                                :section-configs="sectionConfigs"
                                 :input-props="inputProps">
                             <template slot-scope="{suggestion}">
                                 <span class="my-suggestion-item">
@@ -81,11 +81,11 @@
                     <form autocomplete="off" style="width: 100%">
                         <vue-autosuggest
                                 @keyup.enter="goSearch"
+                                @selected="selectedHandle"
                                 @focus="toggleMask(true)"
+                                :renderSuggestion="renderSuggestion"
                                 :suggestions="suggestions"
                                 :limit="10"
-                                :searchInput="this.value"
-                                :section-configs="sectionConfigs"
                                 :input-props="inputProps">
                             <template slot-scope="{suggestion}">
                                 <span class="my-suggestion-item">
@@ -237,23 +237,6 @@
                     name: '__search_input',
                     initialValue: this.target
                 },
-                sectionConfigs: {
-                    hotel: {
-                        limit: 5,
-                        label: '飯店',
-                        onSelected: this.selectedValue
-                    },
-                    area: {
-                        limit: 5,
-                        label: '地區',
-                        onSelected: this.selectedValue
-                    },
-                    attraction: {
-                        limit: 5,
-                        label: "景點",
-                        onSelected: this.selectedValue
-                    }
-                },
                 related: [],
                 value: null,
                 suggestions: [],
@@ -323,8 +306,8 @@
             }
         },
         methods: {
-            selectedValue: function (selected) {
-                this.value = selected.item;
+            selectedHandle: function (selected) {
+                this.value = selected.item.name;
                 this.toggleMask(false);
                 this.goSearch();
             },
@@ -361,49 +344,31 @@
                     return;
                 }
 
-                this.suggestions = [
-                    {
-                        name: 'hotel',
-                        data: [
-                            '高雄國賓大飯店',
-                            '高雄寒軒',
-                            '高雄國賓大飯店',
-                            '高雄寒軒',
-                            '高雄國賓大飯店',
-                            '高雄寒軒',
-                            '高雄國賓大飯店',
-                            '高雄寒軒',
-                            '高雄國賓大飯店',
-                            '高雄寒軒',
-                        ]
-                    },
-                    {
-                        name: 'area',
-                        data: [
-                            '台灣, 高雄市',
-                            '高雄前鎮區'
-                        ]
-                    },
-                    {
-                        name: 'attraction',
-                        data: [
-                            '高雄蓮池潭',
-                            '高雄壽山'
-                        ]
-                    }
-                ];
+                window.$http.get(
+                    '/api/search/suggest/' + text
+                ).then(response => {
+                    this.suggestions = [
+                        {data: response.data}
+                    ];
+                }).catch(error => {
+                });
 
                 this.value = text.trim();
-            }
+            },
+            renderSuggestion(suggestion) {
+                return this.$createElement('div', {class: '__suggestion'}, [
+                    this.$createElement('div', {class: '__suggestion_text'}, [
+                        this.$createElement('span', {class: 'fz16'}, suggestion.item.name),
+                        this.$createElement('span', {class: 'fz12'}, suggestion.item.sub)
+                    ]),
+                    this.$createElement('span', {class: '__suggestion_label'}, suggestion.item.label)
+                ]);
+            },
         }
     }
 </script>
 
 <style>
-    .mx-input {
-        display: none;
-    }
-
     .searchBox {
         position: relative;
     }
@@ -411,40 +376,52 @@
     .search-input.IconBox {
         position: relative;
     }
+</style>
 
-    #autosuggest {
+<style scoped>
+    >>> .mx-input {
+        display: none;
+    }
+
+    >>> #autosuggest {
         width: 100%;
     }
 
-    div.autosuggest__results-container {
+    >>> div.autosuggest__results-container {
         top: 52px;
         position: absolute;
-        left: 0;
+        left: -12px;
         right: 0;
         z-index: 100;
     }
 
-    div.autosuggest__results-container ul {
+    >>> div.autosuggest__results-container ul {
         background-color: #fafafa;
         box-shadow: 4px 6px 10px rgba(0, 0, 0, .1);
     }
 
-    div.autosuggest__results-container li {
+    >>> div.autosuggest__results-container li {
         padding: 15px;
         cursor: pointer;
     }
 
-    div.autosuggest__results {
-        overflow: scroll;
+    >>> div.autosuggest__results {
+        width: 100%;
+        overflow-y: hidden;
+        padding: 0 12px 12px 12px;
         max-height: 500px;
     }
 
-    .autosuggest__results_item-highlighted {
-        color: white;
-        background-color: #f1b54f;
+    >>> .autosuggest__results_item-highlighted {
+        background-color: #80caba;
     }
 
-    .autosuggest__results .autosuggest__results_title {
+    >>> .autosuggest__results_item-highlighted div.__suggestion_text {
+        color: white;
+    }
+
+    >>> .autosuggest__results .autosuggest__results_title {
+        display: none;
         cursor: default;
         color: gray;
         font-size: 11px;
@@ -453,7 +430,11 @@
         border-top: 1px solid lightgray;
     }
 
-    .__full_mask {
+    >>> li.autosuggest__results_item {
+        border-bottom: 1px solid #a9a7a7
+    }
+
+    >>> .__full_mask {
         position: fixed;
         top: 0;
         right: 0;
@@ -462,5 +443,33 @@
         opacity: .35;
         background-color: #1b1515;
         z-index: 1001;
+    }
+
+    >>> .__suggestion {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    >>> div.__suggestion_text {
+        display: flex;
+        flex-direction: column;
+    }
+    >>> div.__suggestion_text > span.fz16{
+        display: flex;
+        flex-direction: column;
+    }
+    >>> div.__suggestion_text > span.fz12{
+        font-size: 12px;
+    }
+    >>> span.__suggestion_label {
+        background-color: white;
+        font-size: 10px;
+        float: right;
+        /* font-weight: 800; */
+        border: 1px solid #536584;
+        padding: 2px 4px;
+        border-radius: 2px;
+        min-width: 70px;
+        text-align: center;
     }
 </style>

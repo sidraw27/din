@@ -17,7 +17,7 @@ class HotelController extends Controller
 
     public function index(string $urlId)
     {
-        $searchData = $this->hotelService->formatHotelParameter(\Request::all());
+        $searchData = $this->hotelService::formatHotelParameter(\Request::all());
 
         try {
             $hotel     = $this->hotelService->getHotel($urlId);
@@ -43,9 +43,9 @@ class HotelController extends Controller
 
     public function list()
     {
-        $searchData = $this->hotelService->formatHotelParameter(\Request::all());
+        $searchData = $this->hotelService::formatHotelParameter(\Request::all());
 
-        $list = $this->hotelService->getList($searchData['target'], \Request::get('page', 1), $searchData);
+        $list = $this->hotelService->getList($searchData['target'], \Request::get('page', 1), 10, $searchData);
 
         $isShowSearchBar = true;
 
