@@ -28,10 +28,6 @@ class SearchController extends Controller
             ];
         }
 
-        if (empty($result)) {
-            return response('not found', 404);
-        }
-
         return response()->json($result);
     }
 }

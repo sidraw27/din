@@ -350,7 +350,8 @@
                     this.suggestions = [
                         {data: response.data}
                     ];
-                }).catch(error => {
+                }).catch(() => {
+                    this.suggestions = [];
                 });
 
                 this.value = text.trim();
