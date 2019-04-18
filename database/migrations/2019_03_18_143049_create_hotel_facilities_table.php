@@ -16,8 +16,13 @@ class CreateHotelFacilitiesTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('group');
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('icon')->nullable();
+            // index
+            $table->unique([
+                'group',
+                'name'
+            ]);
         });
     }
 
