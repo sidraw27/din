@@ -178,7 +178,7 @@ class HotelServiceTest extends TestCase
                 ]))
             ]));
 
-        $actual = $this->target->getList($this->faker->text(10), 1, ['abc' => 123]);
+        $actual = $this->target->getList($this->faker->text(10), 1, 10, ['abc' => 123]);
 
         $this->assertIsArray($actual);
         $this->assertGreaterThan(0, $actual['total']);
