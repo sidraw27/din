@@ -81,32 +81,32 @@
             <div class="destination-scroll">
                 <ul class="destination-con">
                     <li class="item" style="background-image: url('{{ asset('images/area/kyoto.jpg') }}')">
-                        <div class="area-wrap">
-                            <a href="#" class="MainTitle">
+                        <div class="area-wrap" onclick="location.href='{{ route('list') }}?target=京都'">
+                            <a href="{{ route('list') }}?target=京都" class="MainTitle">
                                 京都
                             </a>
                             <div class="SubTitle">日本</div>
                         </div>
                     </li>
                     <li class="item" style="background-image: url('{{ asset('images/area/osaka.jpg') }}')">
-                        <div class="area-wrap">
-                            <a href="#" class="MainTitle">
+                        <div class="area-wrap" onclick="location.href='{{ route('list') }}?target=大阪'">
+                            <a href="{{ route('list') }}?target=大阪" class="MainTitle">
                                 大阪
                             </a>
                             <div class="SubTitle">日本</div>
                         </div>
                     </li>
                     <li class="item" style="background-image: url('{{ asset('images/area/seoul.jpg') }}')">
-                        <div class="area-wrap">
-                            <a href="#" class="MainTitle">
+                        <div class="area-wrap" onclick="location.href='{{ route('list') }}?target=首爾'">
+                            <a href="{{ route('list') }}?target=首爾" class="MainTitle">
                                 首爾
                             </a>
                             <div class="SubTitle">韓國</div>
                         </div>
                     </li>
                     <li class="item" style="background-image: url('{{ asset('images/area/taipei.jpg') }}')">
-                        <div class="area-wrap">
-                            <a href="#" class="MainTitle">
+                        <div class="area-wrap" onclick="location.href='{{ route('list') }}?target=台北'">
+                            <a href="{{ route('list') }}?target=台北" class="MainTitle">
                                 台北
                             </a>
                             <div class="SubTitle">台灣</div>
