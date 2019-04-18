@@ -1,12 +1,11 @@
 .main-search_wrapper
     position: relative
+    @extend %flex-center
 
     .main-search_con
         position: absolute
-        top: 50%
         right: 0
         left: 0
-        transform: translateY(-50%)
         background: rgba(0,0,0,.4)
         @extend %outer-width1200
         padding: 20px 
@@ -194,7 +193,6 @@
 
 .main-search_bg
     background-image: url(/images/main-bg.jpg)
-    overflow: hidden
     height: 420px
     background-position: center
     background-size: cover
