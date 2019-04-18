@@ -23,18 +23,25 @@
                     lng: this.longitude
                 };
 
-                const map = L.map('g_map').setView([geo.lat, geo.lng], 15);
+                const map = new L.map('g_map', {
+                    center: [geo.lat, geo.lng],
+                    zoom: 15
+                });
 
-                new L.TileLayer(
+                const layer = new L.TileLayer(
                     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                     {
                         minZoom: 6,
                         maxZoom: 17,
                         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                     }
-                ).addTo(map);
+                );
 
-                L.marker([geo.lat, geo.lng]).addTo(map);
+                map.addLayer(layer);
+
+                const marker = new L.marker([geo.lat, geo.lng]);
+
+                marker.addTo(map);
             }
         }
     }

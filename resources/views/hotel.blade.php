@@ -107,15 +107,17 @@
             <div class="intro_reviews inrto_min">
                 <div class="reviews-wrap">
                     <div class="reviews_num">
-                        <div class="Number-rating">7.9</div>
+                        <div class="Number-rating">
+                            {{ $hotelView['rating']['statistics']['avg'] }}
+                        </div>
                         <div class="total-rating">/10</div>
                     </div>
-                    <div class="reviews_text">很讚</div>
+                    {{--<div class="reviews_text">很讚</div>--}}
                 </div>
-                <a class="icon-right" href="#">
-                    <div class="reviewMore">
-                        (共有<span>52</span>則評論)
-                    </div>
+                <a class="icon-right" onclick="scrollToAnchor('comment')">
+                    {{--<div class="reviewMore">--}}
+                        {{--(共有<span>52</span>則評論)--}}
+                    {{--</div>--}}
                     <img src="{{ asset('images/arrow-right.svg') }}" alt="">
                 </a>
             </div>
@@ -125,7 +127,6 @@
                 @else
                     <vue_carousel img-url="{{ json_encode($hotelView['photos']) }}"></vue_carousel>
                 @endempty
-
             </div>
         </div>
     </div>
@@ -149,56 +150,12 @@
                     @endif
                     <div class="map-distance">
                         <div class="distance_scroll">
-                            <div class="item-con">
-                                <div class="item">
-                                    <span class="name">附近機場</span>
-                                    <span class="distance">6.23 公里</span>
-                                </div>
-                            </div>
-                            <div class="item-con">
-                                <div class="item">
-                                    <span class="name">捷運巨蛋站</span>
-                                    <span class="distance">160 公尺</span>
-                                </div>
-                                <div class="item">
-                                    <span class="name">捷運凹子底站</span>
-                                    <span class="distance">990 公尺</span>
-                                </div>
-                            </div>
-                            <div class="item-con">
-                                <div class="item">
-                                    <span class="name">高雄市立聯合醫院</span>
-                                    <span class="distance">1.8 公里</span>
-                                </div>
-                            </div>
-                            <div class="item-con">
-                                <div class="item">
-                                    <span class="name">夢時代購物中心</span>
-                                    <span class="distance">6.9 公里</span>
-                                </div>
-                            </div>
-                            <div class="item-con">
-                                <div class="item">
-                                    <span class="name">捷運巨蛋站</span>
-                                    <span class="distance">160 公尺</span>
-                                </div>
-                                <div class="item">
-                                    <span class="name">捷運凹子底站</span>
-                                    <span class="distance">990 公尺</span>
-                                </div>
-                            </div>
-                            <div class="item-con">
-                                <div class="item">
-                                    <span class="name">高雄市立聯合醫院</span>
-                                    <span class="distance">1.8 公里</span>
-                                </div>
-                            </div>
-                            <div class="item-con">
-                                <div class="item">
-                                    <span class="name">夢時代購物中心</span>
-                                    <span class="distance">6.9 公里</span>
-                                </div>
-                            </div>
+                            {{--<div class="item-con">--}}
+                                {{--<div class="item">--}}
+                                    {{--<span class="name">附近機場</span>--}}
+                                    {{--<span class="distance">6.23 公里</span>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                         </div>
                     </div>
                 </div>
@@ -212,16 +169,14 @@
                     <div class="score-box_total">
                         <div class="total-score">
                             <div class="score-number">
-                                @isset($hotelView['rating']['statistics'])
-                                    {{ $hotelView['rating']['statistics']['avg'] }}
-                                @else
-                                    0
-                                @endisset
+                                {{ $hotelView['rating']['statistics']['avg'] }}
                             </div>
                             <div class="score-ten">/10</div>
                         </div>
-                        <div class="total-text">很讚</div>
-                        <div class="review-basedon">(共有<span>52</span>則評論)</div>
+                        {{--<div class="total-text">很讚</div>--}}
+                        {{--<div class="review-basedon">--}}
+                            {{--(共有<span>52</span>則評論)--}}
+                        {{--</div>--}}
                     </div>
                     <div class="score-box_intro">
                         @isset($hotelView['rating']['detail'])
@@ -247,16 +202,8 @@
                     <div class="resource_text">資料來源</div>
                     <div class="resource_wrap">
                         <div class="recource">
-                            <img src="{{ asset('images/booking-logo.svg') }}" alt="">
-                            <div class="detail"><span>73</span>則評論</div>
-                        </div>
-                        <div class="recource">
                             <img src="{{ asset('images/agoda-logo.svg') }}" alt="">
-                            <div class="detail"><span>73</span>則評論</div>
-                        </div>
-                        <div class="recource">
-                            <img src="{{ asset('images/hotels-logo.svg') }}" alt="">
-                            <div class="detail"><span>73</span>則評論</div>
+                            {{--<div class="detail"><span>73</span>則評論</div>--}}
                         </div>
                     </div>
                 </div>
@@ -285,7 +232,7 @@
                                 <ul class="list-con">
                                     @foreach($facilities as $facility)
                                         <li class="facility-item">
-                                            <img src="{{ asset('images/facility/room-icons-08.svg') }}" alt="icon">
+                                            <img src="{{ asset('images/facility/room-icons-21.svg') }}" alt="icon">
                                             <div class="name">
                                                 {{ $facility['name'] }}
                                             </div>
@@ -359,43 +306,44 @@
                     </div>
                 </div>
             </div>
-            <div class="hl_recommend-wrapper">
-                <div class="recommend_tit">
-                    <h3 class="title">您可能也會喜歡</h3>
-                </div>
-                <div class="recommend_scroll">
-                    <ul class="recommed-list">
-                        <li class="recommed-item">
-                            <div class="item-img">
-                                <div class="image"
-                                     style="background-image: url('https://a0.muscache.com/im/pictures/47985619/11203a2d_original.jpg?aki_policy=xx_large')"></div>
-                            </div>
-                            <div class="item-info">
-                                <a class="info-tit" href="#">紐約千禧希爾頓酒店(The Millennium Hilton New York)</a>
-                                <div class="info-rating">
-                                <span class="star">
-                                    <img src="/images/star.svg" alt="">
-                                </span>
-                                    <span class="star">
-                                    <img src="/images/star.svg" alt="">
-                                </span>
-                                    <span class="star">
-                                    <img src="/images/star.svg" alt="">
-                                </span>
-                                    <span class="star">
-                                    <img src="/images/star.svg" alt="">
-                                </span>
-                                </div>
-                                <div class="info-price">最低價
-                                    <div class="currency">NT$</div>
-                                    <div class="price">2,345</div>
-                                </div>
-                            </div>
-                            <div class="item-review">8.3</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+
+            {{--<div class="hl_recommend-wrapper">--}}
+                {{--<div class="recommend_tit">--}}
+                    {{--<h3 class="title">您可能也會喜歡</h3>--}}
+                {{--</div>--}}
+                {{--<div class="recommend_scroll">--}}
+                    {{--<ul class="recommed-list">--}}
+                        {{--<li class="recommed-item">--}}
+                            {{--<div class="item-img">--}}
+                                {{--<div class="image"--}}
+                                     {{--style="background-image: url('https://a0.muscache.com/im/pictures/47985619/11203a2d_original.jpg?aki_policy=xx_large')"></div>--}}
+                            {{--</div>--}}
+                            {{--<div class="item-info">--}}
+                                {{--<a class="info-tit" href="#">紐約千禧希爾頓酒店(The Millennium Hilton New York)</a>--}}
+                                {{--<div class="info-rating">--}}
+                                {{--<span class="star">--}}
+                                    {{--<img src="/images/star.svg" alt="">--}}
+                                {{--</span>--}}
+                                    {{--<span class="star">--}}
+                                    {{--<img src="/images/star.svg" alt="">--}}
+                                {{--</span>--}}
+                                    {{--<span class="star">--}}
+                                    {{--<img src="/images/star.svg" alt="">--}}
+                                {{--</span>--}}
+                                    {{--<span class="star">--}}
+                                    {{--<img src="/images/star.svg" alt="">--}}
+                                {{--</span>--}}
+                                {{--</div>--}}
+                                {{--<div class="info-price">最低價--}}
+                                    {{--<div class="currency">NT$</div>--}}
+                                    {{--<div class="price">2,345</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="item-review">8.3</div>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--</div>--}}
         </div>
         <div class="hl_sidebar"></div>
     </div>

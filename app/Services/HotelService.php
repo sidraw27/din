@@ -8,6 +8,8 @@ use App\Repositories\HotelRepository;
 use App\Services\Hotel\Facility;
 use App\Services\Hotel\Location;
 use App\Services\Hotel\Rating;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Arr;
 
 class HotelService
@@ -167,6 +169,14 @@ class HotelService
                 'link'           => route('hotel', ['url_id' => $hotel->url_id]) . '?' . http_build_query($withParameter),
             ];
         }
+
+        $result['paginate'] = new LengthAwarePaginator(
+            (object) [],
+            $result['total'],
+            $perPage,
+            $page,
+            ['pageName' => 'page', 'path' => Paginator::resolveCurrentPath()]
+        );
 
         return $result;
     }

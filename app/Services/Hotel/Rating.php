@@ -50,7 +50,7 @@ class Rating
         $totalNums  = 0;
 
         if (is_null($entity)) {
-            return [];
+            return $result;
         }
 
         foreach ($mapping as $type => $item) {
