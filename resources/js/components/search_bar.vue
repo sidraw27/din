@@ -1,9 +1,9 @@
 <template itemscope>
     <div>
-        <div class="hl_min-search-bar" v-if="this.$isMobile">
+        <div class="hl_min-search-bar" v-if="this.$isMobile && ! this.isOnIndex">
             <div class="min-search-bar" :style="beforeMaskStyle">
                 <div class="search-input IconBox">
-                    <img src="/images/search.svg" alt="">
+                    <img src="/images/search.svg" alt="search">
                     <form autocomplete="off" @submit="goSearch">
                         <vue-autosuggest
                                 @keyup.enter="goSearch"
@@ -13,11 +13,6 @@
                                 :suggestions="suggestions"
                                 :limit="10"
                                 :input-props="inputProps">
-                            <template slot-scope="{suggestion}">
-                                <span class="my-suggestion-item">
-                                    {{ suggestion.item }}
-                                </span>
-                            </template>
                         </vue-autosuggest>
                     </form>
                 </div>
@@ -30,7 +25,7 @@
                         <div class="picker_date">{{ checkTime.in.str }}</div>
                     </div>
                     <div class="right-icon">
-                        <img src="/images/cc-arrow-left.svg" alt="">
+                        <img src="/images/cc-arrow-left.svg" alt="arrow-left">
                     </div>
                     <div class="check-out min-text">
                         <div class="picker_label">退房日期</div>
@@ -59,7 +54,7 @@
 
                 <div class="filter-child">
                     <div class="picker_label">
-                        <img src="/images/people.svg" alt="">
+                        <img src="/images/people.svg" alt="people">
                     </div>
                     <div class="picker_date">
                         <label>
@@ -74,10 +69,10 @@
             </div>
         </div>
 
-        <div class="searchBox" v-else :style="beforeMaskStyle">
+        <div class="searchBox" v-else :style="beforeMaskStyle" :class="{'__index_mo_search': this.isOnIndex && this.$isMobile}">
             <div class="searchBox_wrapper">
                 <div class="search-input IconBox">
-                    <img src="/images/search.svg" alt="">
+                    <img src="/images/search.svg" alt="search">
                     <form autocomplete="off" style="width: 100%">
                         <vue-autosuggest
                                 @keyup.enter="goSearch"
@@ -87,18 +82,13 @@
                                 :suggestions="suggestions"
                                 :limit="10"
                                 :input-props="inputProps">
-                            <template slot-scope="{suggestion}">
-                                <span class="my-suggestion-item">
-                                    {{ suggestion.item }}
-                                </span>
-                            </template>
                         </vue-autosuggest>
                     </form>
                 </div>
 
                 <div class="check-in IconBox" @click="openDate" :id="triggerElementId">
                     <div class="picker-icons">
-                        <img src="/images/checkin.svg" alt="">
+                        <img src="/images/checkin.svg" alt="check-in-icon">
                     </div>
                     <div class="picker-text">
                         <div class="picker_label">
@@ -112,7 +102,7 @@
 
                 <div class="check-out IconBox" @click="openDate">
                     <div class="picker-icons">
-                        <img src="/images/checkout.svg" alt="">
+                        <img src="/images/checkout.svg" alt="check-out-icon">
                     </div>
                     <div class="picker-text">
                         <div class="picker_label">
@@ -188,7 +178,7 @@
             </div>
         </div>
 
-        <vue_mask :show="isShowMask" @close="closeMask"></vue_mask>
+        <vue_mask :show="isShowMask" @close="toggleMask(false)"></vue_mask>
     </div>
 </template>
 
@@ -198,13 +188,36 @@
     import vue_mask from '../components/mask';
 
     export default {
-        props: [
-            'action',
-            'target',
-            'checkIn',
-            'checkOut',
-            'adult'
-        ],
+        props: {
+            'action': {
+                type: String,
+                required: true
+            },
+            'target': {
+                type: String
+            },
+            'checkIn': {
+                type: String
+            },
+            'checkOut': {
+                type: String
+            },
+            'adult': {
+                type: Number
+            },
+            'offsetX': {
+                type: Number,
+                required: true
+            },
+            'offsetY': {
+                type: Number,
+                required: true
+            },
+            'isOnIndex': {
+                type: Boolean,
+                default: false
+            }
+        },
         mixins: [
             dateMixin
         ],
@@ -213,10 +226,10 @@
             vue_mask
         },
         created: function () {
-            if (this.checkIn !== '') {
+            if (this.checkDateFormat(this.checkIn)) {
                 this.checkTime.in.date = this.checkIn;
             }
-            if (this.checkOut !== '') {
+            if (this.checkDateFormat(this.checkOut)) {
                 this.checkTime.out.date = this.checkOut;
             }
 
@@ -242,8 +255,8 @@
                 suggestions: [],
                 datePickerConfig: {
                     offset: {
-                        x: -95,
-                        y: 20
+                        x: this.offsetX,
+                        y: this.offsetY
                     },
                     trigger: false
                 },
@@ -306,6 +319,17 @@
             }
         },
         methods: {
+            checkDateFormat: function (strDate) {
+                if (strDate === undefined) {
+                    return false;
+                }
+
+                if (strDate.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}/) === null) {
+                    return false;
+                }
+
+                return true;
+            },
             selectedHandle: function (selected) {
                 this.value = selected.item.name;
                 this.toggleMask(false);
@@ -335,9 +359,6 @@
                     `&checkIn=${this.checkTime.in.date}` +
                     `&checkOut=${this.checkTime.out.date}` +
                     `&adult=${this.nums.adult.pool[this.nums.adult.currentIndex]}`;
-            },
-            closeMask: function () {
-                this.isShowMask = false
             },
             onInputChange(text) {
                 if (text === '' || text === undefined) {
@@ -406,8 +427,18 @@
         cursor: pointer;
     }
 
-    >>> div.autosuggest__results {
+    .hl_min-search-bar >>> div.autosuggest__results {
         width: 100%;
+    }
+
+    .searchBox >>> div.autosuggest__results {
+        width: 479px;
+    }
+    .__index_mo_search >>> div.autosuggest__results {
+        width: 104%;
+    }
+
+    >>> div.autosuggest__results {
         overflow-y: hidden;
         padding: 0 12px 12px 12px;
         max-height: 500px;

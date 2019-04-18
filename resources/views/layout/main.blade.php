@@ -5,7 +5,9 @@
                     target="{{ $searchData['target'] }}"
                     check-in="{{ $searchData['checkIn'] }}"
                     check-out="{{ $searchData['checkOut'] }}"
-                    adult="{{ $searchData['adult'] }}"
+                    :adult="{{ (int) $searchData['adult'] }}"
+                    :offset-x="-95"
+                    :offset-y="20"
     >
     </vue_search_bar>
 

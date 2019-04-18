@@ -209,11 +209,10 @@ class HotelService
                     }
                     break;
                 case 'adult':
-                    if ( ! is_numeric($value) || ($value > 8 && $value < 1)) {
-                        continue 2;
+                    if (is_numeric($value) && ($value > 8 && $value < 1)) {
+                        $defaultValue = (int) $value;
                     }
-
-                    $result['adult'] = $value;
+                    continue 2;
                     break;
             }
 

@@ -10,6 +10,8 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
+
     @stack('head')
 
     <style>
