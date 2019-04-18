@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function() {
-    var_dump(\Auth::check());
-})->name('index');
+Route::get('/', [
+    'uses' => 'HotelController@index',
+    'as'   => 'index'
+]);
 
 Route::get('hotel', [
     'uses' => 'HotelController@list',
@@ -21,7 +22,7 @@ Route::get('hotel', [
 ]);
 
 Route::get('hotel/{id}', [
-    'uses' => 'HotelController@index',
+    'uses' => 'HotelController@page',
     'as'   => 'hotel'
 ])->where('id', '[a-zA-Z0-9]{6}');
 

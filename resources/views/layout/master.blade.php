@@ -24,52 +24,11 @@
 
 <body>
     <div id="app">
-        <div class="__adjust_top"></div>
-        <div class="topbar-outer">
-            <div class="topbar_logo">
-                <a href="{{ route('index') }}">盯房網</a>
-            </div>
-
-            <div class="topbar_nav">
-                <a class="nav-link" href="#">飯店清單</a>
-                <a class="nav-link signin-btn" href="#">登入</a>
-                <a class="nav-link sign-in" href="#">
-                    <img src="{{ asset('images/user.jpg') }}" alt="">
-                    <span class="signin-name">MAO CATHY</span>
-                </a>
-            </div>
-
-            <div class="topbar_min-nav">
-                <a class="nav-hamburger" href="#">
-                    <img src="{{ asset('images/hamburger.svg') }}" alt="">
-                </a>
-            </div>
-        </div>
-
-        @if ($isShowSearchBar)
-            <vue_search_bar action="{{ route('list') }}"
-                            target="{{ $searchData['target'] }}"
-                            check-in="{{ $searchData['checkIn'] }}"
-                            check-out="{{ $searchData['checkOut'] }}"
-                            adult="{{ $searchData['adult'] }}"
-            >
-            </vue_search_bar>
-        @endif
+        @include('layout.header')
 
         @yield('content')
 
-        <div class="footer_wrapper">
-            <div class="footer">
-                <div class="footer_link">
-                    <a href="#">首頁</a>
-                    <a href="#">服務條款</a>
-                    <a href="#">隱私政策</a>
-                </div>
-                <div class="footer_copyright">
-                    <span>Copyright © {{ date('Y') }}  dinroom.tw</span>
-                </div>
-            </div>
-        </div>
+        @include('layout.footer')
     </div>
 
     @stack('modal')

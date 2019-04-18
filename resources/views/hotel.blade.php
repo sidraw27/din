@@ -1,10 +1,10 @@
-@extends('layout.master')
+@extends('layout.main')
 
 @push('head')
     <link rel="stylesheet" href="{{ mix('css/hotel.css') }}">
 @endpush
 
-@section('content')
+@section('main_content')
     <div class="breadcrumb-outer">
         @if (Agent::isMobile())
             <div class="breadcrumb_search-more">

@@ -15,7 +15,12 @@ class HotelController extends Controller
         $this->hotelService = $hotelService;
     }
 
-    public function index(string $urlId)
+    public function index()
+    {
+        return view('index');
+    }
+
+    public function page(string $urlId)
     {
         $searchData = $this->hotelService::formatHotelParameter(\Request::all());
 
