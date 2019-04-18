@@ -93,9 +93,9 @@
                         </li>
                     @endforeach
                 </ul>
-            @endif
 
-            {!! $paginatePresenter->renderPage($list['paginate'], ['target', 'checkIn', 'checkOut', 'adult']) !!}
+                {!! $paginatePresenter->renderPage($list['paginate'], ['target', 'checkIn', 'checkOut', 'adult']) !!}
+            @endif
 
         </div>
         <div class="hl_sidebar"></div>
