@@ -25,7 +25,7 @@
         @else
             <ul class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a class="breadcrumb-link" href="#">
+                    <a class="breadcrumb-link" href="{{ route('index') }}">
                         首頁
                     </a>
                 </li>

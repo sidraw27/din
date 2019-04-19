@@ -31,12 +31,14 @@ class HotelController extends Controller
             if (is_null($searchData['target']) || strlen($searchData['target']) === 0) {
                 $searchData['target'] = $hotelView['name']['origin'];
             }
+
+            $buildLink = $searchData;
+            $buildLink['target'] = $hotelView['name']['origin'];
+            $listLink = route('list') . '?' . http_build_query($buildLink);
+            $isShowSearchBar = ( ! \Agent::isMobile());
         } catch (HotelException $e) {
             abort(404);
         }
-
-        $listLink = route('list') . '?' . http_build_query($searchData);
-        $isShowSearchBar = ( ! \Agent::isMobile());
 
         return view('hotel', compact(
             'hotelView',
