@@ -39,7 +39,8 @@
             @else
                 <ul class="hotel-list_wrapper">
                     @foreach($list['data'] as $hotel)
-                        <li class="hotel-item hot-item">
+                        {{-- .hot-item人氣飯店 --}}
+                        <li class="hotel-item {{ $hotel['isHot'] ? 'hot-item' : '' }}">
                             <div class="item-link" style="cursor: pointer" onclick="location.href='{{ $hotel['link'] }}'">
                                 <div class="hotel-info">
                                     <div class="hotel-img"
@@ -61,9 +62,15 @@
                                             {{ $hotel['address'] }}
                                         </div>
                                         <div class="con_average-price">
-                                            <div class="price">NT<span>$2,345</span></div>
+                                            <div class="price">
+                                                NT$
+                                                <span> - </span>
+                                            </div>
                                             <div class="text">~</div>
-                                            <div class="price">NT$<span>2,345</span></div>
+                                            <div class="price">
+                                                NT$
+                                                <span> - </span>
+                                            </div>
                                         </div>
                                         <div class="con_review">
                                             <div class="review-num">

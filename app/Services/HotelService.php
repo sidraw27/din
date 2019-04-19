@@ -163,12 +163,21 @@ class HotelService
 
         $hotels = $this->hotelRepo->getByIds($hotelIds, $columns);
 
+        $hotNums = 0;
         foreach ($hotels as $hotel) {
             $photos = json_decode($hotel['photo']);
 
             $rating = $this->rating->getHotelRating($hotel->id);
 
+            // 暫時讓前三間搜尋相關飯店出現標籤
+            $isHot = false;
+            if ($page === 1 && $hotNums < 3) {
+                $hotNums++;
+                $isHot = true;
+            }
+
             $result['data'][] = [
+                'isHot'           => $isHot,
                 'urlId'           => $hotel->url_id,
                 'name'            => $hotel->name,
                 'translatedName'  => $hotel->translated_name,
