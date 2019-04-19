@@ -33,6 +33,34 @@
 
     @stack('modal')
 
+    @guest
+        <div class="LoginModal flex-outer">
+            <div class="login-box">
+                <div class="Title">歡迎加入盯房網</div>
+                <div class="slogan">透過訂閱追蹤飯店，即時通知你更優惠的飯店價格</div>
+                <a class="login-link facebook-btn" href="#">
+                    <img src="/images/facebook.svg" alt="">
+                    <span>使用Facebook帳號登入</span>
+                </a>
+                <div class="separator">
+                    <div class="separator_line"></div>
+                    <div class="separator_text">或改為</div>
+                </div>
+                <a class="login-link border-btn active" href="#">
+                    <span>使用其他方式登入</span>
+                </a>
+                <a class="login-link google-btn" href="#">
+                    <img src="/images/google.svg" alt="">
+                    <span>使用Google帳號登入</span>
+                </a>
+                <div class="footer-text">我們不會將您的登入資訊用於任何商業用途，或公開於任何頁面上。</div>
+                <button class="close-btn">
+                    <img src="/images/close.svg" alt="">
+                </button>
+            </div>
+        </div>
+    @endguest
+
     <script src="{{ mix('js/app.js') }}"></script>
     @stack('app_js')
     <script src="{{ mix('js/action/master.js') }}"></script>
