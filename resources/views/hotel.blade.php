@@ -67,9 +67,9 @@
                         查看地圖
                     </a>
                 </div>
-                <a class="icon-right" href="#">
+                <a class="icon-right" onclick="scrollToAnchor('position')">
                     <span>地圖</span>
-                    <img src="{{ asset('images/arrow-right.svg') }}" alt="">
+                    <img src="{{ asset('images/arrow-right.svg') }}" alt="arrow">
                 </a>
             </div>
         </div>
@@ -125,7 +125,7 @@
                     {{--<div class="reviewMore">--}}
                         {{--(共有<span>52</span>則評論)--}}
                     {{--</div>--}}
-                    <img src="{{ asset('images/arrow-right.svg') }}" alt="">
+                    <img src="{{ asset('images/arrow-right.svg') }}" alt="arrow">
                 </a>
             </div>
             <div class="intro_gallery inrto_min">
@@ -256,7 +256,7 @@
                     <h3 class="title">飯店政策</h3>
                     <div class="policy_wrap wrap-con">
                         <div class="policy-type">
-                            <img src="{{ asset('images/facility/room-icons-18.svg') }}" alt="">
+                            <img src="{{ asset('images/facility/room-icons-18.svg') }}" alt="room-info">
                         </div>
                         <div class="policy-item">
                             <div class="item-tit">入住時間＆退房時間</div>
@@ -278,7 +278,7 @@
                     </div>
                     <div class="policy_wrap wrap-con">
                         <div class="policy-type">
-                            <img src="{{ asset('images/facility/room-icons-19.svg') }}" alt="">
+                            <img src="{{ asset('images/facility/room-icons-19.svg') }}" alt="hotel-info">
                         </div>
                         <div class="policy-item">
                             <div class="item-tit">資訊概況</div>
