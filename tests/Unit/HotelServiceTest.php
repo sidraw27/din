@@ -176,10 +176,8 @@ class HotelServiceTest extends TestCase
             'country_id' => 1
         ]));
         $entity->setAttribute('id', 1);
-        $this->repoMock->shouldReceive('getByIds')
-            ->andReturn(new Collection([
-                $entity
-            ]));
+        $this->repoMock->shouldReceive('getById')
+            ->andReturn($entity);
         $this->ratingMock->shouldReceive('getHotelRating')
             ->once()
             ->andReturn([

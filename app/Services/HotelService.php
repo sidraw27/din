@@ -161,11 +161,11 @@ class HotelService
             'photo'
         ];
 
-        $hotels = $this->hotelRepo->getByIds($hotelIds, $columns);
-
         $hotNums = 0;
-        foreach ($hotels as $hotel) {
-            $photos = json_decode($hotel['photo']);
+        foreach ($hotelIds as $hotelId) {
+            $hotel = $this->hotelRepo->getById($hotelId, $columns);
+
+            $photos = json_decode($hotel->photo);
 
             $rating = $this->rating->getHotelRating($hotel->id);
 
@@ -177,6 +177,7 @@ class HotelService
             }
 
             $result['data'][] = [
+                'id'              => $hotel->id,
                 'isHot'           => $isHot,
                 'urlId'           => $hotel->url_id,
                 'name'            => $hotel->name,
