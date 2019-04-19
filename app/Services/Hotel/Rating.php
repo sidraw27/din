@@ -19,7 +19,8 @@ class Rating
         $result = [
             'statistics' => [
                 'sum' => 0,
-                'avg' => 0.0
+                'avg' => 0.0,
+                'promotion' => ''
             ],
             'detail' => []
         ];
@@ -76,6 +77,18 @@ class Rating
         $result['statistics']['sum'] = $totalScore;
         if ($totalNums > 0) {
             $result['statistics']['avg'] = round(($totalScore / $totalNums) / 10, 1);
+
+            $promoText = [
+                '不佳',
+                '稍微不佳',
+                '普通',
+                '優良',
+                '極度優良'
+            ];
+            $totalText = count($promoText);
+            $weight = $totalText / 10;
+            $scoreKey = round($result['statistics']['avg'] * $weight);
+            $result['statistics']['promotion'] = $promoText[(int) $scoreKey];
         }
 
         return $result;

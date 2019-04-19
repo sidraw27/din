@@ -1,7 +1,7 @@
 <div class="footer_wrapper">
     <div class="footer">
         <div class="footer_link">
-            <a href="#">首頁</a>
+            <a href="{{ route('index') }}">首頁</a>
             <a href="#">服務條款</a>
             <a href="#">隱私政策</a>
         </div>

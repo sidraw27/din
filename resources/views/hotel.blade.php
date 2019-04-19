@@ -1,6 +1,11 @@
 @extends('layout.main')
 
 @push('head')
+    <title>
+        {{ $hotelView['name']['translated'] }} ({{ $hotelView['name']['origin'] }})
+    </title>
+    <meta name="title" content="{{ $hotelView['name']['translated'] }} ({{ $hotelView['name']['origin'] }})">
+
     <link rel="stylesheet" href="{{ mix('css/hotel.css') }}">
 @endpush
 
@@ -38,7 +43,7 @@
             <div class="hotel_title">
                 <div class="hotel_tit-info">
                     <h1 class="title">
-                        {{ $hotelView['name']['origin'] }} ({{ $hotelView['name']['translated'] }})
+                        {{ $hotelView['name']['translated'] }} ({{ $hotelView['name']['origin'] }})
                     </h1>
 
                     <div class="rating-wrap">
@@ -112,7 +117,9 @@
                         </div>
                         <div class="total-rating">/10</div>
                     </div>
-                    {{--<div class="reviews_text">很讚</div>--}}
+                    <div class="reviews_text">
+                        {{ $hotelView['rating']['statistics']['promotion'] }}
+                    </div>
                 </div>
                 <a class="icon-right" onclick="scrollToAnchor('comment')">
                     {{--<div class="reviewMore">--}}
@@ -173,7 +180,9 @@
                             </div>
                             <div class="score-ten">/10</div>
                         </div>
-                        {{--<div class="total-text">很讚</div>--}}
+                        <div class="total-text">
+                            {{ $hotelView['rating']['statistics']['promotion'] }}
+                        </div>
                         {{--<div class="review-basedon">--}}
                             {{--(共有<span>52</span>則評論)--}}
                         {{--</div>--}}
@@ -202,8 +211,8 @@
                     <div class="resource_text">資料來源</div>
                     <div class="resource_wrap">
                         <div class="recource">
-                            <img src="{{ asset('images/agoda-logo.svg') }}" alt="">
-                            {{--<div class="detail"><span>73</span>則評論</div>--}}
+                            <img src="{{ asset('images/agoda-logo.svg') }}" alt="agoda">
+                            <div class="detail"><span>數</span>則評論</div>
                         </div>
                     </div>
                 </div>

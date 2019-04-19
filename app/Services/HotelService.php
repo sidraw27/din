@@ -152,6 +152,7 @@ class HotelService
         }
 
         $columns = [
+            'id',
             'url_id',
             'name',
             'translated_name',
@@ -165,14 +166,18 @@ class HotelService
         foreach ($hotels as $hotel) {
             $photos = json_decode($hotel['photo']);
 
+            $rating = $this->rating->getHotelRating($hotel->id);
+
             $result['data'][] = [
-                'urlId'          => $hotel->url_id,
-                'name'           => $hotel->name,
-                'translatedName' => $hotel->translated_name,
-                'address'        => $hotel->address,
-                'starRated'      => $hotel->star_rated,
-                'photo'          => empty($photos) ? null : Arr::first($photos),
-                'link'           => route('hotel', ['url_id' => $hotel->url_id]) . '?' . http_build_query($withParameter),
+                'urlId'           => $hotel->url_id,
+                'name'            => $hotel->name,
+                'translatedName'  => $hotel->translated_name,
+                'ratingScore'     => $rating['statistics']['avg'],
+                'ratingPromotion' => $rating['statistics']['promotion'],
+                'address'         => $hotel->address,
+                'starRated'       => $hotel->star_rated,
+                'photo'           => empty($photos) ? null : Arr::first($photos),
+                'link'            => route('hotel', ['url_id' => $hotel->url_id]) . '?' . http_build_query($withParameter),
             ];
         }
 

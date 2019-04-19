@@ -106,7 +106,8 @@ class HotelServiceTest extends TestCase
             ->andReturn([
                 'statistics' => [
                     'sum' => 0,
-                    'avg' => 0.0
+                    'avg' => 0.0,
+                    'promotion' => ''
                 ],
                 'detail'     => []
             ]);
@@ -170,13 +171,25 @@ class HotelServiceTest extends TestCase
                 ]
             ]);
 
+        $entity = new Hotel(\HotelSeeder::getSeeder([
+            'id'         => 1,
+            'country_id' => 1
+        ]));
+        $entity->setAttribute('id', 1);
         $this->repoMock->shouldReceive('getByIds')
             ->andReturn(new Collection([
-                new Hotel(\HotelSeeder::getSeeder([
-                    'id'         => 1,
-                    'country_id' => 1
-                ]))
+                $entity
             ]));
+        $this->ratingMock->shouldReceive('getHotelRating')
+            ->once()
+            ->andReturn([
+                'statistics' => [
+                    'sum' => 0,
+                    'avg' => 0.0,
+                    'promotion' => ''
+                ],
+                'detail'     => []
+            ]);
 
         $actual = $this->target->getList($this->faker->text(10), 1, 10, ['abc' => 123]);
 

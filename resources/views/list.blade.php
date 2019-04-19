@@ -66,11 +66,15 @@
                                             <div class="price">NT$<span>2,345</span></div>
                                         </div>
                                         <div class="con_review">
-                                            <div class="review-num">8.1</div>
-                                            <div class="review-text">很讚</div>
-                                            <div class="review-count">
-                                                (<span>1245</span>則評論)
+                                            <div class="review-num">
+                                                {{ $hotel['ratingScore'] }}
                                             </div>
+                                            <div class="review-text">
+                                                {{ $hotel['ratingPromotion'] }}
+                                            </div>
+                                            {{--<div class="review-count">--}}
+                                                {{--(<span>1245</span>則評論)--}}
+                                            {{--</div>--}}
                                         </div>
                                     </div>
                                 </div>

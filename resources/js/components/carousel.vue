@@ -1,5 +1,5 @@
 <template>
-    <VueCarousel :data="data" indicator-trigger="hover" :autoplay="false" :interval="2500"></VueCarousel>
+    <VueCarousel :data="data" indicator-trigger="hover" :autoplay="true" :interval="3000"></VueCarousel>
 </template>
 
 <script>
@@ -45,6 +45,9 @@
 </script>
 
 <style scoped>
+    >>> .__carousel_img > img {
+        min-width: 550px;
+    }
     >>> .__carousel_img {
         height: 420px;
         align-items: center;
