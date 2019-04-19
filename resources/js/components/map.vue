@@ -39,7 +39,13 @@
 
                 map.addLayer(layer);
 
-                const marker = new L.marker([geo.lat, geo.lng]);
+
+                const Icon = L.icon({
+                    iconUrl: '../images/vendor/leaflet/dist/marker-icon.png',
+                });
+                const marker = new L.marker([geo.lat, geo.lng], {
+                    icon: Icon
+                });
 
                 marker.addTo(map);
             }
