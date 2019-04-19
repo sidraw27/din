@@ -80,11 +80,17 @@ class HotelService
                 if ($parseUrl['scheme'] === 'http') {
                     $parseUrl['scheme'] = 'https';
                 }
-                parse_str($parseUrl['query'], $query);
-                if (isset($query['s'])) {
-                    $query['s'] = '600x';
+
+                if (isset($parseUrl['query'])) {
+                    parse_str($parseUrl['query'], $query);
+                    if (isset($query['s'])) {
+                        $query['s'] = '600x';
+                    }
+                    $query = http_build_query($query);
+                } else {
+                    $query = '?s=600x';
                 }
-                $query    = http_build_query($query);
+
                 $photos[] = "{$parseUrl['scheme']}://{$parseUrl['host']}{$parseUrl['path']}?{$query}";
             }
         }
