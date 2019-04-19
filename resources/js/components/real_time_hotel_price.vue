@@ -21,8 +21,18 @@
                     </div>
                 </div>
                 <div class="filter-child min-text">
-                    <div class="picker_label">人</div>
-                    <div class="picker_date">2</div>
+                    <div class="picker_label">
+                        <img src="/images/people.svg" alt="people">
+                    </div>
+                    <div class="picker_date">
+                        <label>
+                            <select class="people-num" v-model="nums.adult.currentIndex" @change="renewal">
+                                <option v-for="value in nums.adult.pool" :value="value -1">
+                                    {{ value }}人
+                                </option>
+                            </select>
+                        </label>
+                    </div>
                 </div>
             </div>
             <!--<div class="min_filter-tags">-->
