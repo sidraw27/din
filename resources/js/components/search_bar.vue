@@ -4,7 +4,7 @@
             <div class="min-search-bar" :style="beforeMaskStyle">
                 <div class="search-input IconBox">
                     <img src="/images/search.svg" alt="search">
-                    <form autocomplete="off" @submit="goSearch">
+                    <form autocomplete="off" @submit="goSearch" style="width: 100%;">
                         <vue-autosuggest
                                 @keyup.enter="goSearch"
                                 @focus="toggleMask(true)"
