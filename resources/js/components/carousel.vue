@@ -1,5 +1,5 @@
 <template>
-    <VueCarousel :data="data" indicator-trigger="hover" :autoplay="true" :interval="2500"></VueCarousel>
+    <VueCarousel :data="data" indicator-trigger="hover" :autoplay="false" :interval="2500"></VueCarousel>
 </template>
 
 <script>
@@ -21,7 +21,10 @@
                 carousel[index] = {
                     content(createElement) {
                         return createElement('div', {
-                            class: '__carousel_img',
+                            class: [
+                                '__carousel_img',
+                                this.$isMobile ? '__carousel_mobile' : ''
+                            ],
                         }, [
                             createElement('img', {
                                 attrs: {
@@ -51,5 +54,8 @@
         font-size: 1.5rem;
         justify-content: center;
         min-height: 10rem;
+    }
+    >>> .__carousel_mobile {
+        height: 400px;
     }
 </style>

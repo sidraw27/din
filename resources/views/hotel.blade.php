@@ -217,9 +217,9 @@
                             {{ $hotelView['introduction'] }}
                         </p>
                     </div>
-                    <div class="btn-wrap">
-                        <button class="more-btn">查看全部介紹</button>
-                    </div>
+                    {{--<div class="btn-wrap">--}}
+                        {{--<button class="more-btn">查看全部介紹</button>--}}
+                    {{--</div>--}}
                 </div>
                 <div class="info_facility info-box">
                     <h3 class="title">服務設施</h3>
@@ -299,9 +299,9 @@
                                     </div>
                                 </li>
                             </ul>
-                            <div class="btn-wrap">
-                                <button class="more-btn">查看全部概況</button>
-                            </div>
+                            {{--<div class="btn-wrap">--}}
+                                {{--<button class="more-btn">查看全部概況</button>--}}
+                            {{--</div>--}}
                         </div>
                     </div>
                 </div>
