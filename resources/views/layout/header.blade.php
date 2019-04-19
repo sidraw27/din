@@ -10,13 +10,20 @@
         {{--<a class="nav-link" href="#">--}}
             {{--飯店清單--}}
         {{--</a>--}}
-        <a class="nav-link signin-btn" href="#">
-            登入
-        </a>
-        {{--<a class="nav-link sign-in" href="#">--}}
-            {{--<img src="{{ asset('images/user.jpg') }}" alt="user">--}}
-            {{--<span class="signin-name">MAO CATHY</span>--}}
-        {{--</a>--}}
+        @guest
+            <div class="nav-link signin-btn" style="cursor: pointer">
+                登入
+            </div>
+        @endguest
+
+        @auth
+            <a class="nav-link sign-in">
+                <img src="{{ Auth::user()->avatar }}" alt="user">
+                <span class="signin-name">
+                    {{ Auth::user()->display_name }}
+                </span>
+            </a>
+        @endauth
     </div>
 
     <div class="topbar_min-nav">

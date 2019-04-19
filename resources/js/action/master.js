@@ -44,4 +44,14 @@ window.adjustHeight = function (pixel = 0) {
             }
         }
     });
+
+    $('.signin-btn').click(function () {
+        $('.LoginModal').addClass('is-open');
+    });
+    $('.LoginModal').click(function () {
+        $(this).removeClass('is-open');
+    });
+    $('.login-box').click(function (event) {
+        event.stopPropagation();
+    });
 } ());
