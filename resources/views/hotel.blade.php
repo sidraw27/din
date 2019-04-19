@@ -179,7 +179,7 @@
                         {{--</div>--}}
                     </div>
                     <div class="score-box_intro">
-                        @isset($hotelView['rating']['detail'])
+                        @isset($hotelView['rating']['detail']['agoda'])
                             @foreach($hotelView['rating']['detail']['agoda'] as $rating)
                                 <div class="review-standard_item">
                                     <div class="review-grade_wrap">
