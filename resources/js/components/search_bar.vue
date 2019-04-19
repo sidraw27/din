@@ -355,7 +355,7 @@
             },
             goSearch: function () {
                 location.href =
-                    `${this.action}?target=${this.value}` +
+                    `${this.action}?target=${this.value === null ? '' : this.value}` +
                     `&checkIn=${this.checkTime.in.date}` +
                     `&checkOut=${this.checkTime.out.date}` +
                     `&adult=${this.nums.adult.pool[this.nums.adult.currentIndex]}`;

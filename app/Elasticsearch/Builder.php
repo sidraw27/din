@@ -28,7 +28,7 @@ abstract class Builder
     {
         $params = [
             'index' => $this->getIndex(),
-            'type'  => 'doc'
+            'type'  => '_doc'
         ];
 
         $params = array_merge($params, $option);
