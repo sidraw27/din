@@ -241,7 +241,11 @@
                                 <ul class="list-con">
                                     @foreach($facilities as $facility)
                                         <li class="facility-item">
-                                            <img src="{{ asset('images/facility/room-icons-21.svg') }}" alt="icon">
+                                            @if (isset($facility['icon']))
+                                                <img src="{{ asset("images/facility/room-icons-{$facility['icon']}.svg") }}" alt="icon">
+                                            @else
+                                                <img src="{{ asset('images/facility/room-icons-21.svg') }}" alt="icon">
+                                            @endif
                                             <div class="name">
                                                 {{ $facility['name'] }}
                                             </div>
