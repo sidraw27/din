@@ -230,32 +230,7 @@
                         {{--<button class="more-btn">查看全部介紹</button>--}}
                     {{--</div>--}}
                 </div>
-                <div class="info_facility info-box">
-                    <h3 class="title">服務設施</h3>
-                    <div class="facility_wrap wrap-con">
-                        @foreach($hotelView['supportFacilities'] as $group => $facilities)
-                            <div class="facility-list">
-                                <div class="list-text">
-                                    {{ $group }}
-                                </div>
-                                <ul class="list-con">
-                                    @foreach($facilities as $facility)
-                                        <li class="facility-item">
-                                            @if (isset($facility['icon']))
-                                                <img src="{{ asset("images/facility/room-icons-{$facility['icon']}.svg") }}" alt="icon">
-                                            @else
-                                                <img src="{{ asset('images/facility/room-icons-21.svg') }}" alt="icon">
-                                            @endif
-                                            <div class="name">
-                                                {{ $facility['name'] }}
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
+
                 <div class="info_policy info-box">
                     <h3 class="title">飯店政策</h3>
                     <div class="policy_wrap wrap-con">
@@ -313,9 +288,36 @@
                                 </li>
                             </ul>
                             {{--<div class="btn-wrap">--}}
-                                {{--<button class="more-btn">查看全部概況</button>--}}
+                            {{--<button class="more-btn">查看全部概況</button>--}}
                             {{--</div>--}}
                         </div>
+                    </div>
+                </div>
+
+                <div class="info_facility info-box">
+                    <h3 class="title">服務設施</h3>
+                    <div class="facility_wrap wrap-con">
+                        @foreach($hotelView['supportFacilities'] as $group => $facilities)
+                            <div class="facility-list">
+                                <div class="list-text">
+                                    {{ $group }}
+                                </div>
+                                <ul class="list-con">
+                                    @foreach($facilities as $facility)
+                                        <li class="facility-item">
+                                            @if (isset($facility['icon']))
+                                                <img src="{{ asset("images/facility/room-icons-{$facility['icon']}.svg") }}" alt="icon">
+                                            @else
+                                                <img src="{{ asset('images/facility/room-icons-21.svg') }}" alt="icon">
+                                            @endif
+                                            <div class="name">
+                                                {{ $facility['name'] }}
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
