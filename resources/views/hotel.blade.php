@@ -255,6 +255,7 @@
                             </ul>
                         </div>
                     </div>
+
                     <div class="policy_wrap wrap-con">
                         <div class="policy-type">
                             <img src="{{ asset('images/facility/room-icons-19.svg') }}" alt="hotel-info">

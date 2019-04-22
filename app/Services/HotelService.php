@@ -240,7 +240,8 @@ class HotelService
                     }
                     break;
                 case 'adult':
-                    if (is_numeric($value) && ($value > 8 && $value < 1)) {
+                    $value = (int) $value;
+                    if (($value >= 1 && $value <= 8)) {
                         $defaultValue = (int) $value;
                     }
                     continue 2;
