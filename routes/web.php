@@ -24,19 +24,19 @@ Route::group(['middleware' => ['intended']], function () {
         'uses' => 'HotelController@page',
         'as'   => 'hotel'
     ])->where('id', '[a-zA-Z0-9]{6}');
+});
 
-    Route::group(['prefix' => 'auth'], function() {
-        Route::get('authentication/{provider}', [
-            'uses' => 'AuthController@authentication',
-            'as'   => 'auth.login'
-        ]);
-        Route::get('callback/{provider}', [
-            'uses' => 'AuthController@callback',
-            'as'   => 'auth.callback'
-        ]);
-        Route::get('logout', [
-            'uses' => 'AuthController@logout',
-            'as'   => 'logout'
-        ]);
-    });
+Route::group(['prefix' => 'auth'], function() {
+    Route::get('authentication/{provider}', [
+        'uses' => 'AuthController@authentication',
+        'as'   => 'auth.login'
+    ]);
+    Route::get('callback/{provider}', [
+        'uses' => 'AuthController@callback',
+        'as'   => 'auth.callback'
+    ]);
+    Route::get('logout', [
+        'uses' => 'AuthController@logout',
+        'as'   => 'logout'
+    ]);
 });

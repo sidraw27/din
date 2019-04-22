@@ -18,7 +18,7 @@ class AuthController extends Controller
     {
         \Auth::logout();
 
-        return redirect()->back();
+        return redirect()->route('list');
     }
 
     public function authentication(string $provider)
@@ -29,7 +29,7 @@ class AuthController extends Controller
     public function callback(string $provider)
     {
         if (\Auth::check()) {
-            return redirect()->back();
+//            return redirect()->route('list');
         }
 
         $checkDeniedProvider = [
@@ -37,13 +37,13 @@ class AuthController extends Controller
         ];
 
         if (in_array($provider, $checkDeniedProvider) && ( ! \Request::has('code') || \Request::has('denied'))) {
-            return redirect()->back();
+//            return redirect()->route('list');
         }
 
         if ($this->userService->login($provider)) {
-            return redirect()->intended(route('index'));
+//            return redirect()->route('list');
         }
 
-        return redirect()->back();
+        return redirect()->route('list');
     }
 }
