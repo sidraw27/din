@@ -4,7 +4,7 @@ namespace App\Jobs;
 
 use App\Elasticsearch\HotelEs;
 use App\Repositories\HotelRepository;
-use App\Services\HotelService;
+use App\Services\Hotel\HotelService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -58,6 +58,7 @@ class IndexHotelToEs implements ShouldQueue
         }
 
         $this->hotelEs->index([
+            'url_id'          => $hotel['url_id'],
             'name'            => $hotel['name'],
             'translated_name' => $hotel['translated_name'],
             'address'         => $hotel['address'],
