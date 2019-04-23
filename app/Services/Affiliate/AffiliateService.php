@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Affiliate;
 
 use App\Exceptions\HotelException;
 use App\Exceptions\ProviderException;
 use App\Repositories\HotelAffiliateRepository;
 use App\Repositories\HotelRepository;
-use App\Services\Affiliate\Factory;
 use App\Support\DateRange;
 
 class AffiliateService

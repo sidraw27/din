@@ -1,9 +1,6 @@
 <?php
 
-namespace App\Services;
-
-use App\Services\User\Acl;
-use App\Services\User\Auth;
+namespace App\Services\User;
 
 class UserService
 {

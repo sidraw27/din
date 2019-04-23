@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Exceptions\HotelException;
 use App\Exceptions\ProviderException;
 use App\Http\Controllers\Controller;
-use App\Services\AffiliateService;
+use App\Services\Affiliate\AffiliateService;
 use Illuminate\Support\Arr;
 
 class AffiliateController extends Controller

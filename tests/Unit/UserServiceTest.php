@@ -6,14 +6,14 @@ use App\Entities\User;
 use App\Repositories\UserRepository;
 use App\Services\User\Acl;
 use App\Services\User\Auth;
-use App\Services\UserService;
+use App\Services\User\UserService;
 use Laravel\Socialite\Two\User as SocialiteUser;
 use Tests\TestCase;
 
 /**
  * Class UserServiceTest
  * @package Tests\Unit
- * @covers \App\Services\UserService
+ * @covers \App\Services\User\UserService
  */
 class UserServiceTest extends TestCase
 {
@@ -33,7 +33,7 @@ class UserServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\UserService::login
+     * @covers \App\Services\User\UserService::login
      */
     public function testLogin()
     {

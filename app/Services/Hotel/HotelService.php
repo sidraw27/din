@@ -1,13 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Hotel;
 
 use App\Elasticsearch\HotelEs;
 use App\Exceptions\HotelException;
 use App\Repositories\HotelRepository;
-use App\Services\Hotel\Facility;
-use App\Services\Hotel\Location;
-use App\Services\Hotel\Rating;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Arr;

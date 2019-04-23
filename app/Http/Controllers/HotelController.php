@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\HotelService;
+use App\Services\Hotel\HotelService;
 use App\Transformer\HotelTransformer;
 use App\Exceptions\HotelException;
 

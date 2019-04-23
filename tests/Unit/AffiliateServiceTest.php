@@ -9,14 +9,14 @@ use App\Repositories\HotelAffiliateRepository;
 use App\Repositories\HotelRepository;
 use App\Services\Affiliate\Agoda;
 use App\Services\Affiliate\AgodaPrice;
-use App\Services\AffiliateService;
+use App\Services\Affiliate\AffiliateService;
 use Mockery\MockInterface;
 use Tests\TestCase;
 
 /**
  * Class AffiliateService
  * @package Tests\Unit
- * @covers \App\Services\AffiliateService
+ * @covers \App\Services\Affiliate\AffiliateService
  */
 class AffiliateServiceTest extends TestCase
 {
@@ -44,7 +44,7 @@ class AffiliateServiceTest extends TestCase
 
     /**
      * @runInSeparateProcess
-     * @covers \App\Services\AffiliateService::getPriceByProvider
+     * @covers \App\Services\Affiliate\AffiliateService::getPriceByProvider
      */
     public function testGetPriceByProvider()
     {

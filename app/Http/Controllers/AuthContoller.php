@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enum\SocialiteProviderEnum;
-use App\Services\UserService;
+use App\Services\User\UserService;
 
 class AuthController extends Controller
 {

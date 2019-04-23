@@ -9,16 +9,15 @@ use App\Repositories\HotelRepository;
 use App\Services\Hotel\Facility;
 use App\Services\Hotel\Location;
 use App\Services\Hotel\Rating;
-use App\Services\HotelService;
+use App\Services\Hotel\HotelService;
 use Faker\Factory;
-use Illuminate\Support\Collection;
 use Mockery\MockInterface;
 use Tests\TestCase;
 
 /**
  * Class HotelServiceTest
  * @package Tests\Unit
- * @covers \App\Services\HotelService
+ * @covers \App\Services\Hotel\HotelService
  */
 class HotelServiceTest extends TestCase
 {
@@ -49,7 +48,7 @@ class HotelServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\HotelService::getHotel
+     * @covers \App\Services\Hotel\HotelService::getHotel
      */
     public function testGetHotel()
     {
@@ -125,7 +124,7 @@ class HotelServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\HotelService::formatHotelParameter
+     * @covers \App\Services\Hotel\HotelService::formatHotelParameter
      */
     public function testFormatHotelParameter()
     {
@@ -143,7 +142,7 @@ class HotelServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\HotelService::getList
+     * @covers \App\Services\Hotel\HotelService::getList
      */
     public function testGetList()
     {
