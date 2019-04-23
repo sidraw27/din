@@ -3,21 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Services\Hotel\HotelService;
+use App\Services\Meta\MetaGenerator;
 use App\Transformer\HotelTransformer;
 use App\Exceptions\HotelException;
 
 class HotelController extends Controller
 {
     private $hotelService;
+    private $metaGenerator;
+    private $isShowSearchBar;
 
-    public function __construct(HotelService $hotelService)
+    public function __construct(HotelService $hotelService, MetaGenerator $metaGenerator)
     {
-        $this->hotelService = $hotelService;
+        $this->hotelService    = $hotelService;
+        $this->metaGenerator   = $metaGenerator;
+
+        $this->isShowSearchBar = true;
     }
 
     public function index()
     {
-        return view('index');
+        $meta = $this->metaGenerator->getIndexMeta();
+
+        return view('index', compact('meta'));
     }
 
     public function page(string $urlId)
@@ -35,27 +43,43 @@ class HotelController extends Controller
             $buildLink = $searchData;
             $buildLink['target'] = $hotelView['name']['origin'];
             $listLink = route('list') . '?' . http_build_query($buildLink);
-            $isShowSearchBar = ( ! \Agent::isMobile());
+
+            $meta = $this->metaGenerator->getHotelMeta($hotelView);
         } catch (HotelException $e) {
             abort(404);
         }
+
+        $isShowSearchBar = ($this->isShowSearchBar && ( ! \Agent::isMobile()));
 
         return view('hotel', compact(
             'hotelView',
             'searchData',
             'isShowSearchBar',
-            'listLink'
+            'listLink',
+            'meta'
         ));
     }
 
     public function list()
     {
-        $searchData = $this->hotelService::formatHotelParameter(\Request::all());
+        $searchData  = $this->hotelService::formatHotelParameter(\Request::all());
 
-        $list = $this->hotelService->getList($searchData['target'], \Request::get('page', 1), 10, $searchData);
+        $currentPage = \Request::get('page', 1);
+        if ($currentPage > 99) {
+            $currentPage = 99;
+        }
+        if ($currentPage < 1) {
+            $currentPage = 1;
+        }
 
-        $isShowSearchBar = true;
+        $list = $this->hotelService->getList($searchData['target'], $currentPage, 10, $searchData);
 
-        return view('list', compact('searchData', 'list', 'isShowSearchBar'));
+        $meta = $this->metaGenerator->getListMeta($list, $searchData, $currentPage);
+
+        $viewData = array_merge([
+            'isShowSearchBar' => $this->isShowSearchBar
+        ], compact('searchData', 'list', 'meta'));
+
+        return view('list', $viewData);
     }
 }

@@ -1,10 +1,10 @@
 @extends('layout.main')
 
 @push('head')
-    <title>
-        {{ $hotelView['name']['translated'] }} ({{ $hotelView['name']['origin'] }})
-    </title>
-    <meta name="title" content="{{ $hotelView['name']['translated'] }} ({{ $hotelView['name']['origin'] }})">
+    <title>{{ $meta['title'] }}</title>
+
+    <meta name="title" content="{{ $meta['title'] }}">
+    <meta name="description" content="{{ $meta['description'] }}">
 
     <link rel="stylesheet" href="{{ mix('css/hotel.css') }}">
 @endpush

@@ -122,19 +122,19 @@ class HotelService
 
     /**
      * @param string $target
-     * @param int $page
+     * @param int $currentPage
      * @param int $perPage
      * @param array $withParameter
      * @return array
      */
-    public function getList(string $target, int $page = 1, int $perPage = 10, array $withParameter = [])
+    public function getList(string $target, int $currentPage = 1, int $perPage = 10, array $withParameter = [])
     {
         $result = [
             'total' => 0,
             'data'  => []
         ];
 
-        $esResult = $this->hotelEs->searchList($target, $page, $perPage);
+        $esResult = $this->hotelEs->searchList($target, $currentPage, $perPage);
 
         if ($esResult['total'] === 0) {
             return $result;
@@ -168,7 +168,7 @@ class HotelService
 
             // 暫時讓前三間搜尋相關飯店出現標籤
             $isHot = false;
-            if ($page === 1 && $hotNums < 3) {
+            if ($currentPage === 1 && $hotNums < 3) {
                 $hotNums++;
                 $isHot = true;
             }
@@ -192,7 +192,7 @@ class HotelService
             (object) [],
             $result['total'],
             $perPage,
-            $page,
+            $currentPage,
             ['pageName' => 'page', 'path' => Paginator::resolveCurrentPath()]
         );
 

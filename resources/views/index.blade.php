@@ -1,6 +1,11 @@
 @extends('layout.master')
 
 @push('head')
+    <title>{{ $meta['title'] }}</title>
+
+    <meta name="title" content="{{ $meta['title'] }}">
+    <meta name="description" content="{{ $meta['description'] }}">
+
     <link rel="stylesheet" href="{{ mix('css/index.css') }}">
 @endpush
 
