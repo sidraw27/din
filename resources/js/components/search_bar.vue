@@ -333,7 +333,13 @@
             selectedHandle: function (selected) {
                 this.value = selected.item.name;
                 this.toggleMask(false);
-                this.goSearch();
+
+                if (selected.item.label === '飯店') {
+                    window.location.href = selected.item.link;
+                } else {
+                    this.goSearch();
+                }
+
             },
             hiddenNumsDrop: function () {
                 this.nums.isDrop = false;

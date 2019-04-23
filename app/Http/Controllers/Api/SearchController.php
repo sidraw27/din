@@ -2,27 +2,30 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Elasticsearch\HotelEs;
 use App\Http\Controllers\Controller;
-use App\Services\Hotel\HotelService;
 
 class SearchController extends Controller
 {
-    private $hotelService;
+    private $hotelEs;
 
-    public function __construct(HotelService $hotelService)
+    public function __construct(HotelEs $hotelEs)
     {
-        $this->hotelService = $hotelService;
+        $this->hotelEs = $hotelEs;
     }
 
     public function getSuggestion(string $string)
     {
         $result = [];
 
-        $hotels = $this->hotelService->getList($string, 1, 5);
+        $esResult = $this->hotelEs->searchList($string, 1, 5);
 
-        foreach ($hotels['data'] as $hotel) {
+        foreach ($esResult['hits'] as $hit) {
+            $hotel = $hit['_source'];
+
             $result[] = [
-                'name'  => $hotel['translatedName'],
+                'link'  => route('hotel', ['url_id' => $hotel['url_id']]),
+                'name'  => $hotel['translated_name'],
                 'sub'   => $hotel['name'],
                 'label' => '飯店'
             ];
