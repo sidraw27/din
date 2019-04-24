@@ -13,11 +13,12 @@ class RatingSeeder extends AbstractSeeder
 
         for ($hotelId = 1; $hotelId <= HotelSeeder::$hotelNums; $hotelId++) {
             $agodaId = $agodaEntity->insertGetId([
-                'overall'  => $this->faker->numberBetween(10, 100),
-                'facility' => $this->faker->numberBetween(10, 100),
-                'position' => $this->faker->numberBetween(10, 100),
-                'service'  => $this->faker->numberBetween(10, 100),
-                'cp'       => $this->faker->numberBetween(10, 100)
+                'overall'     => $this->faker->numberBetween(10, 100),
+                'facility'    => $this->faker->numberBetween(10, 100),
+                'position'    => $this->faker->numberBetween(10, 100),
+                'comfortable' => $this->faker->numberBetween(10, 100),
+                'service'     => $this->faker->numberBetween(10, 100),
+                'cp'          => $this->faker->numberBetween(10, 100)
             ]);
 
             $bookingId = $bookingEntity->insertGetId([

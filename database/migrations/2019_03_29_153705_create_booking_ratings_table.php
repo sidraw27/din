@@ -15,15 +15,17 @@ class CreateBookingRatingsTable extends Migration
         Schema::create('booking_ratings', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedTinyInteger('quality');
-            $table->unsignedTinyInteger('facility');
-            $table->unsignedTinyInteger('clear');
-            $table->unsignedTinyInteger('comfortable');
-            $table->unsignedTinyInteger('cp');
-            $table->unsignedTinyInteger('position');
-            $table->unsignedTinyInteger('free_wifi');
+            $table->unsignedTinyInteger('quality')->nullable();
+            $table->unsignedTinyInteger('facility')->nullable();
+            $table->unsignedTinyInteger('clear')->nullable();
+            $table->unsignedTinyInteger('comfortable')->nullable();
+            $table->unsignedTinyInteger('cp')->nullable();
+            $table->unsignedTinyInteger('position')->nullable();
+            $table->unsignedTinyInteger('free_wifi')->nullable();
 
             $table->timestamps();
+            // index
+            $table->foreign('id')->references('booking_id')->on('hotel_ratings');
         });
     }
 

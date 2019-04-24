@@ -15,13 +15,16 @@ class CreateAgodaRatingsTable extends Migration
         Schema::create('agoda_ratings', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedTinyInteger('overall');
-            $table->unsignedTinyInteger('facility');
-            $table->unsignedTinyInteger('position');
-            $table->unsignedTinyInteger('service');
-            $table->unsignedTinyInteger('cp');
+            $table->unsignedTinyInteger('overall')->nullable();
+            $table->unsignedTinyInteger('facility')->nullable();
+            $table->unsignedTinyInteger('position')->nullable();
+            $table->unsignedTinyInteger('comfortable')->nullable();
+            $table->unsignedTinyInteger('service')->nullable();
+            $table->unsignedTinyInteger('cp')->nullable();;
 
             $table->timestamps();
+            // index
+            $table->foreign('id')->references('agoda_id')->on('hotel_ratings');
         });
     }
 
