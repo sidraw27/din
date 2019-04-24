@@ -20,7 +20,7 @@ class CreateAgodaRatingsTable extends Migration
             $table->unsignedTinyInteger('position')->nullable();
             $table->unsignedTinyInteger('comfortable')->nullable();
             $table->unsignedTinyInteger('service')->nullable();
-            $table->unsignedTinyInteger('cp')->nullable();;
+            $table->unsignedTinyInteger('cp')->nullable();
 
             $table->timestamps();
         });
