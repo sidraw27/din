@@ -6,7 +6,7 @@ class IndexMeta extends AbstractMeta
 {
     protected function getTitle()
     {
-        return '來自台、日韓最佳最優質飯店，讓您輕鬆盯輕鬆玩';
+        return '來自台日韓最佳最優質飯店 輕鬆盯輕鬆玩';
     }
 
     protected function getDescription()
