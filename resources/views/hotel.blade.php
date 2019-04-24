@@ -130,7 +130,7 @@
             </div>
             <div class="intro_gallery inrto_min">
                 @empty($hotelView['photos'])
-                    目前沒有提供照片
+                    <img src="{{ asset('images/noimg.svg') }}" alt="no-img" style="height: 100%;width: 100%">
                 @else
                     <vue_carousel img-url="{{ json_encode($hotelView['photos']) }}"></vue_carousel>
                 @endempty
