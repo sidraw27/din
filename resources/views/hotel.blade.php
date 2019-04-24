@@ -361,7 +361,9 @@
                 {{--</div>--}}
             {{--</div>--}}
         </div>
-        <div class="hl_sidebar"></div>
+        <div class="hl_sidebar">
+            @include('ads.hotel.sidebar')
+        </div>
     </div>
 @endsection
 
