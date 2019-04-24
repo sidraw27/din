@@ -34,9 +34,9 @@ Vue.use(AirbnbStyleDatepicker, {
 
 import Tooltip from 'vue-directive-tooltip';
 import 'vue-directive-tooltip/css/index.css';
-import VueCookie from 'vue-cookie';
-
 Vue.use(Tooltip);
+
+import VueCookie from 'vue-cookie';
 Vue.use(VueCookie);
 
 Vue.directive('click-outside', {

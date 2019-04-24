@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import VeHistogram from 'v-charts/lib/histogram.common'
+    import VeHistogram from 'v-charts/lib/histogram.common.min'
 
     export default {
         components: {

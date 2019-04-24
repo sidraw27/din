@@ -362,7 +362,9 @@
             {{--</div>--}}
         </div>
         <div class="hl_sidebar">
-            @include('ads.hotel.sidebar')
+            @if (Agent::isDesktop())
+                <vue_ad_sidebar></vue_ad_sidebar>
+            @endif
         </div>
     </div>
 @endsection
