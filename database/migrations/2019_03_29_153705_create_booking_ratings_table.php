@@ -24,8 +24,6 @@ class CreateBookingRatingsTable extends Migration
             $table->unsignedTinyInteger('free_wifi')->nullable();
 
             $table->timestamps();
-            // index
-            $table->foreign('id')->references('booking_id')->on('hotel_ratings');
         });
     }
 

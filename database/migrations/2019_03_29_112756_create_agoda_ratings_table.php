@@ -23,8 +23,6 @@ class CreateAgodaRatingsTable extends Migration
             $table->unsignedTinyInteger('cp')->nullable();;
 
             $table->timestamps();
-            // index
-            $table->foreign('id')->references('agoda_id')->on('hotel_ratings');
         });
     }
 
