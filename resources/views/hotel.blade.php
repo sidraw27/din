@@ -149,7 +149,7 @@
 
             <div class="hl_map-wrapper __anchor_position">
                 <div class="map_tit">
-                    <h3 class="title">位置</h3>
+                    <h2 class="title">位置</h2>
                 </div>
                 <div class="map_box">
                     @if ( ! empty($hotelView['geo']))
@@ -170,7 +170,7 @@
 
             <div class="hl_review-wrapper __anchor_comment">
                 <div class="review_tit">
-                    <h3 class="title">評論</h3>
+                    <h2 class="title">評論</h2>
                 </div>
                 <div class="review_score-box">
                     <div class="score-box_total">
@@ -220,7 +220,7 @@
 
             <div class="hl_information-wrapper __anchor_info">
                 <div class="info_description info-box">
-                    <h3 class="title">飯店介紹</h3>
+                    <h2 class="title">飯店介紹</h2>
                     <div class="description_wrap wrap-con">
                         <p class="hotel-desc">
                             {{ $hotelView['introduction'] }}
@@ -232,7 +232,7 @@
                 </div>
 
                 <div class="info_policy info-box">
-                    <h3 class="title">飯店政策</h3>
+                    <h2 class="title">飯店政策</h2>
                     <div class="policy_wrap wrap-con">
                         <div class="policy-type">
                             <img src="{{ asset('images/facility/room-icons-18.svg') }}" alt="room-info">
@@ -296,7 +296,7 @@
                 </div>
 
                 <div class="info_facility info-box">
-                    <h3 class="title">服務設施</h3>
+                    <h2 class="title">服務設施</h2>
                     <div class="facility_wrap wrap-con">
                         @foreach($hotelView['supportFacilities'] as $group => $facilities)
                             <div class="facility-list">
@@ -325,7 +325,7 @@
 
             {{--<div class="hl_recommend-wrapper">--}}
                 {{--<div class="recommend_tit">--}}
-                    {{--<h3 class="title">您可能也會喜歡</h3>--}}
+                    {{--<h2 class="title">您可能也會喜歡</h2>--}}
                 {{--</div>--}}
                 {{--<div class="recommend_scroll">--}}
                     {{--<ul class="recommed-list">--}}
