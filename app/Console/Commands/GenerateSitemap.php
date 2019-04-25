@@ -44,8 +44,8 @@ class GenerateSitemap extends Command
         $content = implode(PHP_EOL, $content);
 
         $robot = 'robots.txt';
-        \Storage::disk('sitemap')->delete($robot);
-        \Storage::disk('sitemap')->put($robot, $content);
+        \Storage::disk('site_public')->delete($robot);
+        \Storage::disk('site_public')->put($robot, $content);
 
         echo "generate successful\n";
     }

@@ -53,6 +53,11 @@ return [
             'root'   => public_path() . '/sitemap',
         ],
 
+        'site_public' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/sitemap',
+        ],
+
         'resource' => [
             'driver' => 'local',
             'root' => resource_path('data')
