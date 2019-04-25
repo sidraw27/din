@@ -16,7 +16,7 @@ class Geophysical
             $unit  = strtolower($unit);
 
             if ($unit === "km") {
-                return round($miles * 1.609344, 2);
+                return round($miles * 1.609344, 3);
             } else if ($unit === "m") {
                 return ($miles * 0.8684);
             } else {

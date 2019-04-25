@@ -159,16 +159,16 @@
                         <div class="distance_scroll">
                             @foreach($nearHotels as $nearHotel)
                                 <div class="item-con">
-                                <div class="item">
-                                    <span class="name">
-                                        <a href="{{ $nearHotel['link'] }}" target="_blank">
-                                            {{ $nearHotel['name'] }}
-                                        </a>
-                                    </span>
-                                    <span class="distance">
-                                        {{ $nearHotel['distance'] }}
-                                    </span>
-                                </div>
+                                    <div class="item">
+                                        <span class="name" style="width: 70%">
+                                            <a href="{{ $nearHotel['link'] }}" target="_blank">
+                                                {{ $nearHotel['name'] }}
+                                            </a>
+                                        </span>
+                                        <span class="distance">
+                                            {{ $nearHotel['distance'] }}
+                                        </span>
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
