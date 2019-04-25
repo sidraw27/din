@@ -69,13 +69,12 @@ class GenerateSitemap extends Command
                 ];
             }
 
-            $fileName  = "hotel/{$i}.xml";
+            $fileName  = "sitemap/hotel/{$i}.xml";
             $view      = \View::make('sitemap', compact('sitemap'));
             $content[] = 'Sitemap: ' . route('index') . '/' . $fileName;
 
-            \Storage::disk('sitemap')->deleteDir('hotel');
-            \Storage::disk('sitemap')->makeDirectory('hotel');
-            \Storage::disk('sitemap')->put($fileName, $view);
+            \Storage::disk('site_public')->deleteDir('sitemap/hotel');
+            \Storage::disk('site_public')->put($fileName, $view);
         }
 
         return $content;
