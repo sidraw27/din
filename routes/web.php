@@ -20,10 +20,10 @@ Route::group(['middleware' => ['intended']], function () {
         'uses' => 'HotelController@list',
         'as'   => 'list'
     ]);
-    Route::get('hotel/{id}', [
+    Route::get('hotel/{urlId}', [
         'uses' => 'HotelController@page',
         'as'   => 'hotel'
-    ])->where('id', '[a-zA-Z0-9]{6}');
+    ])->where('urlId', '[a-zA-Z0-9]{6}');
 });
 
 Route::group(['prefix' => 'auth'], function() {

@@ -189,7 +189,7 @@ class HotelService
 
             $result[] = [
                 'name'     => $source['translated_name'],
-                'link'     => route('hotel', ['url_id' => $source['url_id']]),
+                'link'     => route('hotel', ['urlId' => $source['url_id']]),
                 'distance' => $distance
             ];
         }
@@ -261,7 +261,7 @@ class HotelService
                 'address'         => $hotel->address,
                 'starRated'       => $hotel->star_rated,
                 'photo'           => empty($photos) ? null : Arr::first($photos),
-                'link'            => route('hotel', ['url_id' => $hotel->url_id]) . '?' . http_build_query($withParameter),
+                'link'            => route('hotel', ['urlId' => $hotel->url_id]) . '?' . http_build_query($withParameter),
             ];
         }
 

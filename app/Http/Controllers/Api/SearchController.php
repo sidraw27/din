@@ -24,7 +24,7 @@ class SearchController extends Controller
             $hotel = $hit['_source'];
 
             $result[] = [
-                'link'  => route('hotel', ['url_id' => $hotel['url_id']]),
+                'link'  => route('hotel', ['urlId' => $hotel['url_id']]),
                 'name'  => $hotel['translated_name'],
                 'sub'   => $hotel['name'],
                 'label' => '飯店'

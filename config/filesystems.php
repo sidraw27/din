@@ -48,6 +48,11 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'sitemap' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/sitemap',
+        ],
+
         'resource' => [
             'driver' => 'local',
             'root' => resource_path('data')

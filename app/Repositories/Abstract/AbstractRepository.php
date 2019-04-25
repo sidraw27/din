@@ -47,4 +47,17 @@ abstract class AbstractRepository
 
         return $result;
     }
+
+    public function getTotal()
+    {
+        return $this->entity->count(['id']);
+    }
+
+    public function getByRange(int $skip, int $limit, array $columns = ['*'])
+    {
+        return $this->entity
+            ->skip($skip)
+            ->limit($limit)
+            ->get($columns);
+    }
 }
