@@ -88,7 +88,7 @@ class Rating
             $totalText = count($promoText);
             $weight = $totalText / 10;
             $scoreKey = round($result['statistics']['avg'] * $weight);
-            $result['statistics']['promotion'] = $promoText[(int) $scoreKey];
+            $result['statistics']['promotion'] = $promoText[((int) $scoreKey - 1)];
         }
 
         return $result;
