@@ -32,8 +32,6 @@ class GenerateSitemap extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
     public function handle()
     {
@@ -46,8 +44,10 @@ class GenerateSitemap extends Command
         $content = implode(PHP_EOL, $content);
 
         $robot = 'robots.txt';
-        \Storage::disk('site_public')->delete($robot);
-        \Storage::disk('site_public')->put($robot, $content);
+        \Storage::disk('sitemap')->delete($robot);
+        \Storage::disk('sitemap')->put($robot, $content);
+
+        echo "generate successful";
     }
 
     private function generateHotelSitemap()
