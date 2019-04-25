@@ -56,6 +56,7 @@ class GenerateSitemap extends Command
         $total     = $this->hotelRepo->getTotal();
         $totalPage = ceil($total / self::PER_NUMS);
 
+        \Storage::disk('site_public')->deleteDir('sitemap/hotel');
         for ($i = 1; $i <= $totalPage; $i++) {
             $start   = ($i - 1) * self::PER_NUMS;
             $hotels  = $this->hotelRepo->getByRange($start, self::PER_NUMS);
@@ -73,7 +74,6 @@ class GenerateSitemap extends Command
             $view      = \View::make('sitemap', compact('sitemap'));
             $content[] = 'Sitemap: ' . route('index') . '/' . $fileName;
 
-            \Storage::disk('site_public')->deleteDir('sitemap/hotel');
             \Storage::disk('site_public')->put($fileName, $view);
         }
 
