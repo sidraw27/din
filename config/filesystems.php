@@ -55,7 +55,7 @@ return [
 
         'site_public' => [
             'driver' => 'local',
-            'root'   => public_path() . '/sitemap',
+            'root'   => public_path(),
         ],
 
         'resource' => [
