@@ -220,7 +220,7 @@
                     <div class="resource_wrap">
                         <div class="recource">
                             <img src="{{ asset('images/agoda-logo.svg') }}" alt="agoda">
-                            <div class="detail"><span>數</span>則評論</div>
+                            <div class="detail">精選評論</div>
                         </div>
                     </div>
                 </div>

@@ -30,11 +30,12 @@ class Rating
 
         $mapping = [
             'agoda' => [
-                'overall'  => '整體狀況滿意度',
-                'facility' => '設施與設備',
-                'position' => '地理位置',
-                'service'  => '服務滿意度',
-                'cp'       => 'CP值'
+                'overall'     => '整體狀況滿意度',
+                'facility'    => '設施與設備',
+                'position'    => '地理位置',
+                'service'     => '服務滿意度',
+                'comfortable' => '客房舒適度',
+                'cp'          => 'CP值'
             ],
             'booking' => [
                 'quality'     => '服務品質',
@@ -63,6 +64,10 @@ class Rating
 
             foreach ($item as $alias => $description) {
                 $score = $scores->getAttribute($alias);
+                if (is_null($score)) {
+                    continue;
+                }
+
                 $totalScore += $score;
                 $totalNums++;
 
