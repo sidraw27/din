@@ -47,7 +47,7 @@ class GenerateSitemap extends Command
         \Storage::disk('sitemap')->delete($robot);
         \Storage::disk('sitemap')->put($robot, $content);
 
-        echo "generate successful";
+        echo "generate successful\n";
     }
 
     private function generateHotelSitemap()
