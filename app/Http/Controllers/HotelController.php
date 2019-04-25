@@ -40,6 +40,9 @@ class HotelController extends Controller
                 $searchData['target'] = $hotelView['name']['origin'];
             }
 
+            $nearHotels = $this->hotelService->getNearHotel($hotelView['geo']['lat'], $hotelView['geo']['lng'], 10);
+            $relatedHotels = $this->hotelService->getRelatedHotel();
+
             $buildLink = $searchData;
             $buildLink['target'] = $hotelView['name']['origin'];
             $listLink = route('list') . '?' . http_build_query($buildLink);
@@ -56,6 +59,8 @@ class HotelController extends Controller
             'searchData',
             'isShowSearchBar',
             'listLink',
+            'nearHotels',
+            'relatedHotels',
             'meta'
         ));
     }

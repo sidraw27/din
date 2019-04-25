@@ -53,16 +53,11 @@ abstract class Builder
 
     protected function multiSearch(array $query, array $sort, int $from = 1, int $size = 10)
     {
-        $sortQuery = [];
-        foreach ($sort as $field => $order) {
-            $sortQuery[] = [$field => ['order' => $order]];
-        }
-
         $params = $this->getParams([
             'body' => [
                 'from'  => $from,
                 'size'  => $size,
-                'sort'  => $sortQuery,
+                'sort'  => $sort,
                 'query' => [
                     'bool' => $query
                 ]
@@ -92,6 +87,36 @@ abstract class Builder
         $response = $this->client->search($params);
 
         return $response;
+    }
+
+    public function searchByGeo(string $distance, float $latitude, float $longitude, int $from, int $size = 10)
+    {
+        $query = [
+            'filter' => [
+                'geo_distance' => [
+                    'distance' => $distance,
+                    'geo'      => [
+                        'lat' => $latitude,
+                        'lon' => $longitude
+                    ]
+                ]
+            ]
+        ];
+
+        $sort = [
+            '_geo_distance' => [
+                'geo' => [
+                    'lat' => $latitude,
+                    'lon' => $longitude
+                ],
+                'order' => 'asc',
+                'unit' => 'km',
+                'distance_type' => 'plane'
+            ]
+        ];
+        $result = $this->multiSearch($query, $sort, $from, $size);
+
+        return $result['_shards']['total'] > 0 ? $result['hits'] : [];
     }
 
     public function delete(string $id)

@@ -5,6 +5,7 @@ namespace App\Services\Hotel;
 use App\Elasticsearch\HotelEs;
 use App\Exceptions\HotelException;
 use App\Repositories\HotelRepository;
+use App\Support\Geophysical;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Arr;
@@ -120,6 +121,76 @@ class HotelService
         return $hotel->toArray();
     }
 
+    public function getRelatedHotel()
+    {
+        $result = [];
+//        $esResponse = $this->hotelEs->searchByGeo("$distance", $latitude, $longitude, 1, 10);
+//
+//        if ($esResponse['total'] === 0) {
+//            return $result;
+//        }
+//
+//        foreach ($esResponse['hits'] as $hit) {
+//            $source = $hit['_source'];
+//            $distance = Geophysical::getDistance($latitude, $longitude, $source['geo']['lat'], $source['geo']['lon']);
+//
+//            $hotel = $this->hotelRepo->getById($hit['_id']);
+//
+//            $photo = null;
+//            if ( ! is_null($hotel->photo) && $hotel->photo !== '') {
+//                $photos = json_decode($hotel->photo);
+//                $photo  = Arr::first($photos);
+//            }
+//
+//            $rating = $this->rating->getHotelRating($hotel['id']);
+//
+//            $result[] = [
+//                'name' => [
+//                    'origin' => $hotel['name'],
+//                    'translated' => $hotel['translated_name']
+//                ],
+//                'link'      => route('hotel', ['url_id' => $hotel['url_id']]),
+//                'distance'  => $distance,
+//                'photo'     => $photo,
+//                'starRated' => $hotel['star_rated'],
+//                'rating'    => $rating
+//            ];
+//        }
+
+        return $result;
+    }
+
+    public function getNearHotel(float $latitude, float $longitude, float $kilometer = 1)
+    {
+        $result = [];
+
+        if (floor($kilometer) !== $kilometer) {
+            $meter = floor(1000 * $kilometer);
+            $distance = "{$meter}m";
+        } else {
+            $distance = "{$kilometer}km";
+        }
+
+        $esResponse = $this->hotelEs->searchByGeo("$distance", $latitude, $longitude, 1, 10);
+
+        if ($esResponse['total'] === 0) {
+            return $result;
+        }
+
+        foreach ($esResponse['hits'] as $hit) {
+            $source = $hit['_source'];
+            $distance = Geophysical::getDistance($latitude, $longitude, $source['geo']['lat'], $source['geo']['lon']);
+
+            $result[] = [
+                'name'     => $source['translated_name'],
+                'link'     => route('hotel', ['url_id' => $source['url_id']]),
+                'distance' => $distance
+            ];
+        }
+
+        return $result;
+    }
+
     /**
      * @param string $target
      * @param int $currentPage
@@ -134,17 +205,17 @@ class HotelService
             'data'  => []
         ];
 
-        $esResult = $this->hotelEs->searchList($target, $currentPage, $perPage);
+        $esResponse = $this->hotelEs->searchList($target, $currentPage, $perPage);
 
-        if ($esResult['total'] === 0) {
+        if ($esResponse['total'] === 0) {
             return $result;
         }
 
-        $result['total'] = $esResult['total'];
+        $result['total'] = $esResponse['total'];
 
         $hotelIds = [];
 
-        foreach ($esResult['hits'] as $item) {
+        foreach ($esResponse['hits'] as $item) {
             $hotelIds[] = $item['_id'];
         }
 

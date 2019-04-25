@@ -18,9 +18,9 @@ class SearchController extends Controller
     {
         $result = [];
 
-        $esResult = $this->hotelEs->searchList($string, 1, 5);
+        $esResponse = $this->hotelEs->searchList($string, 1, 5);
 
-        foreach ($esResult['hits'] as $hit) {
+        foreach ($esResponse['hits'] as $hit) {
             $hotel = $hit['_source'];
 
             $result[] = [

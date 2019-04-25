@@ -157,12 +157,20 @@
                     @endif
                     <div class="map-distance">
                         <div class="distance_scroll">
-                            {{--<div class="item-con">--}}
-                                {{--<div class="item">--}}
-                                    {{--<span class="name">附近機場</span>--}}
-                                    {{--<span class="distance">6.23 公里</span>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+                            @foreach($nearHotels as $nearHotel)
+                                <div class="item-con">
+                                <div class="item">
+                                    <span class="name">
+                                        <a href="{{ $nearHotel['link'] }}" target="_blank">
+                                            {{ $nearHotel['name'] }}
+                                        </a>
+                                    </span>
+                                    <span class="distance">
+                                        {{ $nearHotel['distance'] }}公里
+                                    </span>
+                                </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -323,44 +331,47 @@
                 </div>
             </div>
 
-            {{--<div class="hl_recommend-wrapper">--}}
-                {{--<div class="recommend_tit">--}}
-                    {{--<h2 class="title">您可能也會喜歡</h2>--}}
-                {{--</div>--}}
-                {{--<div class="recommend_scroll">--}}
-                    {{--<ul class="recommed-list">--}}
-                        {{--<li class="recommed-item">--}}
-                            {{--<div class="item-img">--}}
-                                {{--<div class="image"--}}
-                                     {{--style="background-image: url('https://a0.muscache.com/im/pictures/47985619/11203a2d_original.jpg?aki_policy=xx_large')"></div>--}}
-                            {{--</div>--}}
-                            {{--<div class="item-info">--}}
-                                {{--<a class="info-tit" href="#">紐約千禧希爾頓酒店(The Millennium Hilton New York)</a>--}}
-                                {{--<div class="info-rating">--}}
-                                {{--<span class="star">--}}
-                                    {{--<img src="/images/star.svg" alt="">--}}
-                                {{--</span>--}}
-                                    {{--<span class="star">--}}
-                                    {{--<img src="/images/star.svg" alt="">--}}
-                                {{--</span>--}}
-                                    {{--<span class="star">--}}
-                                    {{--<img src="/images/star.svg" alt="">--}}
-                                {{--</span>--}}
-                                    {{--<span class="star">--}}
-                                    {{--<img src="/images/star.svg" alt="">--}}
-                                {{--</span>--}}
-                                {{--</div>--}}
-                                {{--<div class="info-price">最低價--}}
-                                    {{--<div class="currency">NT$</div>--}}
-                                    {{--<div class="price">2,345</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="item-review">8.3</div>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
-            {{--</div>--}}
+            @if ( ! empty($relatedHotels))
+                <div class="hl_recommend-wrapper">
+                    <div class="recommend_tit">
+                        <h2 class="title">
+                            附近的飯店
+                        </h2>
+                    </div>
+                    <div class="recommend_scroll">
+                        <ul class="recommed-list">
+                            @foreach($relatedHotels as $relatedHotel)
+                                <li class="recommed-item">
+                                    <div class="item-img">
+                                        <div class="image"
+                                             style="background-image: url('{{ $relatedHotel['photo'] ?? 'images/noimg.svg' }}')">
+                                        </div>
+                                    </div>
+                                    <div class="item-info">
+                                        <a class="info-tit" href="{{ $relatedHotel['link'] }}">
+                                            {{ $relatedHotel['name']['translated'] }}({{ $relatedHotel['name']['origin'] }})
+                                        </a>
+
+                                        <vue_star_rated star-rated="{{ $relatedHotel['starRated'] }}"></vue_star_rated>
+
+                                        <div class="info-price">
+                                            最低價
+                                            <div class="currency">NT$</div>
+                                            <div class="price">-</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="item-review">
+                                        {{ $relatedHotel['rating']['statistics']['avg'] }}
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
         </div>
+
         <div class="hl_sidebar">
             @if (Agent::isDesktop())
                 <vue_ad_sidebar></vue_ad_sidebar>

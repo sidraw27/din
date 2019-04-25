@@ -33,26 +33,13 @@ class HotelEs extends Builder
             ]
         ];
 
-        $result = $this->multiSearch($query, ['_score' => 'desc'], $from, $size);
-
-        return $result['_shards']['total'] > 0 ? $result['hits'] : [];
-    }
-
-    public function searchByGeo(string $distance, float $latitude, float $longitude, int $from, int $size = 10)
-    {
-        $query = [
-            'filter' => [
-                'geo_distance' => [
-                    'distance' => $distance,
-                    'geo'      => [
-                        'lat' => $latitude,
-                        'lon' => $longitude
-                    ]
-                ]
+        $sort = [
+            '_score' => [
+                'order' =>'desc'
             ]
         ];
 
-        $result = $this->multiSearch($query, ['_score' => 'desc'],$from, $size);
+        $result = $this->multiSearch($query, $sort, $from, $size);
 
         return $result['_shards']['total'] > 0 ? $result['hits'] : [];
     }
