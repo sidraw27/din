@@ -166,7 +166,7 @@
                                         </a>
                                     </span>
                                     <span class="distance">
-                                        {{ $nearHotel['distance'] }}公里
+                                        {{ $nearHotel['distance'] }}
                                     </span>
                                 </div>
                                 </div>

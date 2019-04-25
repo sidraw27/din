@@ -181,6 +181,12 @@ class HotelService
             $source = $hit['_source'];
             $distance = Geophysical::getDistance($latitude, $longitude, $source['geo']['lat'], $source['geo']['lon']);
 
+            if ($distance < 1) {
+                $distance = ($distance * 1000) . '公尺';
+            } else {
+                $distance = $distance . '公里';
+            }
+
             $result[] = [
                 'name'     => $source['translated_name'],
                 'link'     => route('hotel', ['url_id' => $source['url_id']]),
