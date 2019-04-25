@@ -2,21 +2,40 @@
 
 namespace App\Jobs;
 
-use App\Http\Controllers\Controller;
 use App\Repositories\HotelRepository;
+use Illuminate\Console\Command;
 
-class SitemapJob extends Controller
+class GenerateSitemap extends Command
 {
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'generate:sitemap';
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'generate sitemap begin';
+
     const PER_NUMS = 20000;
 
     private $hotelRepo;
 
     public function __construct(HotelRepository $hotelRepository)
     {
+        parent::__construct();
         $this->hotelRepo = $hotelRepository;
     }
 
-    public function updateRobots()
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
     {
         $content[] = 'User-agent: *';
         $content[] = 'Disallow: /api/';
