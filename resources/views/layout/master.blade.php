@@ -36,6 +36,9 @@
             height: 100%;
             overflow: hidden;
         }
+        div#driver-page-overlay {
+            background: #404555 !important;
+        }
     </style>
 </head>
 
