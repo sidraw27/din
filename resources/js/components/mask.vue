@@ -59,10 +59,3 @@
         z-index: 1001;
     }
 </style>
-
-<style>
-    .stop-scrolling {
-        height: 100%;
-        overflow: hidden;
-    }
-</style>

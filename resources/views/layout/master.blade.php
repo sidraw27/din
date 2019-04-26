@@ -32,6 +32,10 @@
         #nprogress .bar {
             background: rgba(124, 219, 47, 0.79) !important;
         }
+        .stop-scrolling {
+            height: 100%;
+            overflow: hidden;
+        }
     </style>
 </head>
 

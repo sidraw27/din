@@ -1,7 +1,7 @@
 <template itemscope>
     <div>
         <div class="hl_min-search-bar" v-if="this.$isMobile && ! this.isOnIndex">
-            <div class="min-search-bar" :style="beforeMaskStyle">
+            <div class="min-search-bar">
                 <div class="search-input IconBox">
                     <img src="/images/search.svg" alt="search">
                     <form autocomplete="off" @submit="goSearch" style="width: 100%;">
@@ -34,7 +34,6 @@
                 </div>
 
                 <AirbnbStyleDatepicker
-                        :style="beforeMaskStyle"
                         :triggerElementId="triggerElementId"
                         :mode="'range'"
                         :minDate="new Date()"
@@ -48,7 +47,7 @@
                         @date-one-selected="val => { checkTime.in.date = val }"
                         @date-two-selected="val => { checkTime.out.date = val}"
                         @opened="toggleMask(true)"
-                        @closed="() => {datePickerConfig.trigger = this.isShowMask = false}"
+                        @closed="() => {datePickerConfig.trigger = false}"
                         @apply="goSearch"
                 />
 
@@ -69,7 +68,7 @@
             </div>
         </div>
 
-        <div class="searchBox" v-else :style="beforeMaskStyle" :class="{'__index_mo_search': this.isOnIndex && this.$isMobile}">
+        <div class="searchBox" v-else :class="{'__index_mo_search': this.isOnIndex && this.$isMobile}">
             <div class="searchBox_wrapper">
                 <div class="search-input IconBox">
                     <img src="/images/search.svg" alt="search">
@@ -115,7 +114,6 @@
                 </div>
 
                 <AirbnbStyleDatepicker
-                        :style="beforeMaskStyle"
                         :triggerElementId="triggerElementId"
                         :mode="'range'"
                         :minDate="new Date()"
@@ -177,15 +175,14 @@
                 </button>
             </div>
         </div>
-
-        <vue_mask :show="isShowMask" @close="toggleMask(false)"></vue_mask>
     </div>
 </template>
 
 <script>
     import dateMixin from '../mixin/date';
     import {VueAutosuggest} from 'vue-autosuggest';
-    import vue_mask from '../components/mask';
+    import Driver from 'driver.js';
+    import 'driver.js/dist/driver.min.css';
 
     export default {
         props: {
@@ -222,8 +219,7 @@
             dateMixin
         ],
         components: {
-            VueAutosuggest,
-            vue_mask
+            VueAutosuggest
         },
         created: function () {
             if (this.checkDateFormat(this.checkIn)) {
@@ -276,16 +272,10 @@
                         currentIndex: 1
                     },
                     isDrop: false
-                },
-                isShowMask: false
+                }
             }
         },
         computed: {
-            beforeMaskStyle: function () {
-                return {
-                    'z-index': this.isShowMask ? 1003 : 100
-                };
-            },
             numsOfAdult: function () {
                 return this.nums.adult.pool[this.nums.adult.currentIndex];
             }
@@ -319,6 +309,14 @@
             }
         },
         methods: {
+            toggleMask: function (isShow) {
+                const driver = new Driver({
+                    opacity: 0.65,
+                });
+                if (isShow) {
+                    driver.highlight(this.$isMobile ? '.search-input' : '.searchBox');
+                }
+            },
             checkDateFormat: function (strDate) {
                 if (strDate === undefined) {
                     return false;
@@ -332,7 +330,6 @@
             },
             selectedHandle: function (selected) {
                 this.value = selected.item.name;
-                this.toggleMask(false);
 
                 if (selected.item.label === '飯店') {
                     window.location.href = selected.item.link;
@@ -346,9 +343,6 @@
             },
             openDate: function () {
                 this.datePickerConfig.trigger = true;
-            },
-            toggleMask: function (isOpen) {
-                this.isShowMask = isOpen;
             },
             adjustNums: function (isPlus = true) {
                 if (isPlus) {
@@ -470,17 +464,6 @@
 
     >>> li.autosuggest__results_item {
         border-bottom: 1px solid #a9a7a7
-    }
-
-    >>> .__full_mask {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        opacity: .35;
-        background-color: #1b1515;
-        z-index: 1001;
     }
 
     >>> .__suggestion {

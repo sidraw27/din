@@ -53,7 +53,15 @@ Vue.directive('click-outside', {
     },
 });
 Vue.prototype.$isMobile = window.isMobile();
+Vue.prototype.$scrollLock = isLockScreen => {
+    const stopScrollClass = 'stop-scrolling';
 
+    if (isLockScreen) {
+        document.body.classList.add(stopScrollClass);
+    } else {
+        document.body.classList.remove(stopScrollClass);
+    }
+};
 window.Vue = Vue;
 
 // NProgress bar
