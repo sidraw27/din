@@ -18,7 +18,7 @@
             const cookieName = 'is_show_price_track_tutorial';
             const isShowTip = this.$cookie.get(cookieName) === null;
 
-            if (isShowTip) {
+            if (isShowTip && ! this.$isMobile) {
                 const driver = new Driver({
                     doneBtnText: '結束教學',
                     closeBtnText: '關閉',
