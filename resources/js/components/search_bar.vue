@@ -237,6 +237,13 @@
         data: function () {
             const defaultDate = dateMixin.createDateRange(10, 13);
 
+            const driver = new Driver({
+                opacity: 0.65,
+                onDeselected: () => {
+                    // this.suggestions = [];
+                }
+            });
+
             return {
                 triggerElementId: 'search_bar-datepicker-target',
                 inputProps: {
@@ -272,7 +279,8 @@
                         currentIndex: 1
                     },
                     isDrop: false
-                }
+                },
+                driver: driver
             }
         },
         computed: {
@@ -310,11 +318,10 @@
         },
         methods: {
             toggleMask: function (isShow) {
-                const driver = new Driver({
-                    opacity: 0.65,
-                });
                 if (isShow) {
-                    driver.highlight(this.$isMobile ? '.search-input' : '.searchBox');
+                    this.driver.highlight(this.$isMobile ? '.search-input' : '.searchBox');
+                } else {
+                    this.driver.reset();
                 }
             },
             checkDateFormat: function (strDate) {
@@ -329,6 +336,7 @@
                 return true;
             },
             selectedHandle: function (selected) {
+                this.toggleMask(false);
                 this.value = selected.item.name;
 
                 if (selected.item.label === '飯店') {
